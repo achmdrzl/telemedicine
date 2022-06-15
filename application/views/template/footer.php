@@ -1,48 +1,70 @@
-    </footer>
-    <!-- Scroll Up -->
-    <div id="back-top">
-        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+<!--**********************************
+            Footer start
+        ***********************************-->
+<div class="footer">
+    <div class="copyright">
+        <p>Copyright © Designed &amp; Developed by <a href="http://dexignzone.com/" target="_blank">DexignZone</a> 2020</p>
     </div>
+</div>
+<!--**********************************
+            Footer end
+        ***********************************-->
 
-    <!-- JS here -->
+<!--**********************************
+           Support ticket button start
+        ***********************************-->
 
-    <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
-    <!-- Jquery, Popper, Bootstrap -->
-    <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="./assets/js/popper.min.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
-    <!-- Jquery Mobile Menu -->
-    <script src="./assets/js/jquery.slicknav.min.js"></script>
+<!--**********************************
+           Support ticket button end
+        ***********************************-->
 
-    <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src="./assets/js/owl.carousel.min.js"></script>
-    <script src="./assets/js/slick.min.js"></script>
-    <!-- One Page, Animated-HeadLin -->
-    <script src="./assets/js/wow.min.js"></script>
-    <script src="./assets/js/animated.headline.js"></script>
-    <script src="./assets/js/jquery.magnific-popup.js"></script>
 
-    <!-- Date Picker -->
-    <script src="./assets/js/gijgo.min.js"></script>
-    <!-- Nice-select, sticky -->
-    <script src="./assets/js/jquery.nice-select.min.js"></script>
-    <script src="./assets/js/jquery.sticky.js"></script>
+</div>
+<!--**********************************
+        Main wrapper end
+    ***********************************-->
 
-    <!-- counter , waypoint -->
-    <script src="./assets/js/jquery.counterup.min.js"></script>
-    <script src="./assets/js/waypoints.min.js"></script>
-    <script src="./assets/js/jquery.countdown.min.js"></script>
-    <!-- contact js -->
-    <script src="./assets/js/contact.js"></script>
-    <script src="./assets/js/jquery.form.js"></script>
-    <script src="./assets/js/jquery.validate.min.js"></script>
-    <script src="./assets/js/mail-script.js"></script>
-    <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+<!--**********************************
+        Scripts
+    ***********************************-->
+<!-- Required vendors -->
+<script src="./vendor/global/global.min.js"></script>
+<script src="./vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="./vendor/chart.js/Chart.bundle.min.js"></script>
+<script src="./js/custom.min.js"></script>
+<script src="./js/deznav-init.js"></script>
+<script src="vendor/bootstrap-datetimepicker/js/moment.js"></script>
+<script src="vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<!-- Chart piety plugin files -->
+<script src="./vendor/peity/jquery.peity.min.js"></script>
 
-    <!-- Jquery Plugins, main Jquery -->
-    <script src="./assets/js/plugins.js"></script>
-    <script src="./assets/js/main.js"></script>
+<!-- Apex Chart -->
+<script src="./vendor/apexchart/apexchart.js"></script>
 
-    </body>
+<!-- Dashboard 1 -->
+<script src="./js/dashboard/dashboard-1.js"></script>
+<script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script>
+    $(function() {
+        $('#datetimepicker1').datetimepicker({
+            inline: true,
+        });
+    });
+    (function($) {
+        var table = $('#example5').DataTable({
+            searching: false,
+            paging: true,
+            select: false,
+            //info: false,         
+            lengthChange: false
 
-    </html>
+        });
+        $('#example tbody').on('click', 'tr', function() {
+            var data = table.row(this).data();
+
+        });
+    })(jQuery);
+</script>
+</body>
+
+</html>
