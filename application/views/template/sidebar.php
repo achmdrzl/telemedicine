@@ -11,9 +11,8 @@
         <ul aria-expanded="false">
           <li><a href="home">Dashboard</a></li>
           <li><a href="pasien">Pasien</a></li>
-          <li><a href="detail_pasien">Detail Pasien</a></li>
           <li><a href="dokter">Dokter</a></li>
-          <li><a href="detail_dokter">Detail Dokter</a></li>
+          <li><a href="booking">Konsultasi</a></li>
         </ul>
       </li>
   </div>

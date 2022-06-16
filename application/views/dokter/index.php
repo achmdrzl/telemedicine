@@ -49,7 +49,7 @@
 					<div class="col-12">
 						<div class="table-responsive card-table">
 							<table id="example5" class="display dataTablesCard table-responsive-xl">
-								<thead>
+								<thead class="text-center">
 									<tr>
 										<th>Profile</th>
 										<th>ID Dokter</th>
@@ -61,7 +61,7 @@
 										<th></th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody class="text-center">
 									<tr>
 										<td>
 											<img src="images/users/11.png" alt="" width="43">
@@ -70,22 +70,24 @@
 										<td>Dr. Samantha</td>
 										<td>Dentist</td>
 										<td><span class="text-nowrap">+12 4124 5125</span></td>
-										<td><span class="text-dark">Unavailable</span></td>
 										<td>
-											<div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="detail">View Detail</a>
-													<a class="dropdown-item" href="#">Edit</a>
-													<a class="dropdown-item" href="#">Delete</a>
-												</div>
-											</div>
+											<h5>
+												<span class="badge badge-success">
+													<i class="fa fa-circle text-primary mr-1"></i>
+													Tersedia
+												</span>
+											</h5>
+											<h5>
+												<span class="badge badge-danger">
+													<i class="fa fa-circle text-primary mr-1"></i>
+													Tidak Tersedia
+												</span>
+											</h5>
+										</td>
+										<td>
+											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+												Detail
+											</button>
 										</td>
 									</tr>
 								</tbody>
@@ -98,3 +100,29 @@
 		<!--**********************************
             Content body end
         ***********************************-->
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Detail Dokter</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="mb-3">
+								<label for="id" class="form-label">ID Dokter</label>
+								<input type="text" class="form-control" id="id" name="id" value="#P-00012" readonly>
+							</div>
+							<div class="mb-3">
+								<label for="nama" class="form-label">Nama Dokter</label>
+								<input type="text" class="form-control" id="nama" name="nama" value="Dr. Samantha" readonly>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+					</div>
+				</div>
+			</div>
+		</div>

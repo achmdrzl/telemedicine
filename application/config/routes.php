@@ -54,5 +54,6 @@ $route['dokter'] = 'dokter';
 $route['detail_dokter'] = 'dokter/detail';
 $route['pasien'] = 'pasien';
 $route['detail_pasien'] = 'pasien/detail';
+$route['booking'] = 'booking';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

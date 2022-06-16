@@ -19,38 +19,41 @@
                 <th>ID Pasien</th>
                 <th>Nama</th>
                 <th>Email</th>
-                <th>NIK</th>
-                <th>Tanggal Lahir</th>
-                <th>JK</th>
-                <th>Pekerjaan</th>
-                <th>Golongan Darah</th>
-                <th>Alamat</th>
                 <th>Telepon</th>
+                <th>JK</th>
                 <th>Status Akun</th>
-                <th>Status Nomor</th>
-                <th>Keterangan</th>
-                <th></th>
+                <th>Aksi</th>
               </tr>
             </thead>
             <tbody class="text-center">
               <tr>
                 <td>#P-00014</td>
-                <td>Dr. Samantha</td>
+                <td>Bias Firmansyah</td>
                 <td>achmadbias24@gmail.com</td>
-                <td>35780673657388732</td>
-                <td>24/05/2001</td>
-                <td>Laki-Laki</td>
-                <td>Mahasiswa</td>
-                <td>B</td>
-                <td>Jalan Ketintang 4-A/14 Kelurahan Wonokromo, Kecamatan Wonokromo, Kota Surabaya, Provinsi Jawa Timur</td>
                 <td>081330144865</td>
-                <td>Aktif</td>
-                <td>Aktif</td>
+                <td>Laki-Laki</td>
                 <td>
-                  <span class="badge badge-success">
-                    <i class="fa fa-circle text-primary mr-1"></i>
-                    Terkonfirmasi
-                  </span>
+                  <h5>
+                    <span class="badge badge-success">
+                      <i class="fa fa-circle text-primary mr-1"></i>
+                      Terkonfirmasi
+                    </span>
+                  </h5>
+                  <h5>
+                    <span class="badge badge-danger">
+                      <i class="fa fa-circle text-primary mr-1"></i>
+                      Ditolak
+                    </span>
+                  </h5>
+                  <h5>
+                    <span class="badge badge-warning">
+                      <i class="fa fa-circle text-primary mr-1"></i>
+                      Menunggu Konfirmasi
+                    </span>
+                  </h5>
+                </td>
+                <td>
+                  <a href="detail_pasien" class="btn btn-primary"> Detail</a>
                 </td>
               </tr>
             </tbody>
