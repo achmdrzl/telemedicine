@@ -6,7 +6,7 @@
 			<div class="container-fluid">
 				<div class="form-head d-flex mb-sm-4 mb-3">
 					<div class="mr-auto">
-						<h2 class="text-black font-w600">Daftar Booking</h2>
+						<h2 class="text-black font-w600">Daftar Konsultasi</h2>
 						<p class="mb-0">Dashboard Admin RSUD Kabupaten Jombang</p>
 					</div>
 				</div>
@@ -16,11 +16,13 @@
 							<table id="example5" class="display dataTablesCard table-responsive-xl">
 								<thead class="text-center">
 									<tr>
-										<th>ID Booking</th>
+										<th>ID Konsultasi</th>
 										<th>Nama Pasien</th>
 										<th>Hari & Jam Konsultasi</th>
 										<th>Nama Dokter</th>
-										<th>Status</th>
+										<th>Link Zoom</th>
+										<th>Status Bayar</th>
+										<th>Status Konsultasi</th>
 										<th>Aksi</th>
 										<th></th>
 									</tr>
@@ -30,7 +32,22 @@
 										<td><span class="text-nowrap">#P-00012</span></td>
 										<td>Bias Firmansyah</td>
 										<td>Kamis, 16 Juli 2022 18.00</td>
-										<td><span class="text-nowrap">Dr. Samantha</span></td>
+										<td>Dr. Samantha</td>
+										<td>www.zoom.us/blablabla</td>
+										<td>
+											<h5>
+												<span class="badge badge-success">
+													<i class="fa fa-circle text-primary mr-1"></i>
+													Lunas
+												</span>
+											</h5>
+											<h5>
+												<span class="badge badge-danger">
+													<i class="fa fa-circle text-primary mr-1"></i>
+													Belum Dibayar
+												</span>
+											</h5>
+										</td>
 										<td>
 											<h5>
 												<span class="badge badge-success">
@@ -41,14 +58,17 @@
 											<h5>
 												<span class="badge badge-danger">
 													<i class="fa fa-circle text-primary mr-1"></i>
-													Belum Tersedia
+													Belum Dilayani
 												</span>
 											</h5>
 										</td>
 										<td>
-											<button type="button" class="btn btn-primary">
-												Detail
-											</button>
+											<a href="#" class="btn btn-warning">
+												Ubah Jadwal
+											</a>
+											<a href="#" class="btn btn-secondary">
+												Ubah Jadwal
+											</a>
 										</td>
 									</tr>
 								</tbody>

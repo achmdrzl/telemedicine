@@ -12,7 +12,9 @@
           <li><a href="home">Dashboard</a></li>
           <li><a href="pasien">Pasien</a></li>
           <li><a href="dokter">Dokter</a></li>
-          <li><a href="booking">Konsultasi</a></li>
+          <li><a href="jadwal">Data Jadwal</a></li>
+          <li><a href="konsultasi">Konsultasi</a></li>
+          <li><a href="pengiriman">Pengiriman</a></li>
         </ul>
       </li>
   </div>
