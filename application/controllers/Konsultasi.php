@@ -5,16 +5,16 @@ class Konsultasi extends CI_Controller
 {
   public function index()
   {
-    $this->load->view('template/header');
-    $this->load->view('template/sidebar');
-    $this->load->view('konsultasi/index');
-    $this->load->view('template/footer');
+    $this->load->view('admin/template/header');
+    $this->load->view('admin/template/sidebar');
+    $this->load->view('admin/konsultasi/index');
+    $this->load->view('admin/template/footer');
   }
   public function detail()
   {
-    $this->load->view('template/header');
-    $this->load->view('template/sidebar');
-    $this->load->view('konsultasi/detail_konsultasi');
-    $this->load->view('template/footer');
+    $this->load->view('admin/template/header');
+    $this->load->view('admin/template/sidebar');
+    $this->load->view('admin/konsultasi/detail_konsultasi');
+    $this->load->view('admin/template/footer');
   }
 }

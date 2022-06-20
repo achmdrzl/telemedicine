@@ -5,16 +5,16 @@ class Dokter extends CI_Controller
 {
   public function index()
   {
-    $this->load->view('template/header');
-    $this->load->view('template/sidebar');
-    $this->load->view('dokter/index');
-    $this->load->view('template/footer');
+    $this->load->view('admin/template/header');
+    $this->load->view('admin/template/sidebar');
+    $this->load->view('admin/dokter/index');
+    $this->load->view('admin/template/footer');
   }
   public function detail()
   {
-    $this->load->view('template/header');
-    $this->load->view('template/sidebar');
-    $this->load->view('dokter/detail_dokter');
-    $this->load->view('template/footer');
+    $this->load->view('admin/template/header');
+    $this->load->view('admin/template/sidebar');
+    $this->load->view('admin/dokter/detail_dokter');
+    $this->load->view('admin/template/footer');
   }
 }
