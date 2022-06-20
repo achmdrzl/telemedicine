@@ -12,6 +12,48 @@
 				</div>
 				<div class="row">
 					<div class="col-12">
+						<!-- <div class="table-responsive card-table mb-5">
+							<table id="" class="display table-responsive-xl">
+								<thead class="text-center">
+									<tr>
+										<th>Kuota</th>
+										<th></th>
+										<th></th>
+										<th></th>
+										<th>Senin</th>
+										<th>Selasa</th>
+										<th>Rabu</th>
+										<th>Kamis</th>
+										<th>Jumat</th>
+										<th>Aksi</th>
+									</tr>
+								</thead>
+								<tbody class="text-center">
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td>
+											20
+										</td>
+										<td>20</td>
+										<td>
+											20
+										</td>
+										<td>20</td>
+										<td>
+											20
+										</td>
+										<td>
+											<button type="button" class="btn btn-warning">
+												Edit
+											</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div> -->
 						<div class="table-responsive card-table">
 							<table id="example5" class="display dataTablesCard table-responsive-xl">
 								<thead class="text-center">
@@ -26,6 +68,17 @@
 									</tr>
 								</thead>
 								<tbody class="text-center">
+									<tr>
+										<td></td>
+										<td>20</td>
+										<td>20</td>
+										<td>20</td>
+										<td>20</td>
+										<td>20</td>
+										<td><button type="button" class="btn btn-warning">
+												Edit Kuota
+											</button></td>
+									</tr>
 									<tr>
 										<td>
 											<img src="" alt="FOTO DOKTER"><br>
@@ -51,11 +104,7 @@
 												<div class="badge badge-success">16.00-17.00 WIB</div>
 											</h5>
 										</td>
-										<td>
-											<button type="button" class="btn btn-primary">
-												Detail
-											</button>
-										</td>
+
 									</tr>
 								</tbody>
 							</table>
