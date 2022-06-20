@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Telemedicine RSUD Kabupaten Jombang</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
-    <link href="./vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./vendor/chartist/css/chartist.min.css">
-    <link href="./vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="./vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="./vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="./css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <link href="assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendor/chartist/css/chartist.min.css">
+    <link href="assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="assets/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
@@ -44,9 +44,9 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="./images/logo.png" alt="">
-                <img class="logo-compact" src="./images/logo-text.png" alt="">
-                <img class="brand-title" src="./images/logo-text.png" alt="">
+                <img class="logo-abbr" src="assets/images/logo.png" alt="">
+                <img class="logo-compact" src="assets/images/logo-text.png" alt="">
+                <img class="brand-title" src="assets/images/logo-text.png" alt="">
             </a>
 
             <div class="nav-control">
@@ -89,7 +89,7 @@
                                             <li>
                                                 <div class="timeline-panel">
                                                     <div class="media mr-2">
-                                                        <img alt="image" width="50" src="images/avatar/1.jpg">
+                                                        <img alt="image" width="50" src="assets/images/avatar/1.jpg">
                                                     </div>
                                                     <div class="media-body">
                                                         <h6 class="mb-1">Dr sultads Send you Photo</h6>
@@ -122,7 +122,7 @@
                                             <li>
                                                 <div class="timeline-panel">
                                                     <div class="media mr-2">
-                                                        <img alt="image" width="50" src="images/avatar/1.jpg">
+                                                        <img alt="image" width="50" src="assets/images/avatar/1.jpg">
                                                     </div>
                                                     <div class="media-body">
                                                         <h6 class="mb-1">Dr sultads Send you Photo</h6>
@@ -235,7 +235,7 @@
 										<span class="text-black">Hello,<strong>Franklin</strong></span>
 										<p class="fs-12 mb-0">Super Admin</p>
 									</div> -->
-                                    <img src="images/profile/17.jpg" width="20" alt="" />
+                                    <img src="assets/images/profile/17.jpg" width="20" alt="" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="./app-profile.html" class="dropdown-item ai-icon">
