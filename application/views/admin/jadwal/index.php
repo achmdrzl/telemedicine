@@ -27,6 +27,17 @@
 								</thead>
 								<tbody class="text-center">
 									<tr>
+										<td></td>
+										<td>20</td>
+										<td>20</td>
+										<td>20</td>
+										<td>20</td>
+										<td>20</td>
+										<td><button type="button" class="btn btn-warning">
+												Edit Kuota
+											</button></td>
+									</tr>
+									<tr>
 										<td>
 											<img src="" alt="FOTO DOKTER"><br>
 											<span>
@@ -51,11 +62,7 @@
 												<div class="badge badge-success">16.00-17.00 WIB</div>
 											</h5>
 										</td>
-										<td>
-											<button type="button" class="btn btn-primary">
-												Detail
-											</button>
-										</td>
+
 									</tr>
 								</tbody>
 							</table>
