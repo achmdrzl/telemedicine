@@ -23,7 +23,6 @@
 										<th>Kontak</th>
 										<th>Status</th>
 										<th>Aksi</th>
-										<th></th>
 									</tr>
 								</thead>
 								<tbody class="text-center">
@@ -57,7 +56,7 @@
 											</td>
 											<td>
 												<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $Dokter['ID_DOKTER'] ?>">
-													Dokter Tidak Tersedia
+													Ubah Status Dokter
 												</button>
 											</td>
 										<?php endforeach; ?>
