@@ -5,12 +5,8 @@ class Dokter_model extends CI_Model
   {
     return $query = $this->db->get('dokter')->result_array();
   }
-  public function updateStatusDokter($id)
+  public function jumlahDokter()
   {
-    $data = [
-      "STATUS_DOKTER" => 0
-    ];
-    $this->db->where('ID_DOKTER', $id);
-    $this->db->update('dokter', $data);
+    return $query = $this->db->count_all('dokter');
   }
 }

@@ -7,7 +7,6 @@ class Dokter extends CI_Controller
   {
     parent::__construct();
     $this->load->model('Dokter_model');
-    $this->load->helper('url');
   }
 
   public function index()
@@ -24,11 +23,5 @@ class Dokter extends CI_Controller
     $this->load->view('admin/template/sidebar');
     $this->load->view('admin/dokter/detail_dokter');
     $this->load->view('admin/template/footer');
-  }
-
-  public function update_status($id)
-  {
-    $this->Dokter_model->updateStatusDokter($id);
-    redirect('dokter');
   }
 }
