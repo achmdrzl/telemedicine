@@ -9,12 +9,12 @@
           <span class="nav-text">Dashboard</span>
         </a>
         <ul aria-expanded="false">
-          <li><a href="home">Dashboard</a></li>
-          <li><a href="pasien">Pasien</a></li>
-          <li><a href="dokter">Dokter</a></li>
-          <li><a href="jadwal">Data Jadwal</a></li>
-          <li><a href="konsultasi">Konsultasi</a></li>
-          <li><a href="pengiriman">Pengiriman</a></li>
+          <li><a href="<?= site_url('home') ?>">Dashboard</a></li>
+          <li><a href="<?= site_url('pasien') ?>">Pasien</a></li>
+          <li><a href="<?= site_url('dokter') ?>">Dokter</a></li>
+          <li><a href="<?= site_url('jadwal') ?>">Data Jadwal</a></li>
+          <li><a href="<?= site_url('konsultasi') ?>">Konsultasi</a></li>
+          <li><a href="<?= site_url('pengiriman') ?>">Pengiriman</a></li>
         </ul>
       </li>
   </div>

@@ -28,42 +28,108 @@
 								<tbody class="text-center">
 									<tr>
 										<td></td>
-										<td>20</td>
-										<td>20</td>
-										<td>20</td>
-										<td>20</td>
-										<td>20</td>
-										<td><button type="button" class="btn btn-warning">
-												Edit Kuota
-											</button></td>
+										<form method="post" action="jadwal/ubahKuota">
+											<?php
+											foreach ($jadwal as $j) :
+											?>
+												<td>
+													<div class="mb-3">
+														<input type="number" class="form-control-plaintext text-center" id="<?= $j['HARI'] ?>" name="<?= $j['HARI'] ?>" value="<?= $j['KUOTA'] ?>">
+													</div>
+												</td>
+											<?php endforeach; ?>
+											<td>
+												<button type="submit" class="btn btn-warning">Edit Kuota</button>
+											</td>
+										</form>
 									</tr>
-									<tr>
-										<td>
-											<img src="" alt="FOTO DOKTER"><br>
-											<span>
-												Dr. Samantha
-												Umum
-											</span>
-										</td>
-										<td>
-											<h5>
-												<div class="badge badge-success">16.00-17.00 WIB</div>
-											</h5>
-										</td>
-										<td></td>
-										<td>
-											<h5>
-												<div class="badge badge-success">16.00-17.00 WIB</div>
-											</h5>
-										</td>
-										<td></td>
-										<td>
-											<h5>
-												<div class="badge badge-success">16.00-17.00 WIB</div>
-											</h5>
-										</td>
-
-									</tr>
+									<?php foreach ($dokters as $dokter) : ?>
+										<tr>
+											<td>
+												<img src="assets/images/<?= $dokter['PROFIL_DOKTER'] ?>" alt="dokter <?= $dokter['NAMA_DOKTER'] ?>" class="foto_jadwal"><br>
+												<span>
+													<?= $dokter['NAMA_DOKTER']; ?><br>
+													Dokter <?= $dokter['SPESIALISASI']; ?>
+												</span>
+											</td>
+											<td>
+												<?php
+												foreach ($detail as $dt) :
+													if ($dt['ID_DOKTER'] == $dokter['ID_DOKTER'] && $dt['ID_JADWAL'] == 1) :
+												?>
+														<h5>
+															<?php foreach ($sesi as $s) :
+																if ($s['ID_SESI'] == $dt['ID_SESI']) : ?>
+																	<div class="badge badge-success"><?= $s['JAM']; ?></div>
+															<?php endif;
+															endforeach; ?>
+														</h5>
+												<?php endif;
+												endforeach; ?>
+											</td>
+											<td>
+												<?php
+												foreach ($detail as $dt) :
+													if ($dt['ID_DOKTER'] == $dokter['ID_DOKTER'] && $dt['ID_JADWAL'] == 2) :
+												?>
+														<h5>
+															<?php foreach ($sesi as $s) :
+																if ($s['ID_SESI'] == $dt['ID_SESI']) : ?>
+																	<div class="badge badge-success"><?= $s['JAM']; ?></div>
+															<?php endif;
+															endforeach; ?>
+														</h5>
+												<?php endif;
+												endforeach; ?>
+											</td>
+											<td>
+												<?php
+												foreach ($detail as $dt) :
+													if ($dt['ID_DOKTER'] == $dokter['ID_DOKTER'] && $dt['ID_JADWAL'] == 3) :
+												?>
+														<h5>
+															<?php foreach ($sesi as $s) :
+																if ($s['ID_SESI'] == $dt['ID_SESI']) : ?>
+																	<div class="badge badge-success"><?= $s['JAM']; ?></div>
+															<?php endif;
+															endforeach; ?>
+														</h5>
+												<?php endif;
+												endforeach; ?>
+											</td>
+											<td>
+												<?php
+												foreach ($detail as $dt) :
+													if ($dt['ID_DOKTER'] == $dokter['ID_DOKTER'] && $dt['ID_JADWAL'] == 4) :
+												?>
+														<h5>
+															<?php foreach ($sesi as $s) :
+																if ($s['ID_SESI'] == $dt['ID_SESI']) : ?>
+																	<div class="badge badge-success"><?= $s['JAM']; ?></div>
+															<?php endif;
+															endforeach; ?>
+														</h5>
+												<?php endif;
+												endforeach; ?>
+											</td>
+											<td>
+												<?php
+												foreach ($detail as $dt) :
+													if ($dt['ID_DOKTER'] == $dokter['ID_DOKTER'] && $dt['ID_JADWAL'] == 5) :
+												?>
+														<h5>
+															<?php foreach ($sesi as $s) :
+																if ($s['ID_SESI'] == $dt['ID_SESI']) : ?>
+																	<div class="badge badge-success"><?= $s['JAM']; ?></div>
+															<?php endif;
+															endforeach; ?>
+														</h5>
+												<?php endif;
+												endforeach; ?>
+											</td>
+										</tr>
+									<?php
+									endforeach; ?>
 								</tbody>
 							</table>
 						</div>

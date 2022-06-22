@@ -20,42 +20,61 @@
                 <th>Nama</th>
                 <th>Email</th>
                 <th>Telepon</th>
-                <th>JK</th>
+                <th>Jenis Kelamin</th>
                 <th>Status Akun</th>
                 <th>Aksi</th>
               </tr>
             </thead>
             <tbody class="text-center">
-              <tr>
-                <td>#P-00014</td>
-                <td>Bias Firmansyah</td>
-                <td>achmadbias24@gmail.com</td>
-                <td>081330144865</td>
-                <td>Laki-Laki</td>
-                <td>
-                  <h5>
-                    <span class="badge badge-success">
-                      <i class="fa fa-circle text-primary mr-1"></i>
-                      Terkonfirmasi
-                    </span>
-                  </h5>
-                  <h5>
-                    <span class="badge badge-danger">
-                      <i class="fa fa-circle text-primary mr-1"></i>
-                      Ditolak
-                    </span>
-                  </h5>
-                  <h5>
-                    <span class="badge badge-warning">
-                      <i class="fa fa-circle text-primary mr-1"></i>
-                      Menunggu Konfirmasi
-                    </span>
-                  </h5>
-                </td>
-                <td>
-                  <a href="detail_pasien" class="btn btn-primary"> Detail</a>
-                </td>
-              </tr>
+              <?php
+              foreach ($pasien as $row) :
+              ?>
+                <tr>
+                  <td><?= $row['ID_PASIEN']; ?></td>
+                  <td><?= $row['NAMA_PASIEN']; ?></td>
+                  <td><?= $row['EMAIL_PASIEN']; ?></td>
+                  <td><?= $row['HP_PASIEN']; ?></td>
+                  <td>
+                    <?php
+                    if ($row['JENIS_KELAMIN'] == 'L') {
+                      echo ('Laki-Laki');
+                    } else {
+                      echo ('Perempuan');
+                    }
+                    ?>
+                  </td>
+                  <td>
+                    <?php
+                    if ($row['STATUS_AKUN'] == NULL) :
+                    ?>
+                      <h5>
+                        <span class="badge badge-warning">
+                          <i class="fa fa-circle text-primary mr-1"></i>
+                          Menunggu Konfirmasi
+                        </span>
+                      </h5>
+                    <?php
+                    elseif ($row['STATUS_AKUN'] == 1) :
+                    ?>
+                      <h5>
+                        <span class="badge badge-success">
+                          <i class="fa fa-circle text-primary mr-1"></i>
+                          Terkonfirmasi
+                        </span>
+                      </h5>
+                    <?php endif; ?>
+                    <!-- <h5>
+                      <span class="badge badge-danger">
+                        <i class="fa fa-circle text-primary mr-1"></i>
+                        Ditolak
+                      </span>
+                    </h5> -->
+                  </td>
+                  <td>
+                    <a href="pasien/detail/<?= $row['ID_PASIEN']; ?>" class="btn btn-primary"> Detail</a>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
             </tbody>
           </table>
         </div>

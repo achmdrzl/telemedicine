@@ -3,18 +3,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Konsultasi extends CI_Controller
 {
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->model('Konsultasi_model');
+  }
   public function index()
   {
-    $this->load->view('admin/template/header');
-    $this->load->view('admin/template/sidebar');
-    $this->load->view('admin/konsultasi/index');
-    $this->load->view('admin/template/footer');
+    $data['konsultasi'] = $this->Konsultasi_model->getAllKonsul();
+    render('admin/konsultasi/index', $data);
   }
   public function detail()
   {
-    $this->load->view('admin/template/header');
-    $this->load->view('admin/template/sidebar');
-    $this->load->view('admin/konsultasi/detail_konsultasi');
-    $this->load->view('admin/template/footer');
+    $data['konsultasi'] = $this->Konsultasi_model->getAllKonsulByID();
+    render('admin/konsultasi/index', $data);
   }
 }
