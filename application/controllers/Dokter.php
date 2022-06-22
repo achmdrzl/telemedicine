@@ -12,9 +12,6 @@ class Dokter extends CI_Controller
   public function index()
   {
     $data['dokter'] = $this->Dokter_model->getAllDokter();
-    $this->load->view('admin/template/header');
-    $this->load->view('admin/template/sidebar');
-    $this->load->view('admin/dokter/index', $data);
-    $this->load->view('admin/template/footer');
+    render('admin/dokter/index', $data);
   }
 }

@@ -71,7 +71,7 @@
                     </h5> -->
                   </td>
                   <td>
-                    <a href="detail_pasien/<?= $row['ID_PASIEN']; ?>" class="btn btn-primary"> Detail</a>
+                    <a href="pasien/detail/<?= $row['ID_PASIEN']; ?>" class="btn btn-primary"> Detail</a>
                   </td>
                 </tr>
               <?php endforeach; ?>

@@ -6,7 +6,6 @@
                 <h2 class="text-black font-w600">Dashboard</h2>
                 <p class="mb-0">Dashboard Admin RSUD Kabupaten Jombang</p>
             </div>
-            <a href="javascript:void(0)" class="btn btn-outline-primary"><i class="las la-cog scale5 mr-3"></i>Sesuaikan Tata Letak</a>
         </div>
         <div class="row">
             <div class="col-xl-3 col-sm-6">

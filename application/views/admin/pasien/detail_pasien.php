@@ -62,7 +62,7 @@
 								</div>
 								<div class="mb-3">
 									<label for="ktp" class="form-label">KTP Pasien</label>
-									<img src="assets/images/<?= $detail['FILE_KTP'] ?>" alt="INI FOTO KTP">
+									<img src="<?= base_url() ?>assets/images/<?= $detail['FILE_KTP'] ?>" alt="FOTO KTP <?= $detail['NAMA_PASIEN'] ?>">
 								</div>
 								<div class="mb-3">
 									<label for="ktp" class="form-label">Status Akun</label>

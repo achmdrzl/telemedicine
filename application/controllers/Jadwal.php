@@ -17,10 +17,7 @@ class Jadwal extends CI_Controller
     $data['jadwal'] = $this->Jadwal_model->getAllJadwal();
     $data['sesi'] = $this->Sesi_model->getAllSesi();
     $data['detail'] = $this->detailJadwal_model->getAllDetailJadwal();
-    $this->load->view('admin/template/header');
-    $this->load->view('admin/template/sidebar');
-    $this->load->view('admin/jadwal/index', $data);
-    $this->load->view('admin/template/footer');
+    render('admin/jadwal/index', $data);
   }
   public function ubahKuota()
   {

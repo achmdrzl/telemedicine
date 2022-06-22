@@ -15,9 +15,6 @@ class Home extends CI_Controller
         $data['jml_dokter'] = $this->Dokter_model->jumlahDokter();
         $data['jml_pasien'] = $this->Pasien_model->jumlahPasien();
         $data['jml_konsul'] = $this->Konsultasi_model->jumlahKonsul();
-        $this->load->view('admin/template/header');
-        $this->load->view('admin/template/sidebar');
-        $this->load->view('admin/index', $data);
-        $this->load->view('admin/template/footer');
+        render('admin/index', $data);
     }
 }

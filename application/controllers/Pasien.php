@@ -11,17 +11,11 @@ class Pasien extends CI_Controller
   public function index()
   {
     $data['pasien'] = $this->Pasien_model->getAllPasien();
-    $this->load->view('admin/template/header');
-    $this->load->view('admin/template/sidebar');
-    $this->load->view('admin/pasien/index', $data);
-    $this->load->view('admin/template/footer');
+    render('admin/pasien/index', $data);
   }
   public function detail($id)
   {
     $data['detail_pasien'] = $this->Pasien_model->getPasienByID($id);
-    $this->load->view('admin/template/header');
-    $this->load->view('admin/template/sidebar');
-    $this->load->view('admin/pasien/detail_pasien', $data);
-    $this->load->view('admin/template/footer');
+    render('admin/pasien/detail_pasien', $data);
   }
 }

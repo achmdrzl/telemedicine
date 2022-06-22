@@ -28,49 +28,54 @@
 									</tr>
 								</thead>
 								<tbody class="text-center">
-									<tr>
-										<td><span class="text-nowrap">#P-00012</span></td>
-										<td>Bias Firmansyah</td>
-										<td>Kamis, 16 Juli 2022 18.00</td>
-										<td>Dr. Samantha</td>
-										<td>www.zoom.us/blablabla</td>
-										<td>
-											<h5>
-												<span class="badge badge-success">
-													<i class="fa fa-circle text-primary mr-1"></i>
-													Lunas
-												</span>
-											</h5>
-											<h5>
-												<span class="badge badge-danger">
-													<i class="fa fa-circle text-primary mr-1"></i>
-													Belum Dibayar
-												</span>
-											</h5>
-										</td>
-										<td>
-											<h5>
-												<span class="badge badge-success">
-													<i class="fa fa-circle text-primary mr-1"></i>
-													Sudah Dilayani
-												</span>
-											</h5>
-											<h5>
-												<span class="badge badge-danger">
-													<i class="fa fa-circle text-primary mr-1"></i>
-													Belum Dilayani
-												</span>
-											</h5>
-										</td>
-										<td>
-											<a href="#" class="btn btn-warning">
-												Ubah Jadwal
-											</a>
-											<a href="#" class="btn btn-secondary">
-												Ubah Jadwal
-											</a>
-										</td>
-									</tr>
+									<?php foreach ($konsultasi as $konsul) : ?>
+										<tr>
+											<td><span class="text-nowrap"><?= $konsul['ID_KONSUL']; ?></span></td>
+											<td><?= $konsul['NAMA_PASIEN']; ?></td>
+											<td><?= $konsul['TGL_KONSUL']; ?></td>
+											<td><?= $konsul['NAMA_DOKTER']; ?></td>
+											<td><?= $konsul['LINK_ZOOM']; ?></td>
+											<td>
+												<?php if ($konsul['STATUS_BAYAR_BOOKING'] == NULL) : ?>
+													<h5>
+														<span class="badge badge-success">
+															<i class="fa fa-circle text-primary mr-1"></i>
+															Lunas
+														</span>
+													</h5>
+												<?php elseif ($konsul['STATUS_BAYAR_BOOKING'] == 1) : ?>
+													<h5>
+														<span class="badge badge-danger">
+															<i class="fa fa-circle text-primary mr-1"></i>
+															Belum Dibayar
+														</span>
+													</h5>
+												<?php endif; ?>
+											</td>
+											<!-- <td>
+												<h5>
+													<span class="badge badge-success">
+														<i class="fa fa-circle text-primary mr-1"></i>
+														Sudah Dilayani
+													</span>
+												</h5>
+												<h5>
+													<span class="badge badge-danger">
+														<i class="fa fa-circle text-primary mr-1"></i>
+														Belum Dilayani
+													</span>
+												</h5>
+											</td>
+											<td>
+												<a href="#" class="btn btn-warning">
+													Ubah Jadwal
+												</a>
+												<a href="#" class="btn btn-secondary">
+													Ubah Jadwal
+												</a>
+											</td> -->
+										</tr>
+									<?php endforeach; ?>
 								</tbody>
 							</table>
 						</div>
