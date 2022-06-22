@@ -14,7 +14,6 @@
 						<?php
 						foreach ($detail_pasien as $detail) :
 						?>
-
 							<form>
 								<div class="mb-3">
 									<label for="id" class="form-label">ID Pasien</label>
@@ -46,7 +45,7 @@
 								</div>
 								<div class="mb-3">
 									<label for="pekerjaan" class="form-label">Pekerjaan Pasien</label>
-									<input type="text" class="form-control" id="pekerjaan" name="pekerjaan" readonly>
+									<input type="text" class="form-control" id="pekerjaan" name="pekerjaan" value="<?= $detail['NAMA_PEKERJAAN'] ?>" readonly>
 								</div>
 								<div class="mb-3">
 									<label for="telp" class="form-label">Telp Pasien</label>
@@ -58,11 +57,11 @@
 								</div>
 								<div class="mb-3">
 									<label for="gol" class="form-label">Golongan Darah Pasien</label>
-									<input type="text" class="form-control" id="gol" name="gol" readonly>
+									<input type="text" class="form-control" id="gol" name="gol" value="<?= $detail['NAMA_GOL'] ?>" readonly>
 								</div>
 								<div class="mb-3">
-									<label for="ktp" class="form-label">KTP Pasien</label>
-									<img src="<?= base_url() ?>assets/images/<?= $detail['FILE_KTP'] ?>" alt="FOTO KTP <?= $detail['NAMA_PASIEN'] ?>">
+									<label for="ktp" class="form-label">KTP Pasien</label><br>
+									<img src="<?= base_url() ?>assets/images/<?= $detail['FILE_KTP'] ?>" alt="FOTO KTP <?= $detail['NAMA_PASIEN'] ?>" class="ktp">
 								</div>
 								<div class="mb-3">
 									<label for="ktp" class="form-label">Status Akun</label>

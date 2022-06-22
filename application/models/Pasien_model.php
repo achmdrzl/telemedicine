@@ -11,6 +11,12 @@ class Pasien_model extends CI_Model
   }
   public function getPasienByID($id)
   {
-    return $this->db->get_where('pasien', ['ID_PASIEN' => $id])->result_array();
+    $this->db->select('ps.*, pk.NAMA_PEKERJAAN, gd.NAMA_GOL');
+    $this->db->from('pasien as ps');
+    $this->db->join('pekerjaan as pk', 'ps.ID_PEKERJAAN=pk.ID_PEKERJAAN', 'LEFT');
+    $this->db->join('gol_darah as gd', 'ps.ID_GOL=gd.ID_GOL', 'LEFT');
+    $this->db->where('ps.ID_PASIEN', $id);
+    $query = $this->db->get();
+    return $query->result_array();
   }
 }
