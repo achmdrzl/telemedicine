@@ -18,4 +18,9 @@ class Pasien extends CI_Controller
     $data['detail_pasien'] = $this->Pasien_model->getPasienByID($id);
     render('admin/pasien/detail_pasien', $data);
   }
+  public function verifikasi($id)
+  {
+    $this->Pasien_model->updateStatus($id);
+    redirect('pasien');
+  }
 }

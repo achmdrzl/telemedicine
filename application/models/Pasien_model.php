@@ -19,4 +19,12 @@ class Pasien_model extends CI_Model
     $query = $this->db->get();
     return $query->result_array();
   }
+  public function updateStatus($id)
+  {
+    $data = [
+      "STATUS_AKUN" => 1
+    ];
+    $this->db->where('ID_PASIEN', $id);
+    $this->db->update('pasien', $data);
+  }
 }

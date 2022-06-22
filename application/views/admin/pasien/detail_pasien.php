@@ -74,6 +74,14 @@
 												Menunggu Konfirmasi
 											</span>
 										</h5>
+										<div class="row">
+											<div class="col-md-6">
+												<a href="<?= base_url() ?>pasien/verifikasi/<?= $detail['ID_PASIEN'] ?>" class="btn btn-success btn-block">Verifikasi</a>
+											</div>
+											<div class="col-md-6">
+												<button class="btn btn-danger btn-block">Tolak</button>
+											</div>
+										</div>
 									<?php
 									elseif ($detail['STATUS_AKUN'] == 1) :
 									?>
@@ -91,16 +99,8 @@
 											Ditolak
 										</span>
 									</h5> -->
+								</div>
 
-								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<button class="btn btn-success btn-block">Konfirmasi</button>
-									</div>
-									<div class="col-md-6">
-										<button class="btn btn-danger btn-block">Tolak</button>
-									</div>
-								</div>
 							</form>
 						<?php
 						endforeach;
