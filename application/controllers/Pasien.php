@@ -16,11 +16,16 @@ class Pasien extends CI_Controller
   public function detail($id)
   {
     $data['detail_pasien'] = $this->Pasien_model->getPasienByID($id);
-    render('admin/pasien/detail_pasien', $data);
+    if ($data['detail_pasien']) {
+      render('admin/pasien/detail', $data);
+    } else {
+      render('admin/pasien/error', $data);
+    }
   }
   public function verifikasi($id)
   {
     $this->Pasien_model->updateStatus($id);
+    $this->session->set_flashdata('verifikasi', 'diverifikasi');
     redirect('pasien');
   }
 }

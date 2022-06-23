@@ -66,7 +66,7 @@
 								<div class="mb-3">
 									<label for="ktp" class="form-label">Status Akun</label>
 									<?php
-									if ($detail['STATUS_AKUN'] == NULL) :
+									if ($detail['STATUS_AKUN'] == NULL || $detail['STATUS_AKUN'] == 0) :
 									?>
 										<h5>
 											<span class="badge badge-warning">
@@ -92,7 +92,6 @@
 											</span>
 										</h5>
 									<?php endif; ?>
-
 									<!-- <h5>
 										<span class="badge badge-danger">
 											<i class="fa fa-circle text-primary mr-1"></i>
@@ -100,11 +99,8 @@
 										</span>
 									</h5> -->
 								</div>
-
 							</form>
-						<?php
-						endforeach;
-						?>
+						<?php endforeach; ?>
 					</div>
 				</div>
 			</div>

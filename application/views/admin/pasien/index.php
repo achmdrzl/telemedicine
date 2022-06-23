@@ -7,11 +7,19 @@
     <div class="form-head align-items-center d-flex mb-sm-4 mb-3">
       <div class="mr-auto">
         <h2 class="text-black font-w600">Pasien</h2>
-        <p class="mb-0">Hospital Admin Dashboard Template</p>
+        <p class="mb-0">Dashboard Admin RSUD Kabupaten Jombang</p>
       </div>
     </div>
     <div class="row">
       <div class="col-xl-12">
+        <!-- alert -->
+        <?php if ($this->session->flashdata('verifikasi')) : ?>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Akun pasien <strong>berhasil</strong> <?= $this->session->flashdata('verifikasi'); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <?php endif; ?>
+        <!-- end alert -->
         <div class="table-responsive card-table">
           <table id="example5" class="display dataTablesCard white-border table-responsive-xl">
             <thead class="text-center">
@@ -45,7 +53,7 @@
                   </td>
                   <td>
                     <?php
-                    if ($row['STATUS_AKUN'] == NULL) :
+                    if ($row['STATUS_AKUN'] == NULL || $row['STATUS_AKUN'] == 0) :
                     ?>
                       <h5>
                         <span class="badge badge-warning">
