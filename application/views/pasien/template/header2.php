@@ -117,17 +117,20 @@
                         <button class="close-mobile-menu d-block d-lg-none"><i class="fas fa-times"></i></button>
                     </div><!-- /.navbar-collapse -->
                     <div class="d-none d-xl-flex align-items-center position-relative ml-30">
-                        <li class="nav__item has-dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link"><i class="icon icon-user"></i></a>
-                            <ul class="dropdown-menu">
-                                <li class="nav__item">
-                                    <a href="shop.html" class="nav__item-link">Profile</a>
-                                </li><!-- /.nav-item -->
-                                <li class="nav__item">
-                                    <a href="<?php echo site_url('welcome/index') ?>" class="nav__item-link">Logout</a>
-                                </li><!-- /.nav-item -->
-                            </ul><!-- /.dropdown-menu -->
-                        </li><!-- /.nav-item -->
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav__item has-dropdown">
+                                <a href="#" data-toggle="dropdown" class="btn btn__primary btn__rounded ml-30"><i class="icon-user"></i>
+                                    <span>Profile</span></a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav__item">
+                                        <a href="<?php echo site_url('pasien_login/det_akun') ?>" class="nav__item-link">Informasi Akun</a>
+                                    </li><!-- /.nav-item -->
+                                    <li class="nav__item">
+                                        <a href="<?php echo site_url('pasien_login/logout') ?>" class="nav__item-link">Log Out</a>
+                                    </li><!-- /.nav-item -->
+                                </ul><!-- /.dropdown-menu -->
+                            </li><!-- /.nav-item -->
+                        </ul><!-- /.navbar-nav -->
                     </div>
                 </div><!-- /.container -->
             </nav><!-- /.navabr -->

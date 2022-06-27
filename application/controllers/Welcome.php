@@ -18,4 +18,9 @@ class Welcome extends CI_Controller
 	{
 		render2('pasien/auth/register');
 	}
+
+	public function verif()
+	{
+		render2('pasien/auth/verif');
+	}
 }

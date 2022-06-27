@@ -15,7 +15,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h4 class="contact-panel__title">Login</h4>
-                                    <p class="contact-panel__desc mb-30">Sign In into Your Account
+                                    <p class="contact-panel__desc mb-30">Masuk ke Akun Anda
                                     </p>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12">

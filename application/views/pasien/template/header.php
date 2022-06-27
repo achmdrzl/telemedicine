@@ -118,7 +118,7 @@
           </div><!-- /.navbar-collapse -->
           <div class="d-none d-xl-flex align-items-center position-relative ml-30">
             <a href="<?php echo site_url('welcome/login') ?>" class="btn btn__primary btn__rounded ml-30">
-              <!-- <i class="icon-calendar"></i> -->
+              <i class="icon-arrow-right"></i>
               <span>Login</span>
             </a>
           </div>
