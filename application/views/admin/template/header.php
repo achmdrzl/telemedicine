@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Telemedicine RSUD Kabupaten Jombang</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/images/favicon.png') ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('assets/images/logo/rsud jombang.jpeg') ?>">
     <link href="<?= base_url('') ?>assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<? base_url('') ?>assets/vendor/chartist/css/chartist.min.css">
     <link href="<?= base_url('assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') ?>" rel="stylesheet">
@@ -44,12 +44,9 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="<?= base_url('assets/images/logo.png') ?>" alt="">
-                <img class="logo-compact" src="<?= base_url('assets/images/logo-text.png') ?>" alt="">
-                <img class="brand-title" src="<?= base_url('assets/images/logo-text.png') ?>" alt="">
+            <a href="<?= site_url() ?>admin" class="brand-logo">
+                <img class="logo-abbr" src="<?= base_url('assets/images/logo/logo2.svg') ?>" alt="">
             </a>
-
             <div class="nav-control">
                 <div class="hamburger">
                     <span class="line"></span><span class="line"></span><span class="line"></span>
