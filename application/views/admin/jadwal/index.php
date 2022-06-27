@@ -12,6 +12,14 @@
 				</div>
 				<div class="row">
 					<div class="col-12">
+						<!-- alert -->
+						<?php if ($this->session->flashdata('ubah_kuota')) : ?>
+							<div class="alert alert-success alert-dismissible fade show" role="alert">
+								Kuota <strong>berhasil</strong> <?= $this->session->flashdata('ubah_kuota'); ?>
+								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+							</div>
+						<?php endif; ?>
+						<!-- end alert -->
 						<div class="table-responsive card-table">
 							<table id="example5" class="display dataTablesCard table-responsive-xl">
 								<thead class="text-center">

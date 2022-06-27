@@ -22,6 +22,7 @@ class Jadwal extends CI_Controller
   public function ubahKuota()
   {
     $this->Jadwal_model->updateKuota();
+    $this->session->set_flashdata('ubah_kuota', 'diubah');
     redirect('jadwal');
   }
 }
