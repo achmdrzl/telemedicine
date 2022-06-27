@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets2/css/libraries.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets2/css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/libraries.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/style.css">
 </head>
 
 <body>
@@ -77,8 +77,8 @@
             <nav class="navbar navbar-expand-lg sticky-navbar">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="index.html">
-                        <img src="<?php echo base_url() ?>assets2/images/logo/logo2.svg" class="logo-light" alt="logo">
-                        <img src="<?php echo base_url() ?>assets2/images/logo/logo2.svg" class="logo-dark" alt="logo">
+                        <img src="<?php echo base_url() ?>assets/pasien/images/logo/logo2.svg" class="logo-light" alt="logo">
+                        <img src="<?php echo base_url() ?>assets/pasien/images/logo/logo2.svg" class="logo-dark" alt="logo">
                     </a>
                     <button class="navbar-toggler" type="button">
                         <span class="menu-lines"><span></span></span>
