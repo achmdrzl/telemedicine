@@ -12,13 +12,15 @@ class Auth_pasien extends CI_Model
         return $this->db->get('pasien');
     }
 
-    function register($name, $username, $password, $nohp)
+    public function register($name, $username, $password, $nohp)
     {
         $data_user = array(
             'USERNAME' => $username,
-            'PASSWORD' => password_hash($password, PASSWORD_DEFAULT),
+            // 'PASSWORD' => password_hash($password, PASSWORD_DEFAULT),
+            'PASSWORD' => $password,
             'JENIS_USER' => 'PASIEN'
         );
+
         $otp = strval(rand(1000, 10000));
         $data_user2 = array(
             'OTP' => $otp,
@@ -32,13 +34,30 @@ class Auth_pasien extends CI_Model
 
     }
 
-    function verif($otp)
+    public function verif($otp)
     {
-        $data_user = array(
+        $update_status = array(
             'STATUS_AKUN' => 1
         );
         $this->db->where('OTP',$otp);
-        $this->db->update('pasien',$data_user);
+        $this->db->update('pasien', $update_status);
         
     }
+
+    public function login($username, $password){
+        $query = $this->db->query("SELECT * FROM user WHERE USERNAME='$username' AND PASSWORD ='$password' LIMIT 1");
+        return $query;
+    }
+
+    public function getUser($email)
+    {
+        return $this->db->where('EMAIL', $email)->get('USERNAME')->row();
+    }
+
+    public function createUser($data)
+    {
+        $this->db->insert('PASIEN', $data);
+    }
+
+
 }
