@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pengiriman extends CI_Controller
+class Ongkir extends CI_Controller
 {
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('Pengiriman_model');
+    $this->load->model('Ongkir_model');
   }
   public function index()
   {
-    $data['pengiriman'] = $this->Pengiriman_model->getAllPengiriman();
-    render('admin/pengiriman/index', $data);
+    $data['master_pengiriman'] = $this->Ongkir_model->ongkirWilayah();
+    render('admin/ongkir/index', $data);
   }
   public function ubahOngkir()
   {

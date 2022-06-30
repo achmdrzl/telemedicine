@@ -55,6 +55,6 @@ $route['dokter'] = 'dokter';
 $route['pasien'] = 'pasien';
 $route['jadwal'] = 'jadwal';
 $route['konsultasi'] = 'konsultasi';
-$route['pengiriman'] = 'pengiriman';
+$route['ongkir'] = 'ongkir';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
