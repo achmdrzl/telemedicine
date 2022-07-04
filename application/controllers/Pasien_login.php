@@ -43,6 +43,15 @@ class Pasien_login extends CI_Controller
         $data['pasien'] = $this->Pasien_model->getPasienByID($id);
         $data['pekerjaan'] = $this->Pasien_model->getPekerjaan();
         $data['gol'] = $this->Pasien_model->getGol();
+        $data['provinsi'] = $this->Pasien_model->getProv();
+        $data['kota'] = $this->Pasien_model->getKota();
+        $data['kecamatan'] = $this->Pasien_model->getKecamatan();
+        $data['kelurahan'] = $this->Pasien_model->getKelurahan();
         render4('pasien/profile/edit_profile', $data);
+    }
+    public function updateProfile($id)
+    {
+        $this->Pasien_model->updateProfile($id);
+        redirect('pasien_login');
     }
 }

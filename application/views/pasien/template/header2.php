@@ -8,12 +8,10 @@
     <meta name="description" content="Medcity - Medical Healthcare HTML5 Template">
     <link href="<?php echo base_url() ?>assets/pasien/images/favicon/favicon.png" rel="icon">
     <title>Medcity - Medical Healthcare HTML5 Template</title>
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/libraries.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style2.css">
 </head>
 
 <body>
