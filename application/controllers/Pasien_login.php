@@ -8,14 +8,22 @@ class Pasien_login extends CI_Controller
         parent::__construct();
         $this->load->model('Pasien_model');
     }
+
     public function index()
     {
-        if ($this->session->has_userdata('logged')) {
-            $user = $this->session->userdata('logged');
-            render3('pasien/index', array('logged' => $user));
-        } else {
-            redirect('welcome/index');
-        }
+        render3('pasien/index');
+
+        // if ($this->session->has_userdata('logged')) {
+        //     render3('pasien/index');
+        // } else {
+        //     redirect('welcome/index');
+        // }
+        // if ($this->session->has_userdata('logged')) {
+        //     $user = $this->session->userdata('logged');
+        //     render3('pasien/index', array('logged' => $user));
+        // } else {
+        //     redirect('welcome/index');
+        // }
         
     }
 
@@ -25,8 +33,10 @@ class Pasien_login extends CI_Controller
         redirect('welcome/index');
     }
 
-    public function getAllData(){
-
+    public function profile($id){
+        // $id = $this->session->ID_PASIEN;
+        $data['pasien'] = $this->Pasien_model->getPasienByID($id);
+        render4('pasien/profile/index', $data);
     }
 
 }

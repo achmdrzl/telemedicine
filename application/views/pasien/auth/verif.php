@@ -22,15 +22,21 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h4 class="contact-panel__title">Verifikasi OTP</h4>
-                                    <p class="contact-panel__desc mb-30">Silahkan Cek Whatsapp Anda & Masukkan 4 Digit Angka 
+                                    <p class="contact-panel__desc mb-30">Silahkan Cek Whatsapp Anda & Masukkan 4 Digit Angka
                                     </p>
                                 </div>
-                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="col-sm-8 col-md-8 col-lg-8">
                                     <div class="form-group">
                                         <i class="fa fa-phone form-group-icon"></i>
                                         <input type="number" class="form-control" placeholder="Kode OTP" id="contact-email" name="otp" required>
                                     </div>
                                 </div><!-- /.col-lg-6 -->
+                                <div class="col-4">
+                                    <button type="button" class="btn btn__secondary btn__rounded btn__block btn__xhight">
+                                        <span>Kirim Kode</span> <i class="icon-arrow-right"></i>
+                                    </button>
+                                    <div class="contact-result"></div>
+                                </div><!-- /.col-lg-12 -->
                                 <div class="col-12">
                                     <button type="submit" class="btn btn__secondary btn__rounded btn__block btn__xhight mt-10">
                                         <span>Verifikasi</span> <i class="icon-arrow-right"></i>

@@ -12,10 +12,10 @@
                 <div class="col-sm-12 col-md-8 col-lg-6">
                     <div class="contact-panel d-flex flex-wrap">
 
-                        <form class="form-group" method="post" action="<?php echo base_url(); ?>auth/login">
+                        <form class="form-group" method="post" action="<?php echo site_url(); ?>auth/login">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h4 class="contact-panel__title">Register</h4>
+                                    <h4 class="contact-panel__title">Login</h4>
                                     <p class="contact-panel__desc mb-30">Silahkan Mengisikan Form Berikut dengan Data yang Benar
                                     </p>
                                 </div>
@@ -47,7 +47,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <p class="flex" style="font-size: 1.75m;">or Login With</p>
+
+                                    <a href="<?php echo base_url('auth/google_login') ?>"><img src="<?php echo base_url() ?>assets/pasien/images/logo/google.svg" alt=""></a>
+
                                     <a href=""><img src="<?php echo base_url() ?>assets/pasien/images/logo/google.svg" alt=""></a>
+
                                 </div>
                             </div>
                         </div>

@@ -86,7 +86,7 @@
                     <div class="collapse navbar-collapse" id="mainNavigation">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav__item">
-                                <a href="<?php echo site_url('welcome/index') ?>" class="nav__item-link">Beranda</a>
+                                <a href="<?php echo site_url('pasien_login/index') ?>" class="nav__item-link">Beranda</a>
                             </li><!-- /.nav-item -->
                             <li class="nav__item">
                                 <a href="#" data-toggle="dropdown" class="nav__item-link">Tentang Kami</a>
@@ -120,10 +120,10 @@
                         <ul class="navbar-nav ml-auto">
                             <li class="nav__item has-dropdown">
                                 <a href="#" data-toggle="dropdown" class="btn btn__primary btn__rounded ml-30"><i class="icon-user"></i>
-                                    <span>Profile</span></a>
+                                    <span>Profile <?php echo $this->session->ID_PASIEN; ?></span></a>
                                 <ul class="dropdown-menu">
                                     <li class="nav__item">
-                                        <a href="<?php echo site_url('pasien_login/det_akun') ?>" class="nav__item-link">Informasi Akun</a>
+                                        <a href="<?php echo site_url('pasien_login/profile/'. $this->session->ID_PASIEN ); ?>" class="nav__item-link">Informasi Akun</a>
                                     </li><!-- /.nav-item -->
                                     <li class="nav__item">
                                         <a href="<?php echo site_url('pasien_login/logout') ?>" class="nav__item-link">Log Out</a>
