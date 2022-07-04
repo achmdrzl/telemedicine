@@ -1,5 +1,8 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+// defined('BASEPATH') or exit('No direct script access allowed');
+
+use Google\Client as GoogleClient;
+use Google\Service\Oauth2;
 
 class Auth extends CI_Controller
 {
@@ -66,13 +69,40 @@ class Auth extends CI_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $cek_data = $this->auth_pasien->login($username, $password);
+        $data = $this->auth_pasien->login($username, $password);
 
-        if ($cek_data->num_rows() > 0) {
-            $data = $cek_data->row_array();
-            $this->session->set_userdata('logged', TRUE);
-            $this->session->set_userdata('ses_id', $data['USERNAME']);
-            $this->session->set_userdata('ses_nama', $data['NAMA_PASIEN']);
+        $user = $this->auth_pasien->getUser2($username);
+
+        $session = array(
+            'ID_PASIEN' => $user->ID_PASIEN,
+            'NAMA_PASIEN' => $user->NAMA_PASIEN,
+            'EMAIL_PASIEN' => $user->EMAIL_PASIEN,
+            'HP_PASIEN' => $user->HP_PASIEN
+        );
+        
+        // if ($data) {
+        //     if (password_verify($password, $data->PASSWORD)) {
+        //         $this->session->set_userdata($session);
+        //         redirect('pasien_login/index');
+        //     } else {
+        //         $this->session->set_flashdata('error', 'Username Tidak Di Temukan');
+        //         redirect('welcome/login');
+        //     }
+        // } else {
+        //     $this->session->set_flashdata('error', 'Username Tidak Ditemukan');
+        //     redirect('welcome/login');
+        // }
+
+        // $session = array(
+        //     'ID_PASIEN' => $data->ID_PASIEN,
+        //     'NAMA_PASIEN' => $data->NAMA_PASIEN,
+        //     'EMAIL_PASIEN' => $data->EMAIL_PASIEN,
+        //     'HP_PASIEN' => $data->HP_PASIEN,
+        //     'FILE_FOTO' => $data->FILE_FOTO
+        // );
+
+        if ($data->num_rows() > 0) {
+            $this->session->set_userdata($session);
             redirect('pasien_login/index');
         } else {  // jika username dan password tidak ditemukan atau salah
             $url = base_url();
@@ -83,31 +113,48 @@ class Auth extends CI_Controller
 
     public function google_login()
     {
-        $client = new GoogleClient();
-        $client->setApplicationName('google login');
-        $client->setClientId('902962175899-8nrvj9locj2uva71sima93kg49an587g.apps.googleusercontent.com');
-        $client->setClientSecret('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');
-        $client->setRedirectUri('http://localhost/ci-google/home/google_login');
-        $client->addScope(['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile']);
+        // include_once APPPATH . "../../vendor/autoload.php";
+        require_once __DIR__ .'/../../vendor/autoload.php';
+        $client = new Google_Client();
+        $client->setApplicationName('Sign In With Google Account');
+        $client->setClientId('976962102988-d0aalamruaq8v40tbinoe82ndlag0sgl.apps.googleusercontent.com');
+        $client->setClientSecret('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');
+        $client->setRedirectUri('http://localhost/telemedicine/auth/google_login');
+        $client->addScope(['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile'], '[https://www.googleapis.com/auth/user.phonenumbers.read]');
+        // $client->addScope('email');
+        // $client->addScope('profile');
+
         if ($code = $this->input->get('code')) {
             $token = $client->fetchAccessTokenWithAuthCode($code);
             $client->setAccessToken($token);
             $oauth = new Oauth2($client);
 
             $user_info = $oauth->userinfo->get();
-            $data['NAMA_PASIEN'] = $user_info->name;
-            $data['EMAIL_PASIEN'] = $user_info->email;
-            $data['image'] = $user_info->picture;
+            $nama = $data['NAMA_PASIEN'] = $user_info->name;
+            $username = $data['EMAIL_PASIEN'] = $user_info->email;
+            $profile = $data['FILE_FOTO'] = $user_info->picture;
+            $nohp = $data['HP_PASIEN'] = $user_info->phoneNumber;
 
-            if ($user = $this->pasien_login->getUser($user_info->email)) {
-                $this->session->set_userdata('logged', $user);
+            $user = $this->auth_pasien->getUser2($username);
+
+            $session = array(
+                'ID_PASIEN' => $user->ID_PASIEN,
+                'NAMA_PASIEN' => $nama,
+                'EMAIL_PASIEN' => $username,
+                'HP_PASIEN' => $nohp
+            );
+
+            if ($this->auth_pasien->getUser($user_info->email)) {
+                $this->session->set_userdata($session);
             } else {
-                $this->pasien_login->createUser($data);
+                $this->auth_pasien->createUser($nama, $username, $profile, $nohp);
+                $this->session->set_userdata($session);
             }
 
             redirect('pasien_login/index');
 
-        } else {
+        } 
+        else {
             $url = $client->createAuthUrl();
             header('Location:' . filter_var($url, FILTER_SANITIZE_URL));
         }

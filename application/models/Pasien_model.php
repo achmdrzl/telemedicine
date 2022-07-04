@@ -10,13 +10,24 @@ class Pasien_model extends CI_Model
     return $query = $this->db->get('pasien')->result_array();
   }
 
-  public function getAllPasien2($name)
+  public function getAllPasien2($username)
+  {
+    // $where = array('NAMA_PASIEN' => $username);
+    // $this->db->where($where);
+    // $query = $this->db->get('pasien');
+    // return $query->result_array();
+
+    return $this->db->where('NAMA_PASIEN', $username)->get('pasien')->row();
+  }
+
+  public function getPasienByName($name)
   {
     $where = array('NAMA_PASIEN' => $name);
     $this->db->where($where);
     $query = $this->db->get('pasien');
     return $query->result();
   }
+
   public function getPasienByID($id)
   {
     $this->db->select('ps.*, pk.NAMA_PEKERJAAN, gd.NAMA_GOL');
@@ -35,4 +46,5 @@ class Pasien_model extends CI_Model
     $this->db->where('ID_PASIEN', $id);
     $this->db->update('pasien', $data);
   }
+
 }
