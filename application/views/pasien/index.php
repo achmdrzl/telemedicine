@@ -4,7 +4,7 @@
 <section class="slider">
     <div class="slick-carousel m-slides-0" data-slick='{"slidesToShow": 1, "arrows": true, "dots": false, "speed": 700,"fade": true,"cssEase": "linear"}'>
         <div class="slide-item align-v-h">
-            <div class="bg-img"><img src="<?php echo base_url() ?>assets/pasien/images/sliders/1.jpg" alt="slide img"></div>
+            <div class="bg-img"><img src="<?php base_url() ?>assets/pasien/images/sliders/1.jpg" alt="slide img"></div>
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
@@ -48,7 +48,7 @@
             </div><!-- /.container -->
         </div><!-- /.slide-item -->
         <div class="slide-item align-v-h">
-            <div class="bg-img"><img src="<?php echo base_url() ?>assets/pasien/images/sliders/2.jpg" alt="slide img"></div>
+            <div class="bg-img"><img src="<?php base_url() ?>assets/pasien/images/sliders/2.jpg" alt="slide img"></div>
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
@@ -179,7 +179,7 @@
                     </div>
                 </div>
                 <div class="video-banner-layout2 bg-overlay">
-                    <img src="<?php echo base_url() ?>assets/pasien/images/about/2.jpg" alt="about" class="w-100">
+                    <img src="<?php base_url() ?>assets/pasien/images/about/2.jpg" alt="about" class="w-100">
                     <a class="video__btn video__btn-white popup-video" href="https://www.youtube.com/watch?v=nrJtHemSPW4">
                         <div class="video__player">
                             <i class="fa fa-play"></i>
@@ -219,7 +219,7 @@
         Services Layout 1
     =========================== -->
 <section class="services-layout1 services-carousel">
-    <div class="bg-img"><img src="<?php echo base_url() ?>assets/pasien/images/backgrounds/2.jpg" alt="background"></div>
+    <div class="bg-img"><img src="<?php base_url() ?>assets/pasien/images/backgrounds/2.jpg" alt="background"></div>
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
@@ -413,7 +413,7 @@
     Features Layout 2
     ========================= -->
 <section class="features-layout2 pt-130 bg-overlay bg-overlay-primary">
-    <div class="bg-img"><img src="<?php echo base_url() ?>assets/pasien/images/backgrounds/2.jpg" alt="background"></div>
+    <div class="bg-img"><img src="<?php base_url() ?>assets/pasien/images/backgrounds/2.jpg" alt="background"></div>
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
@@ -447,7 +447,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="feature-item">
                     <div class="feature__img">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/services/1.jpg" alt="service" loading="lazy">
+                        <img src="<?php base_url() ?>assets/pasien/images/services/1.jpg" alt="service" loading="lazy">
                     </div><!-- /.feature__img -->
                     <div class="feature__content">
                         <div class="feature__icon">
@@ -464,7 +464,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="feature-item">
                     <div class="feature__img">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/services/2.jpg" alt="service" loading="lazy">
+                        <img src="<?php base_url() ?>assets/pasien/images/services/2.jpg" alt="service" loading="lazy">
                     </div><!-- /.feature__img -->
                     <div class="feature__content">
                         <div class="feature__icon">
@@ -481,7 +481,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="feature-item">
                     <div class="feature__img">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/services/3.jpg" alt="service" loading="lazy">
+                        <img src="<?php base_url() ?>assets/pasien/images/services/3.jpg" alt="service" loading="lazy">
                     </div><!-- /.feature__img -->
                     <div class="feature__content">
                         <div class="feature__icon">
@@ -498,7 +498,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="feature-item">
                     <div class="feature__img">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/services/4.jpg" alt="service" loading="lazy">
+                        <img src="<?php base_url() ?>assets/pasien/images/services/4.jpg" alt="service" loading="lazy">
                     </div><!-- /.feature__img -->
                     <div class="feature__content">
                         <div class="feature__icon">
@@ -515,7 +515,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="feature-item">
                     <div class="feature__img">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/services/5.jpg" alt="service" loading="lazy">
+                        <img src="<?php base_url() ?>assets/pasien/images/services/5.jpg" alt="service" loading="lazy">
                     </div><!-- /.feature__img -->
                     <div class="feature__content">
                         <div class="feature__icon">
@@ -532,7 +532,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="feature-item">
                     <div class="feature__img">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/services/6.jpg" alt="service" loading="lazy">
+                        <img src="<?php base_url() ?>assets/pasien/images/services/6.jpg" alt="service" loading="lazy">
                     </div><!-- /.feature__img -->
                     <div class="feature__content">
                         <div class="feature__icon">
@@ -549,7 +549,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="feature-item">
                     <div class="feature__img">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/services/7.jpg" alt="service" loading="lazy">
+                        <img src="<?php base_url() ?>assets/pasien/images/services/7.jpg" alt="service" loading="lazy">
                     </div><!-- /.feature__img -->
                     <div class="feature__content">
                         <div class="feature__icon">
@@ -566,7 +566,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3">
                 <div class="feature-item">
                     <div class="feature__img">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/services/8.jpg" alt="service" loading="lazy">
+                        <img src="<?php base_url() ?>assets/pasien/images/services/8.jpg" alt="service" loading="lazy">
                     </div><!-- /.feature__img -->
                     <div class="feature__content">
                         <div class="feature__icon">
@@ -614,7 +614,7 @@
                     <!-- Member #1 -->
                     <div class="member">
                         <div class="member__img">
-                            <img src="<?php echo base_url() ?>assets/pasien/images/team/1.jpg" alt="member img">
+                            <img src="<?php base_url() ?>assets/pasien/images/team/1.jpg" alt="member img">
                         </div><!-- /.member-img -->
                         <div class="member__info">
                             <h5 class="member__name"><a href="doctors-single-doctor1.html">Mike Dooley</a></h5>
@@ -637,7 +637,7 @@
                     <!-- Member #2 -->
                     <div class="member">
                         <div class="member__img">
-                            <img src="<?php echo base_url() ?>assets/pasien/images/team/2.jpg" alt="member img">
+                            <img src="<?php base_url() ?>assets/pasien/images/team/2.jpg" alt="member img">
                         </div><!-- /.member-img -->
                         <div class="member__info">
                             <h5 class="member__name"><a href="doctors-single-doctor1.html">Dermatologists</a></h5>
@@ -660,7 +660,7 @@
                     <!-- Member #3 -->
                     <div class="member">
                         <div class="member__img">
-                            <img src="<?php echo base_url() ?>assets/pasien/images/team/3.jpg" alt="member img">
+                            <img src="<?php base_url() ?>assets/pasien/images/team/3.jpg" alt="member img">
                         </div><!-- /.member-img -->
                         <div class="member__info">
                             <h5 class="member__name"><a href="doctors-single-doctor1.html">Maria Andaloro</a></h5>
@@ -683,7 +683,7 @@
                     <!-- Member #4 -->
                     <div class="member">
                         <div class="member__img">
-                            <img src="<?php echo base_url() ?>assets/pasien/images/team/4.jpg" alt="member img">
+                            <img src="<?php base_url() ?>assets/pasien/images/team/4.jpg" alt="member img">
                         </div><!-- /.member-img -->
                         <div class="member__info">
                             <h5 class="member__name"><a href="doctors-single-doctor1.html">Dupree Black</a></h5>
@@ -707,7 +707,7 @@
                     <!-- Member #5 -->
                     <div class="member">
                         <div class="member__img">
-                            <img src="<?php echo base_url() ?>assets/pasien/images/team/5.jpg" alt="member img">
+                            <img src="<?php base_url() ?>assets/pasien/images/team/5.jpg" alt="member img">
                         </div><!-- /.member-img -->
                         <div class="member__info">
                             <h5 class="member__name"><a href="doctors-single-doctor1.html">Markus skar</a></h5>
@@ -730,7 +730,7 @@
                     <!-- Member #6 -->
                     <div class="member">
                         <div class="member__img">
-                            <img src="<?php echo base_url() ?>assets/pasien/images/team/6.jpg" alt="member img">
+                            <img src="<?php base_url() ?>assets/pasien/images/team/6.jpg" alt="member img">
                         </div><!-- /.member-img -->
                         <div class="member__info">
                             <h5 class="member__name"><a href="doctors-single-doctor1.html">Kiano Barker</a></h5>
@@ -760,7 +760,7 @@
      Work Process 
     ========================= -->
 <section class="work-process work-process-carousel pt-130 pb-0 bg-overlay bg-overlay-secondary">
-    <div class="bg-img"><img src="<?php echo base_url() ?>assets/pasien/images/banners/1.jpg" alt="background"></div>
+    <div class="bg-img"><img src="<?php base_url() ?>assets/pasien/images/banners/1.jpg" alt="background"></div>
     <div class="container">
         <div class="row heading-layout2">
             <div class="col-12">
@@ -871,7 +871,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-sm-12 col-md-2 col-lg-2">
-                    <img src="<?php echo base_url() ?>assets/pasien/images/icons/alert2.png" alt="alert">
+                    <img src="<?php base_url() ?>assets/pasien/images/icons/alert2.png" alt="alert">
                 </div><!-- /.col-lg-2 -->
                 <div class="col-sm-12 col-md-7 col-lg-7">
                     <h4 class="cta__title">True Healthcare For Your Family!</h4>
@@ -932,7 +932,7 @@
                     <div class="slider-nav mb-60">
                         <div class="testimonial__meta">
                             <div class="testimonial__thmb">
-                                <img src="<?php echo base_url() ?>assets/pasien/images/testimonials/thumbs/1.png" alt="author thumb">
+                                <img src="<?php base_url() ?>assets/pasien/images/testimonials/thumbs/1.png" alt="author thumb">
                             </div><!-- /.testimonial-thumb -->
                             <div>
                                 <h4 class="testimonial__meta-title">Sami Wade</h4>
@@ -941,7 +941,7 @@
                         </div><!-- /.testimonial-meta -->
                         <div class="testimonial__meta">
                             <div class="testimonial__thmb">
-                                <img src="<?php echo base_url() ?>assets/pasien/images/testimonials/thumbs/2.png" alt="author thumb">
+                                <img src="<?php base_url() ?>assets/pasien/images/testimonials/thumbs/2.png" alt="author thumb">
                             </div><!-- /.testimonial-thumb -->
                             <div>
                                 <h4 class="testimonial__meta-title">Ahmed</h4>
@@ -950,7 +950,7 @@
                         </div><!-- /.testimonial-meta -->
                         <div class="testimonial__meta">
                             <div class="testimonial__thmb">
-                                <img src="<?php echo base_url() ?>assets/pasien/images/testimonials/thumbs/3.png" alt="author thumb">
+                                <img src="<?php base_url() ?>assets/pasien/images/testimonials/thumbs/3.png" alt="author thumb">
                             </div><!-- /.testimonial-thumb -->
                             <div>
                                 <h4 class="testimonial__meta-title">Sonia Blake</h4>
@@ -972,23 +972,23 @@
         <div class="row">
             <div class="col-12">
                 <div class="slick-carousel" data-slick='{"slidesToShow": 4, "slidesToScroll": 1, "autoplay": true, "arrows": true, "dots": false, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2}}, {"breakpoint": 767, "settings": {"slidesToShow": 2}}, {"breakpoint": 480, "settings": {"slidesToShow": 1}}]}'>
-                    <a class="popup-gallery-item" href="<?php echo base_url() ?>assets/pasien/images/gallery/1.jpg">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/gallery/1.jpg" alt="gallery img">
+                    <a class="popup-gallery-item" href="<?php base_url() ?>assets/pasien/images/gallery/1.jpg">
+                        <img src="<?php base_url() ?>assets/pasien/images/gallery/1.jpg" alt="gallery img">
                     </a>
-                    <a class="popup-gallery-item" href="<?php echo base_url() ?>assets/pasien/images/gallery/2.jpg">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/gallery/2.jpg" alt="gallery img">
+                    <a class="popup-gallery-item" href="<?php base_url() ?>assets/pasien/images/gallery/2.jpg">
+                        <img src="<?php base_url() ?>assets/pasien/images/gallery/2.jpg" alt="gallery img">
                     </a>
-                    <a class="popup-gallery-item" href="<?php echo base_url() ?>assets/pasien/images/gallery/3.jpg">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/gallery/3.jpg" alt="gallery img">
+                    <a class="popup-gallery-item" href="<?php base_url() ?>assets/pasien/images/gallery/3.jpg">
+                        <img src="<?php base_url() ?>assets/pasien/images/gallery/3.jpg" alt="gallery img">
                     </a>
-                    <a class="popup-gallery-item" href="<?php echo base_url() ?>assets/pasien/images/gallery/4.jpg">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/gallery/4.jpg" alt="gallery img">
+                    <a class="popup-gallery-item" href="<?php base_url() ?>assets/pasien/images/gallery/4.jpg">
+                        <img src="<?php base_url() ?>assets/pasien/images/gallery/4.jpg" alt="gallery img">
                     </a>
-                    <a class="popup-gallery-item" href="<?php echo base_url() ?>assets/pasien/images/gallery/5.jpg">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/gallery/5.jpg" alt="gallery img">
+                    <a class="popup-gallery-item" href="<?php base_url() ?>assets/pasien/images/gallery/5.jpg">
+                        <img src="<?php base_url() ?>assets/pasien/images/gallery/5.jpg" alt="gallery img">
                     </a>
-                    <a class="popup-gallery-item" href="<?php echo base_url() ?>assets/pasien/images/gallery/6.jpg">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/gallery/6.jpg" alt="gallery img">
+                    <a class="popup-gallery-item" href="<?php base_url() ?>assets/pasien/images/gallery/6.jpg">
+                        <img src="<?php base_url() ?>assets/pasien/images/gallery/6.jpg" alt="gallery img">
                     </a>
                 </div><!-- /.gallery-images-wrapper -->
             </div><!-- /.col-xl-5 -->
@@ -1000,12 +1000,12 @@
         contact layout 3
     =========================== -->
 <section class="contact-layout3 bg-overlay bg-overlay-primary-gradient pb-60">
-    <div class="bg-img"><img src="<?php echo base_url() ?>assets/pasien/images/banners/3.jpg" alt="banner"></div>
+    <div class="bg-img"><img src="<?php base_url() ?>assets/pasien/images/banners/3.jpg" alt="banner"></div>
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-7">
                 <div class="contact-panel mb-50">
-                    <form class="contact-panel__form" method="post" action="<?php echo base_url() ?>assets/pasien/php/contact.php" id="contactForm">
+                    <form class="contact-panel__form" method="post" action="<?php base_url() ?>assets/pasien/php/contact.php" id="contactForm">
                         <div class="row">
                             <div class="col-sm-12">
                                 <h4 class="contact-panel__title">Book An Appointment</h4>
@@ -1100,32 +1100,32 @@
                 </div><!-- /.text__block -->
                 <div class="slick-carousel clients-light mt-20" data-slick='{"slidesToShow": 3, "arrows": false, "dots": false, "autoplay": true,"autoplaySpeed": 2000, "infinite": true, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 3}}, {"breakpoint": 767, "settings": {"slidesToShow": 2}}, {"breakpoint": 480, "settings": {"slidesToShow": 2}}]}'>
                     <div class="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/1.png" alt="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/1.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/1.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/1.png" alt="client">
                     </div><!-- /.client -->
                     <div class="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/2.png" alt="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/2.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/2.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/2.png" alt="client">
                     </div><!-- /.client -->
                     <div class="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/3.png" alt="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/3.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/3.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/3.png" alt="client">
                     </div><!-- /.client -->
                     <div class="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/4.png" alt="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/4.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/4.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/4.png" alt="client">
                     </div><!-- /.client -->
                     <div class="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/5.png" alt="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/5.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/5.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/5.png" alt="client">
                     </div><!-- /.client -->
                     <div class="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/6.png" alt="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/6.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/6.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/6.png" alt="client">
                     </div><!-- /.client -->
                     <div class="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/7.png" alt="client">
-                        <img src="<?php echo base_url() ?>assets/pasien/images/clients/7.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/7.png" alt="client">
+                        <img src="<?php base_url() ?>assets/pasien/images/clients/7.png" alt="client">
                     </div><!-- /.client -->
                 </div><!-- /.carousel -->
             </div><!-- /.col-lg-5 -->
@@ -1152,7 +1152,7 @@
                 <div class="post-item">
                     <div class="post__img">
                         <a href="blog-single-post.html">
-                            <img src="<?php echo base_url() ?>assets/pasien/images/blog/grid/1.jpg" alt="post image" loading="lazy">
+                            <img src="<?php base_url() ?>assets/pasien/images/blog/grid/1.jpg" alt="post image" loading="lazy">
                         </a>
                     </div><!-- /.post__img -->
                     <div class="post__body">
@@ -1180,7 +1180,7 @@
                 <div class="post-item">
                     <div class="post__img">
                         <a href="blog-single-post.html">
-                            <img src="<?php echo base_url() ?>assets/pasien/images/blog/grid/2.jpg" alt="post image" loading="lazy">
+                            <img src="<?php base_url() ?>assets/pasien/images/blog/grid/2.jpg" alt="post image" loading="lazy">
                         </a>
                     </div><!-- /.post__img -->
                     <div class="post__body">

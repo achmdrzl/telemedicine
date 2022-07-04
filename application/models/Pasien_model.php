@@ -46,5 +46,12 @@ class Pasien_model extends CI_Model
     $this->db->where('ID_PASIEN', $id);
     $this->db->update('pasien', $data);
   }
-
+  public function getPekerjaan()
+  {
+    return $query = $this->db->get('pekerjaan')->result_array();
+  }
+  public function getGol()
+  {
+    return $query = $this->db->get('gol_darah')->result_array();
+  }
 }

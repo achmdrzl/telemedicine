@@ -9,9 +9,9 @@
     <section class="contact-layout2 pt-0">
         <div class="container">
             <div class="row justify-content-center align-items-center">
-                <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
                     <div class="contact-panel d-flex flex-wrap">
-                        <?php foreach ($pasien as $db) { ?>
+                        <?php foreach ($pasien as $db) : ?>
                             <form class="form-group" method="post" action="<?php echo base_url(); ?>auth/login">
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col-sm-12">
@@ -20,69 +20,65 @@
                                         </p>
                                         <div class="col-sm-6 col-md-6 col-lg-4">
                                             <div class="product__img">
-                                                <img src="<?php echo $db['FILE_FOTO'] ?>" alt="Product" loading="lazy">
-                                                <div class="product__action">
-                                                    <a href="#" class="btn btn__primary btn__rounded">
-                                                        <i class="icon-cart"></i> <span>Edit Profile</span>
-                                                    </a>
-                                                </div><!-- /.product-action -->
-                                            </div><!-- /.product-img -->
+                                                <?php if ($db['FILE_FOTO'] !== NULL) : ?>
+                                                    <img src="<?php echo $db['FILE_FOTO']; ?>" alt="foto_pasien" loading="lazy">
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="product__action">
+                                            <a href="<?= base_url() ?>pasien_login/editProfil" class="btn btn__primary btn__rounded mb-3">
+                                                <i class="icon-cart"></i> <span>Edit Profile</span>
+                                            </a>
                                         </div>
                                         <div class="col-sm-12 col-md-12 col-lg-12">
                                             <div class="form-group">
                                                 <i class="fa fa-envelope form-group-icon"></i>
-                                                <input type="text" class="form-control" placeholder="Email" id="nama_pasien" name="username" value="<?php echo $db['NAMA_PASIEN'] ?>" required>
+                                                <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $db['NAMA_PASIEN'] ?>" readonly>
                                             </div>
-                                        </div><!-- /.col-lg-6 -->
+                                        </div>
                                         <div class="col-sm-12 col-md-12 col-lg-12">
                                             <div class="form-group">
                                                 <i class="fa fa-lock form-group-icon"></i>
-                                                <input type="text" class="form-control" placeholder="Password" id="contact-password" name="password" value="<?php echo $db['EMAIL_PASIEN'] ?>" required>
+                                                <input type="text" class="form-control" placeholder="Email" id="email" name="password" value="<?php echo $db['EMAIL_PASIEN'] ?>" readonly>
                                             </div>
-                                        </div><!-- /.col-lg-6 -->
+                                        </div>
                                         <div class="col-sm-12 col-md-12 col-lg-12">
                                             <div class="form-group">
                                                 <i class="fa fa-lock form-group-icon"></i>
-                                                <input type="text" class="form-control" placeholder="Password" id="contact-password" name="password" value="<?php echo $db['NIK_PASIEN'] ?>" required>
+                                                <input type="text" class="form-control" placeholder="NIK" id="nik" name="nik" value="<?php echo $db['NIK_PASIEN'] ?>" readonly>
                                             </div>
-                                        </div><!-- /.col-lg-6 -->
+                                        </div>
                                         <div class="col-sm-12 col-md-12 col-lg-12">
                                             <div class="form-group">
                                                 <i class="fa fa-lock form-group-icon"></i>
-                                                <input type="text" class="form-control" placeholder="Password" id="contact-password" name="password" value="<?php echo $db['KELAHIRAN'] ?>" required>
+                                                <input type="text" class="form-control" placeholder="Kelahiran" id="kelahiran" name="kelahiran" value="<?php echo $db['KELAHIRAN'] ?>" readonly>
                                             </div>
-                                        </div><!-- /.col-lg-6 -->
+                                        </div>
                                         <div class="col-sm-12 col-md-12 col-lg-12">
                                             <div class="form-group">
                                                 <i class="fa fa-lock form-group-icon"></i>
-                                                <input type="text" class="form-control" placeholder="Password" id="contact-password" name="password" value="<?php echo $db['NAMA_PEKERJAAN'] ?>" required>
+                                                <input type="text" class="form-control" placeholder="Pekerjaan" id="pekerjaan" name="pekerjaan" value="<?php echo $db['NAMA_PEKERJAAN'] ?>" readonly>
                                             </div>
-                                        </div><!-- /.col-lg-6 -->
+                                        </div>
                                         <div class="col-sm-12 col-md-12 col-lg-12">
                                             <div class="form-group">
                                                 <i class="fa fa-lock form-group-icon"></i>
-                                                <input type="text" class="form-control" placeholder="Password" id="contact-password" name="password" value="<?php echo $db['NAMA_GOL'] ?>" required>
+                                                <input type="text" class="form-control" placeholder="Golongan Darah" id="gol" name="gol" value="<?php echo $db['NAMA_GOL'] ?>" readonly>
                                             </div>
-                                        </div><!-- /.col-lg-6 -->
+                                        </div>
                                         <div class="col-sm-12 col-md-12 col-lg-12">
                                             <div class="form-group">
                                                 <i class="fa fa-lock form-group-icon"></i>
-                                                <input type="text" class="form-control" placeholder="Password" id="contact-password" name="password" value="<?php echo $db['ALAMAT_PASIEN'] ?>" required>
+                                                <input type="text" class="form-control" placeholder="Alamat" id="alamat" name="alamat" value="<?php echo $db['ALAMAT_PASIEN'] ?>" readonly>
                                             </div>
-                                        </div><!-- /.col-lg-6 -->
-                                        <div class="col-12">
-                                            <button type="submit" class="btn btn__secondary btn__rounded btn__block btn__xhight mt-10">
-                                                <span>Log In</span> <i class="icon-arrow-right"></i>
-                                            </button>
-                                            <div class="contact-result"></div>
-                                        </div><!-- /.col-lg-12 -->
-                                    </div><!-- /.row -->
+                                        </div>
+                                    </div>
                             </form>
-                        <?php } ?>
+                        <?php endforeach; ?>
                     </div>
-                </div><!-- /.col-lg-6 -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </section><!-- /.contact layout 2 -->
+                </div>
+            </div>
+        </div>
+    </section>
 
-</section><!-- /.page-title -->
+</section>

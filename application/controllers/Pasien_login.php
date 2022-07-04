@@ -24,7 +24,7 @@ class Pasien_login extends CI_Controller
         // } else {
         //     redirect('welcome/index');
         // }
-        
+
     }
 
     public function logout()
@@ -33,10 +33,16 @@ class Pasien_login extends CI_Controller
         redirect('welcome/index');
     }
 
-    public function profile($id){
-        // $id = $this->session->ID_PASIEN;
+    public function profile($id)
+    {
         $data['pasien'] = $this->Pasien_model->getPasienByID($id);
         render4('pasien/profile/index', $data);
     }
-
+    public function editProfile($id)
+    {
+        $data['pasien'] = $this->Pasien_model->getPasienByID($id);
+        $data['pekerjaan'] = $this->Pasien_model->getPekerjaan();
+        $data['gol'] = $this->Pasien_model->getGol();
+        render4('pasien/profile/edit_profile', $data);
+    }
 }

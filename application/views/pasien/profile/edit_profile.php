@@ -9,71 +9,70 @@
     <section class="contact-layout2 pt-0">
         <div class="container">
             <div class="row justify-content-center align-items-center">
-                <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="card">
                     <div class="contact-panel d-flex flex-wrap">
-                        <?php foreach ($pasien as $db) { ?>
+                        <?php foreach ($pasien as $db) : ?>
                             <form class="form-group" method="post" action="<?php echo base_url(); ?>auth/login">
-                                <div class="row">
+                                <div class="row justify-content-center align-items-center">
                                     <div class="col-sm-12">
                                         <h4 class="contact-panel__title">Profile Pasien</h4>
                                         <p class="contact-panel__desc mb-30">Silahkan Melengekapi Data Berikut dengan Data yang Benar, Sebelum Melakukan Konsultasi
                                         </p>
-                                    </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-envelope form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="Email" id="contact-email" name="username" value="<?php echo $db['NAMA_PASIEN'] ?>" required>
+                                        <div class="col-sm-6 col-md-6 col-lg-4">
+                                            <div class="product__img">
+                                                <?php if ($db['FILE_FOTO'] !== NULL) : ?>
+                                                    <img src="<?php echo $db['FILE_FOTO']; ?>" alt="foto_pasien" loading="lazy">
+                                                <?php endif; ?>
+                                            </div>
                                         </div>
-                                    </div><!-- /.col-lg-6 -->
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-lock form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="Password" id="contact-password" name="password" value="<?php echo $db['EMAIL_PASIEN'] ?>" required>
+                                        <div class="mb-3">
+                                            <label for="nama" class="form-label">Nama</label>
+                                            <input type="nama" class="form-control" id="nama" name="nama" value="<?= $db['NAMA_PASIEN'] ?>">
                                         </div>
-                                    </div><!-- /.col-lg-6 -->
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-lock form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="Password" id="contact-password" name="password" value="<?php echo $db['NIK_PASIEN'] ?>" required>
+                                        <div class="mb-3">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email" name="email" value="<?= $db['EMAIL_PASIEN'] ?>">
                                         </div>
-                                    </div><!-- /.col-lg-6 -->
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-lock form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="Password" id="contact-password" name="password" value="<?php echo $db['KELAHIRAN'] ?>" required>
+                                        <div class="mb-3">
+                                            <label for="nik" class="form-label">NIK</label>
+                                            <input type="nik" class="form-control" id="nik" name="nik" value="<?= $db['NIK_PASIEN'] ?>">
                                         </div>
-                                    </div><!-- /.col-lg-6 -->
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-lock form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="Password" id="contact-password" name="password" value="<?php echo $db['NAMA_PEKERJAAN'] ?>" required>
+                                        <div class="mb-3">
+                                            <label for="kelahiran" class="form-label">Tempat, Tanggal Lahir</label>
+                                            <input type="kelahiran" class="form-control" id="kelahiran" name="kelahiran" value="<?= $db['KELAHIRAN'] ?>, <?= $db['TGL_LAHIR'] ?>">
                                         </div>
-                                    </div><!-- /.col-lg-6 -->
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-lock form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="Password" id="contact-password" name="password" value="<?php echo $db['NAMA_GOL'] ?>" required>
+                                        <div class="mb-3">
+                                            <label for="pekerjaan" class="form-label">Pekerjaan</label>
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected>Pilih Pekerjaan</option>
+                                                <?php foreach ($pekerjaan as $row) : ?>
+                                                    <option value="<?= $row['ID_PEKERJAAN'] ?>"><?= $row['NAMA_PEKERJAAN']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
-                                    </div><!-- /.col-lg-6 -->
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-lock form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="Password" id="contact-password" name="password" value="<?php echo $db['ALAMAT_PASIEN'] ?>" required>
+                                        <div class="mb-3">
+                                            <label for="gol" class="form-label">Golongan Darah</label>
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected>Pilih Golongan Darah</option>
+                                                <?php foreach ($gol as $row) : ?>
+                                                    <option value="<?= $row['ID_GOL'] ?>"><?= $row['NAMA_GOL']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
-                                    </div><!-- /.col-lg-6 -->
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn__secondary btn__rounded btn__block btn__xhight mt-10">
-                                            <span>Update Profile</span> <i class="icon-arrow-right"></i>
-                                        </button>
-                                        <div class="contact-result"></div>
-                                    </div><!-- /.col-lg-12 -->
-                                </div><!-- /.row -->
-                            </form>
-                        <?php } ?>
-                    </div>
-                </div><!-- /.col-lg-6 -->
-            </div><!-- /.row -->
-        </div><!-- /.container -->
-    </section><!-- /.contact layout 2 -->
+                                        <div class="mb-3">
+                                            <label for="alamat" class="form-label">Alamat</label>
+                                            <input type="alamat" class="form-control" id="alamat" name="alamat">
+                                        </div>
 
-</section><!-- /.page-title -->
+
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                            </form>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</section>

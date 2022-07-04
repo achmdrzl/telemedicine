@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="description" content="Medcity - Medical Healthcare HTML5 Template">
-    <link href="<?php echo base_url() ?>assets2/images/favicon/favicon2.png" rel="icon">
+    <link href="<?php echo base_url() ?>assets/pasien/images/favicon/favicon.png" rel="icon">
     <title>Medcity - Medical Healthcare HTML5 Template</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/libraries.css">
-    <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/style.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style2.css">
 </head>
 
 <body>
@@ -123,7 +123,7 @@
                                     <span>Profile <?php echo $this->session->ID_PASIEN; ?></span></a>
                                 <ul class="dropdown-menu">
                                     <li class="nav__item">
-                                        <a href="<?php echo site_url('pasien_login/profile/'. $this->session->ID_PASIEN ); ?>" class="nav__item-link">Informasi Akun</a>
+                                        <a href="<?php echo site_url('pasien_login/profile/' . $this->session->ID_PASIEN); ?>" class="nav__item-link">Informasi Akun</a>
                                     </li><!-- /.nav-item -->
                                     <li class="nav__item">
                                         <a href="<?php echo site_url('pasien_login/logout') ?>" class="nav__item-link">Log Out</a>
