@@ -14,7 +14,10 @@
 						<?php
 						foreach ($detail_pasien as $detail) :
 						?>
-							<form>
+							<form action="" method="POST">
+								<?php
+								$pesan = "Akun Anda berhasil terverifikasi. Anda dapat melakukan konsultasi via telemedicine"
+								?>
 								<div class="mb-3">
 									<label for="id" class="form-label">ID Pasien</label>
 									<input type="text" class="form-control" id="id" name="id" value="<?= $detail['ID_PASIEN'] ?>" readonly>
@@ -61,7 +64,7 @@
 								</div>
 								<div class="mb-3">
 									<label for="ktp" class="form-label">KTP Pasien</label><br>
-									<img src="<?= base_url() ?>assets/images/<?= $detail['FILE_KTP'] ?>" alt="FOTO KTP <?= $detail['NAMA_PASIEN'] ?>" class="ktp">
+									<img src="<?= base_url() ?>assets/admin/images/<?= $detail['FILE_KTP'] ?>" alt="FOTO KTP <?= $detail['NAMA_PASIEN'] ?>" class="ktp">
 								</div>
 								<div class="mb-3">
 									<label for="ktp" class="form-label">Status Akun</label>
@@ -76,7 +79,7 @@
 										</h5>
 										<div class="row">
 											<div class="col-md-6">
-												<a href="<?= base_url() ?>pasien/verifikasi/<?= $detail['ID_PASIEN'] ?>" class="btn btn-success btn-block">Verifikasi</a>
+												<a href="<?= site_url() ?>pasien/verifikasi/<?= $detail['ID_PASIEN'] ?>" data-no="<?= $detail['HP_PASIEN'] ?>" data-pesan="<?= $pesan ?>" onclick="kirimpesanselesai(this)" class="btn btn-success btn-block">Verifikasi</a>
 											</div>
 											<div class="col-md-6">
 												<button class="btn btn-danger btn-block">Tolak</button>

@@ -54,7 +54,7 @@
 									<?php foreach ($dokters as $dokter) : ?>
 										<tr>
 											<td>
-												<img src="assets/images/<?= $dokter['PROFIL_DOKTER'] ?>" alt="dokter <?= $dokter['NAMA_DOKTER'] ?>" class="foto_jadwal"><br>
+												<img src="<?= base_url() ?>assets/admin/images/<?= $dokter['PROFIL_DOKTER'] ?>" alt="dokter <?= $dokter['NAMA_DOKTER'] ?>" class="foto_jadwal"><br>
 												<span>
 													<?= $dokter['NAMA_DOKTER']; ?><br>
 													Dokter <?= $dokter['SPESIALISASI']; ?>

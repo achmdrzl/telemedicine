@@ -2,7 +2,7 @@
        page title 
     =========================== -->
 <section class="page-title page-title-layout2 bg-overlay text-center">
-    <div class="bg-img"><img src="<?php echo base_url() ?>assets/images/page-titles/5.jpg" alt="background"></div>
+    <div class="bg-img"><img src="<?php echo base_url() ?>assets/pasien/images/page-titles/5.jpg" alt="background"></div>
     <!-- ==========================
         contact layout 2
     =========================== -->
@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <p class="flex" style="font-size: 1.75m;">or Register With</p>
-                                    <a href=""><img src="<?php echo base_url() ?>assets2/images/logo/google.svg" alt=""></a>
+                                    <a href=""><img src="<?php echo base_url() ?>assets/pasien/images/logo/google.svg" alt=""></a>
                                 </div>
                             </div>
                         </div>
