@@ -27,7 +27,7 @@
 									<?php foreach ($dokter as $Dokter) : ?>
 										<tr>
 											<td>
-												<img src="assets/images/<?= $Dokter['PROFIL_DOKTER'] ?>" alt="" width="43">
+												<img src="<?= base_url() ?>assets/admin/images/<?= $Dokter['PROFIL_DOKTER'] ?>" alt="" width="43">
 											</td>
 											<td><span class="text-nowrap"><?= $Dokter['ID_DOKTER']; ?></span></td>
 											<td><?= $Dokter['NAMA_DOKTER']; ?></td>

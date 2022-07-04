@@ -47,7 +47,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <p class="flex" style="font-size: 1.75m;">or Login With</p>
-                                    <a href="<?php echo base_url('auth/google_login') ?>"><img src="<?php echo base_url() ?>assets2/images/logo/google.svg" alt=""></a>
+
+                                    <a href="<?php echo base_url('auth/google_login') ?>"><img src="<?php echo base_url() ?>assets/pasien/images/logo/google.svg" alt=""></a>
+
+                                    <a href=""><img src="<?php echo base_url() ?>assets/pasien/images/logo/google.svg" alt=""></a>
+
                                 </div>
                             </div>
                         </div>

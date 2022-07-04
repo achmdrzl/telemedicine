@@ -7,7 +7,7 @@
               <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-3">
                   <div class="footer-widget-about">
-                    <img src="<?php echo base_url()?>assets2/images/logo/logo-light.png" alt="logo" class="mb-30">
+                    <img src="<?php echo base_url() ?>assets/pasien/images/logo/logo-light.png" alt="logo" class="mb-30">
                     <p class="color-gray">Our goal is to deliver quality of care in a courteous, respectful, and
                       compassionate manner. We hope you will allow us to care for you and strive to be the first and best
                       choice for your family healthcare.
@@ -96,9 +96,9 @@
         <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
         </div><!-- /.wrapper -->
 
-        <script src="<?php echo base_url()?>assets2/js/jquery-3.5.1.min.js"></script>
-        <script src="<?php echo base_url()?>assets2/js/plugins.js"></script>
-        <script src="<?php echo base_url()?>assets2/js/main.js"></script>
+        <script src="<?php echo base_url() ?>assets/pasien/js/jquery-3.5.1.min.js"></script>
+        <script src="<?php echo base_url() ?>assets/pasien/js/plugins.js"></script>
+        <script src="<?php echo base_url() ?>assets/pasien/js/main.js"></script>
         </body>
 
         </html>

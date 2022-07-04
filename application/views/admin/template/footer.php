@@ -28,24 +28,24 @@
         Scripts
     ***********************************-->
 <!-- Required vendors -->
-<script src="<?= base_url('assets/vendor/global/global.min.js') ?>"></script>
-<script src="<?= base_url('assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') ?>"></script>
-<script src="<?= base_url('assets/vendor/chart.js/Chart.bundle.min.js') ?>"></script>
-<script src="<?= base_url('assets/js/custom.min.js') ?>"></script>
-<script src="<?= base_url('assets/js/deznav-init.js') ?>"></script>
-<script src="<?= base_url('assetsendor/bootstrap-datetimepicker/js/moment.js') ?>"></script>
-<script src="<?= base_url('assetsendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/vendor/global/global.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/vendor/chart.js/Chart.bundle.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/js/custom.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/js/deznav-init.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/admin/bootstrap-datetimepicker/js/moment.js') ?>"></script>
+<script src="<?= base_url('assets/vendor/admin/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <!-- Chart piety plugin files -->
-<script src="<?= base_url('assets/vendor/peity/jquery.peity.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/vendor/peity/jquery.peity.min.js') ?>"></script>
 
 <!-- Apex Chart -->
-<script src="<?= base_url('assets/vendor/apexchart/apexchart.js') ?>"></script>
+<script src="<?= base_url('assets/admin/vendor/apexchart/apexchart.js') ?>"></script>
 
 <!-- Dashboard 1 -->
-<script src="<?= base_url('assets/js/dashboard/dashboard-1.js') ?>"></script>
-<script src="<?= base_url('assets/vendor/datatables/js/jquery.dataTables.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/js/dashboard/dashboard-1.js') ?>"></script>
+<script src="<?= base_url('assets/admin/vendor/datatables/js/jquery.dataTables.min.js') ?>"></script>
 <script>
     $(function() {
         $('#datetimepicker1').datetimepicker({
@@ -66,6 +66,28 @@
 
         });
     })(jQuery);
+
+    function kirimpesanselesai(el) {
+        let no = $(el).data("no");
+        let psn = $(el).data("pesan");
+        $.ajax({
+            url: "http://127.0.0.1:4774/kirimpesan",
+            method: "POST",
+            cache: false,
+            dataType: "json",
+            data: {
+                nomor: no,
+                pesan: psn
+            },
+            success: function(x) {
+                let data = JSON.parse(JSON.stringify(x));
+                alert(data.status);
+            },
+            error: function(c) {
+                alert("Pesan Gagal Dikirim");
+            }
+        });
+    }
 </script>
 </body>
 

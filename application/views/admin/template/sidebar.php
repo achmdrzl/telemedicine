@@ -14,6 +14,7 @@
           <li><a href="<?= site_url('dokter') ?>">Dokter</a></li>
           <li><a href="<?= site_url('jadwal') ?>">Data Jadwal</a></li>
           <li><a href="<?= site_url('konsultasi') ?>">Konsultasi</a></li>
+          <li><a href="<?= site_url('ongkir') ?>">Ongkir</a></li>
           <li><a href="<?= site_url('pengiriman') ?>">Pengiriman</a></li>
         </ul>
       </li>
