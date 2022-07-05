@@ -95,23 +95,34 @@
         </footer><!-- /.Footer -->
         <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
         </div><!-- /.wrapper -->
+        <script src="<?= base_url() ?>assets/pasien/js/jquery-3.5.1.min.js"></script>
+        <script src="<?= base_url() ?>assets/pasien/js/plugins.js"></script>
+        <script src="<?= base_url() ?>assets/pasien/js/main.js"></script>
         <script>
-          $('#listF').click(function() {
-            var n = 10;
-            var val = this.selectedIndex;
-            if ((this.selectedIndex < ($(this).find('option').length - n)) && (this.selectedIndex > n)) {
-              this.selectedIndex += n;
-              this.selectedIndex -= (2 * n);
-              this.selectedIndex += n;
-            } else {
-              this.selectedIndex = ((this.selectedIndex < n) ? 0 : 99);
-              this.selectedIndex = val;
-            }
+          $(document).ready(function() {
+            $("#kabupaten").hide();
+            $("#kecamatan").hide();
+            $("#kelurahan").hide();
+            loadkabupaten();
           });
+
+          function loadkabupaten() {
+            $("#provinsi").change(function() {
+              var getprovinsi = $("#provinsi").val();
+              $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "<?= base_url() ?>pasien_login/getDataKabupaten",
+                data: {
+                  provinsi: getprovinsi
+                },
+                success: function(data) {
+                  console.log(data);
+                }
+              });
+            });
+          }
         </script>
-        <script src="<?php echo base_url() ?>assets/pasien/js/jquery-3.5.1.min.js"></script>
-        <script src="<?php echo base_url() ?>assets/pasien/js/plugins.js"></script>
-        <script src="<?php echo base_url() ?>assets/pasien/js/main.js"></script>
         </body>
 
         </html>

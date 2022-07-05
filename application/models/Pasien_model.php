@@ -58,8 +58,9 @@ class Pasien_model extends CI_Model
   {
     return $query = $this->db->get('provinsi')->result_array();
   }
-  public function getKota()
+  public function getKota($id_provinsi)
   {
+    $this->db->where('ID_PROV', '$id_provinsi');
     return $query = $this->db->get('kab_kota')->result_array();
   }
   public function getKecamatan()

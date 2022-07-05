@@ -20,7 +20,7 @@
                                     <div class="col-sm-6 col-md-6 col-lg-4">
                                         <div class="product__img">
                                             <?php if ($db['FILE_FOTO'] !== NULL) : ?>
-                                                <img src="<?php echo $db['FILE_FOTO']; ?>" alt="foto_pasien" loading="lazy">
+                                                <img src="<?php echo $db['FILE_FOTO']; ?>" alt="foto_pasien" class="rounded mx-auto d-block">
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -29,47 +29,33 @@
                                             <i class="icon-cart"></i> <span>Edit Profile</span>
                                         </a>
                                     </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-envelope form-group-icon"></i>
-                                            <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $db['NAMA_PASIEN'] ?>" readonly>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="nama" class="form-label">Nama</label>
+                                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $db['NAMA_PASIEN'] ?>" readonly>
                                     </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-lock form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="Email" id="email" name="password" value="<?php echo $db['EMAIL_PASIEN'] ?>" readonly>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" name="email" value="<?= $db['EMAIL_PASIEN'] ?>" readonly>
                                     </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-lock form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="NIK" id="nik" name="nik" value="<?php echo $db['NIK_PASIEN'] ?>" readonly>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="nik" class="form-label">NIK</label>
+                                        <input type="text" class="form-control" id="nik" name="nik" value="<?= $db['NIK_PASIEN'] ?>" readonly>
                                     </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-lock form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="Kelahiran" id="kelahiran" name="kelahiran" value="<?php echo $db['KELAHIRAN'] ?>" readonly>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="kelahiran" class="form-label">Tempat, Tanggal Lahir</label>
+                                        <input type="text" class="form-control" id="kelahiran" name="kelahiran" value="<?= $db['KELAHIRAN'] ?>, <?= $db['TGL_LAHIR'] ?>" readonly>
                                     </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-lock form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="Pekerjaan" id="pekerjaan" name="pekerjaan" value="<?php echo $db['NAMA_PEKERJAAN'] ?>" readonly>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="pekerjaan" class="form-label">Pekerjaan</label>
+                                        <input type="text" class="form-control" id="pekerjaan" name="pekerjaan" value="<?= $db['NAMA_PEKERJAAN'] ?>" readonly>
                                     </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-lock form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="Golongan Darah" id="gol" name="gol" value="<?php echo $db['NAMA_GOL'] ?>" readonly>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="gol" class="form-label">Golongan Darah</label>
+                                        <input type="text" class="form-control" id="gol" name="gol" value="<?= $db['NAMA_GOL'] ?>" readonly>
                                     </div>
-                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                        <div class="form-group">
-                                            <i class="fa fa-lock form-group-icon"></i>
-                                            <input type="text" class="form-control" placeholder="Alamat" id="alamat" name="alamat" value="<?php echo $db['ALAMAT_PASIEN'] ?>" readonly>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="alamat" class="form-label">Alamat</label>
+                                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $db['ALAMAT_PASIEN'] ?>" readonly>
                                     </div>
                                 </div>
                             </div>
