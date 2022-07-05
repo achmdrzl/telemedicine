@@ -73,31 +73,12 @@
               </div><!-- /.row -->
             </div><!-- /.container -->
           </div><!-- /.footer-primary -->
-          <div class="footer-secondary">
-            <div class="container">
-              <div class="row align-items-center">
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                  <span class="fz-14">&copy; 2020 DataSoft, All Rights Reserved. With Love by</span>
-                  <a class="fz-14 color-primary" href="http://themeforest.net/user/7oroof">7oroof.com</a>
-                </div><!-- /.col-lg-6 -->
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                  <nav>
-                    <ul class="list-unstyled footer__copyright-links d-flex flex-wrap justify-content-end mb-0">
-                      <li><a href="#">Terms & Conditions</a></li>
-                      <li><a href="#">Privacy Policy</a></li>
-                      <li><a href="#">Cookies</a></li>
-                    </ul>
-                  </nav>
-                </div><!-- /.col-lg-6 -->
-              </div><!-- /.row -->
-            </div><!-- /.container -->
-          </div><!-- /.footer-secondary -->
         </footer><!-- /.Footer -->
         <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
         </div><!-- /.wrapper -->
-        <script src="<?= base_url() ?>assets/pasien/js/jquery-3.5.1.min.js"></script>
-        <script src="<?= base_url() ?>assets/pasien/js/plugins.js"></script>
-        <script src="<?= base_url() ?>assets/pasien/js/main.js"></script>
+        <script src="<?= base_url('assets/pasien/js/jquery-3.5.1.min.js') ?>"></script>
+        <script src="<?= base_url('assets/pasien/js/plugins.js') ?>"></script>
+        <script src="<?= base_url('assets/pasien/js/main.js') ?>"></script>
         <script>
           $(document).ready(function() {
             $("#kabupaten").hide();
