@@ -7,6 +7,7 @@ class Pasien_login extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Pasien_model');
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -40,18 +41,27 @@ class Pasien_login extends CI_Controller
     }
     public function editProfile($id)
     {
-        $data['pasien'] = $this->Pasien_model->getPasienByID($id);
-        $data['pekerjaan'] = $this->Pasien_model->getPekerjaan();
-        $data['gol'] = $this->Pasien_model->getGol();
-        $data['provinsi'] = $this->Pasien_model->getProv();
-        $data['kota'] = $this->Pasien_model->getKota();
-        $data['kecamatan'] = $this->Pasien_model->getKecamatan();
-        $data['kelurahan'] = $this->Pasien_model->getKelurahan();
-        render4('pasien/profile/edit_profile', $data);
+        $this->form_validation->set_rules('kelahiran', 'Kelahiran', 'required');
+        $this->form_validation->set_rules('nik', 'NIK', 'required|exact_length[16]');
+        $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
+        $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required');
+        $this->form_validation->set_rules('gol', 'Golongan Darah', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $data['pasien'] = $this->Pasien_model->getPasienByID($id);
+            $data['pekerjaan'] = $this->Pasien_model->getPekerjaan();
+            $data['gol'] = $this->Pasien_model->getGol();
+            $data['provinsi'] = $this->Pasien_model->getProv();
+            $data['kota'] = $this->Pasien_model->getKota();
+            $data['kecamatan'] = $this->Pasien_model->getKecamatan();
+            $data['kelurahan'] = $this->Pasien_model->getKelurahan();
+            render4('pasien/profile/edit_profile', $data);
+        } else {
+            $this->Pasien_model->updateProfile($id);
+            redirect('pasien_login/profile');
+        }
     }
     public function updateProfile($id)
     {
-        $this->Pasien_model->updateProfile($id);
-        redirect('pasien_login');
     }
 }

@@ -95,7 +95,20 @@
         </footer><!-- /.Footer -->
         <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
         </div><!-- /.wrapper -->
-
+        <script>
+          $('#listF').click(function() {
+            var n = 10;
+            var val = this.selectedIndex;
+            if ((this.selectedIndex < ($(this).find('option').length - n)) && (this.selectedIndex > n)) {
+              this.selectedIndex += n;
+              this.selectedIndex -= (2 * n);
+              this.selectedIndex += n;
+            } else {
+              this.selectedIndex = ((this.selectedIndex < n) ? 0 : 99);
+              this.selectedIndex = val;
+            }
+          });
+        </script>
         <script src="<?php echo base_url() ?>assets/pasien/js/jquery-3.5.1.min.js"></script>
         <script src="<?php echo base_url() ?>assets/pasien/js/plugins.js"></script>
         <script src="<?php echo base_url() ?>assets/pasien/js/main.js"></script>

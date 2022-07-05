@@ -11,7 +11,7 @@
             <div class="row justify-content-center align-items-center">
                 <div class="contact-panel">
                     <?php foreach ($pasien as $db) : ?>
-                        <form class="form-group" method="POST" action="<?= base_url('pasien_login/updateProfile/' . $this->session->ID_PASIEN); ?>">
+                        <form class="form-group" method="POST" action="">
                             <div class="row justify-content-center align-items-center">
                                 <div class="col-sm-12">
                                     <h4 class="contact-panel__title">Profile Pasien</h4>
@@ -24,6 +24,11 @@
                                             <?php endif; ?>
                                         </div>
                                     </div>
+                                    <?php if (validation_errors()) : ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            <?= validation_errors(); ?>
+                                        </div>
+                                    <?php endif; ?>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="nama" name="nama" value="<?= $db['NAMA_PASIEN'] ?>">
@@ -46,7 +51,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                                        <select name="pekerjaan" id="pekerjaan" class="form-control" size="10">
+                                        <select name="pekerjaan" id="pekerjaan">
                                             <option selected>Pilih Pekerjaan</option>
                                             <?php foreach ($pekerjaan as $row) : ?>
                                                 <option value="<?= $row['ID_PEKERJAAN'] ?>"><?= $row['NAMA_PEKERJAAN']; ?></option>
@@ -55,7 +60,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="gol" class="form-label">Golongan Darah</label>
-                                        <select class="form-select" size="5">
+                                        <select class="form-select" size="5" id="gol" name="gol">
                                             <option selected>Pilih Golongan Darah</option>
                                             <?php foreach ($gol as $row) : ?>
                                                 <option value="<?= $row['ID_GOL'] ?>"><?= $row['NAMA_GOL']; ?></option>
@@ -64,9 +69,11 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="alamat" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="alamat" name="alamat">
+                                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $db['ALAMAT_PASIEN'] ?>">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn__primary btn__rounded mt-3">
+                                        <span>Edit Profile</span>
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -75,5 +82,4 @@
             </div>
         </div>
     </section>
-
 </section>
