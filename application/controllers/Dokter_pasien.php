@@ -12,6 +12,6 @@ class Dokter_pasien extends CI_Controller
   public function index()
   {
     $data['dokter'] = $this->Dokter_model->getAllDokter();
-    render2('pasien/dokter/index', $data);
+    render2a('pasien/dokter/index', $data);
   }
 }
