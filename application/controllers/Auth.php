@@ -10,7 +10,6 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->model('auth_pasien');
-
     }
 
     public function register()
@@ -31,7 +30,6 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('error', validation_errors());
             redirect('welcome/register');
         }
-
     }
 
     public function verif()
@@ -63,9 +61,10 @@ class Auth extends CI_Controller
         // $pasien = $this->auth_pasien->getAll(); // memanggil method getAll
         // $data['pasien'] = $pasien; // menampung di variable $data
 
-    } 
-    
-    public function login(){
+    }
+
+    public function login()
+    {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
@@ -79,7 +78,7 @@ class Auth extends CI_Controller
             'EMAIL_PASIEN' => $user->EMAIL_PASIEN,
             'HP_PASIEN' => $user->HP_PASIEN
         );
-        
+
         // if ($data) {
         //     if (password_verify($password, $data->PASSWORD)) {
         //         $this->session->set_userdata($session);
@@ -114,7 +113,7 @@ class Auth extends CI_Controller
     public function google_login()
     {
         // include_once APPPATH . "../../vendor/autoload.php";
-        require_once __DIR__ .'/../../vendor/autoload.php';
+        require_once __DIR__ . '/../../vendor/autoload.php';
         $client = new Google_Client();
         $client->setApplicationName('Sign In With Google Account');
         $client->setClientId('976962102988-d0aalamruaq8v40tbinoe82ndlag0sgl.apps.googleusercontent.com');
@@ -152,9 +151,7 @@ class Auth extends CI_Controller
             }
 
             redirect('pasien_login/index');
-
-        } 
-        else {
+        } else {
             $url = $client->createAuthUrl();
             header('Location:' . filter_var($url, FILTER_SANITIZE_URL));
         }

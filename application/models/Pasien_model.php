@@ -46,5 +46,44 @@ class Pasien_model extends CI_Model
     $this->db->where('ID_PASIEN', $id);
     $this->db->update('pasien', $data);
   }
-
+  public function getPekerjaan()
+  {
+    return $query = $this->db->get('pekerjaan')->result_array();
+  }
+  public function getGol()
+  {
+    return $query = $this->db->get('gol_darah')->result_array();
+  }
+  public function getProv()
+  {
+    return $query = $this->db->get('provinsi')->result_array();
+  }
+  public function getKota($id_provinsi)
+  {
+    $this->db->where('ID_PROV', $id_provinsi);
+    return $query = $this->db->get('kab_kota')->result_array();
+  }
+  public function getKecamatan($id_kabupaten)
+  {
+    $this->db->where('ID_KAB', $id_kabupaten);
+    return $query = $this->db->get('kecamatan')->result_array();
+  }
+  public function getKelurahan($id_kecamatan)
+  {
+    $this->db->where('ID_KEC', $id_kecamatan);
+    return $query = $this->db->get('desa')->result_array();
+  }
+  public function updateProfile($id)
+  {
+    $data = [
+      "ID_PEKERJAAN" => $this->input->post('pekerjaan', true),
+      "ID_GOL" => $this->input->post('gol', true),
+      "NIK_PASIEN" => $this->input->post('nik', true),
+      "KELAHIRAN" => $this->input->post('kelahiran', true),
+      "TGL_LAHIR" => $this->input->post('tgl_lahir', true),
+      "ALAMAT_PASIEN" => $this->input->post('alamat', true)
+    ];
+    $this->db->where('ID_PASIEN', $id);
+    $this->db->update('pasien', $data);
+  }
 }
