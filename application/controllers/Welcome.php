@@ -9,25 +9,22 @@ class Welcome extends CI_Controller
 	}
 	public function index()
 	{
-		$data[] = "";
-		render2('pasien/index', $data);
+		render2('pasien/index');
 	}
 
 	public function login()
 	{
-		$data[] = "";
-		render2('pasien/auth/login', $data);
+		render2('pasien/auth/login');
 	}
 
 	public function register()
 	{
-		$data[] = "";
-		render2('pasien/auth/register', $data);
+		render2('pasien/auth/register');
 	}
 
 	public function verif()
 	{
 		$data[] = "";
-		render2('pasien/auth/verif', $data);
+		render2('pasien/auth/verif');
 	}
 }
