@@ -60,15 +60,17 @@ class Pasien_model extends CI_Model
   }
   public function getKota($id_provinsi)
   {
-    $this->db->where('ID_PROV', '$id_provinsi');
+    $this->db->where('ID_PROV', $id_provinsi);
     return $query = $this->db->get('kab_kota')->result_array();
   }
-  public function getKecamatan()
+  public function getKecamatan($id_kabupaten)
   {
+    $this->db->where('ID_KAB', $id_kabupaten);
     return $query = $this->db->get('kecamatan')->result_array();
   }
-  public function getKelurahan()
+  public function getKelurahan($id_kecamatan)
   {
+    $this->db->where('ID_KEC', $id_kecamatan);
     return $query = $this->db->get('desa')->result_array();
   }
   public function updateProfile($id)

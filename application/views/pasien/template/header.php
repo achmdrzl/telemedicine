@@ -14,6 +14,7 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/libraries.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style2.css">
 </head>
 
 <body>
@@ -76,7 +77,7 @@
                 <a href="#" data-toggle="dropdown" class="nav__item-link">Tentang Kami</a>
               </li><!-- /.nav-item -->
               <li class="nav__item">
-                <a href="#" data-toggle="dropdown" class="nav__item-link">Dokter</a>
+                <a href="<?= site_url('Dokter_pasien') ?>" class="nav__item-link">Dokter</a>
               </li><!-- /.nav-item -->
               <li class="nav__item has-dropdown">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Layanan</a>

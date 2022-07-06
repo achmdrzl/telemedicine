@@ -8,11 +8,11 @@ function render($link, $data)
   $a->load->view('admin/template/footer');
 }
 
-function render2($link)
+function render2($link, $data)
 {
   $a = get_instance();
   $a->load->view('pasien/template/header');
-  $a->load->view($link);
+  $a->load->view($link, $data);
   $a->load->view('pasien/template/footer');
 }
 

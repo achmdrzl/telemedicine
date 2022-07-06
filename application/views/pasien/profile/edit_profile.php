@@ -50,28 +50,20 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                                        <select name="pekerjaan" id="pekerjaan">
-                                            <option selected>Pilih Pekerjaan</option>
+                                        <select name="pekerjaan" id="pekerjaan" class="select2">
+                                            <option value="">Pilih Pekerjaan</option>
                                             <?php foreach ($pekerjaan as $row) : ?>
-                                                <?php if ($row['ID_PEKERJAAN'] == $db['ID_PEKERJAAN']) : ?>
-                                                    <option value="<?= $row['ID_PEKERJAAN'] ?>" selected><?= $row['NAMA_PEKERJAAN']; ?></option>
-                                                <?php else : ?>
-                                                    <option value="<?= $row['ID_PEKERJAAN'] ?>"><?= $row['NAMA_PEKERJAAN']; ?></option>
-                                                <?php endif; ?>
+                                                <option <?= ($row['ID_PEKERJAAN'] == $db['ID_PEKERJAAN'] ? 'selected' : '') ?> value="<?= $row['ID_PEKERJAAN'] ?>"><?= $row['NAMA_PEKERJAAN']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('pekerjaan'); ?></div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="gol" class="form-label">Golongan Darah</label>
-                                        <select class="form-select" size="5" id="gol" name="gol">
-                                            <option selected>Pilih Golongan Darah</option>
+                                        <select name="gol" id="gol" class="select2">
+                                            <option value="">Pilih Golongan Darah</option>
                                             <?php foreach ($gol as $row) : ?>
-                                                <?php if ($row['ID_GOL'] == $db['ID_GOL']) : ?>
-                                                    <option value="<?= $row['ID_GOL'] ?>" selected><?= $row['NAMA_GOL']; ?></option>
-                                                <?php else : ?>
-                                                    <option value="<?= $row['ID_GOL'] ?>"><?= $row['NAMA_GOL']; ?></option>
-                                                <?php endif; ?>
+                                                <option <?= ($row['ID_GOL'] == $db['ID_GOL'] ? 'selected' : '') ?> value="<?= $row['ID_GOL'] ?>"><?= $row['NAMA_GOL']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('gol'); ?></div>
@@ -79,9 +71,9 @@
                                     <div class="mb-3">
                                         <label for="provinsi" class="form-label">Provinsi</label>
                                         <select name="provinsi" id="provinsi">
-                                            <option selected>Pilih Provinsi</option>
-                                            <?php foreach ($provinsi as $prov) : ?>
-                                                <option value="<?= $prov['ID_PROV'] ?>" selected><?= $prov['NAMA_PROV']; ?></option>
+                                            <option value="">Pilih Provinsi</option>
+                                            <?php foreach ($provinsi as $row) : ?>
+                                                <option value="<?= $row['ID_PROV'] ?>" selected><?= $row['NAMA_PROV']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('prov'); ?></div>
@@ -124,3 +116,99 @@
         </div>
     </section>
 </section>
+
+<script>
+    $(document).ready(function() {
+        $('#pekerjaan').select2();
+    })
+    $(document).ready(function() {
+        $('#gol').select2();
+    })
+    $(document).ready(function() {
+        $('#pekerjaan').select2();
+    })
+    $(document).ready(function() {
+        $('#provinsi').select2();
+    })
+
+    $(document).ready(function() {
+        $("#kabupaten").hide();
+        $("#kecamatan").hide();
+        $("#kelurahan").hide();
+        loadkabupaten();
+        loadkecamatan();
+        loadkelurahan();
+    });
+
+    function loadkabupaten() {
+        $("#provinsi").change(function() {
+            var getprovinsi = $("#provinsi").val();
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "<?= base_url(); ?>pasien_login/getDataKabupaten",
+                data: {
+                    provinsi: getprovinsi
+                },
+                success: function(data) {
+                    console.log(data);
+                    var html = "";
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        html += '<option value="' + data[i].ID_KAB + '">' + data[i].NAMA_KAB + '</option>';
+                    }
+                    $("#kabupaten").html(html);
+                    $("#kabupaten").show();
+                }
+            });
+        });
+    }
+
+    function loadkecamatan() {
+        $("#kabupaten").change(function() {
+            var getkabupaten = $("#kabupaten").val();
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "<?= base_url(); ?>pasien_login/getDataKecamatan",
+                data: {
+                    kabupaten: getkabupaten
+                },
+                success: function(data) {
+                    console.log(data);
+                    var html = "";
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        html += '<option value="' + data[i].ID_KEC + '">' + data[i].NAMA_KEC + '</option>';
+                    }
+                    $("#kecamatan").html(html);
+                    $("#kecamatan").show();
+                }
+            });
+        });
+    }
+
+    function loadkelurahan() {
+        $("#kecamatan").change(function() {
+            var getkecamatan = $("#kecamatan").val();
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "<?= base_url(); ?>pasien_login/getDataKelurahan",
+                data: {
+                    kecamatan: getkecamatan
+                },
+                success: function(data) {
+                    console.log(data);
+                    var html = "";
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        html += '<option value="' + data[i].ID_DESA + '">' + data[i].NAMA_DESA + '</option>';
+                    }
+                    $("#kelurahan").html(html);
+                    $("#kelurahan").show();
+                }
+            });
+        });
+    }
+</script>

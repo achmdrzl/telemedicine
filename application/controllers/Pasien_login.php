@@ -61,7 +61,19 @@ class Pasien_login extends CI_Controller
     public function getDataKabupaten()
     {
         $id_provinsi = $this->input->post('provinsi');
-        $data['kota'] = $this->Pasien_model->getKota($id_provinsi);
-        echo json_encode($data['kota']);
+        $getdatakab = $this->Pasien_model->getKota($id_provinsi);
+        echo json_encode($getdatakab);
+    }
+    public function getDataKecamatan()
+    {
+        $id_kabupaten = $this->input->post('kabupaten');
+        $getdatakec = $this->Pasien_model->getKecamatan($id_kabupaten);
+        echo json_encode($getdatakec);
+    }
+    public function getDataKelurahan()
+    {
+        $id_kecamatan = $this->input->post('kecamatan');
+        $getdatakel = $this->Pasien_model->getKelurahan($id_kecamatan);
+        echo json_encode($getdatakel);
     }
 }

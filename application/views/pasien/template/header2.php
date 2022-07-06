@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/libraries.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style2.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="<?= base_url('assets/pasien/js/jquery-3.5.1.min.js') ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body>
@@ -74,7 +78,7 @@
                                 <a href="#" data-toggle="dropdown" class="nav__item-link">Tentang Kami</a>
                             </li><!-- /.nav-item -->
                             <li class="nav__item">
-                                <a href="#" data-toggle="dropdown" class="nav__item-link">Dokter</a>
+                                <a href="<?= site_url('Dokter_pasien/index') ?>" data-toggle="dropdown" class="nav__item-link">Dokter</a>
                             </li><!-- /.nav-item -->
                             <li class="nav__item has-dropdown">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Layanan</a>
