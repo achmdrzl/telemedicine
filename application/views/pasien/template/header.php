@@ -74,13 +74,13 @@
           <div class="collapse navbar-collapse" id="mainNavigation">
             <ul class="navbar-nav ml-auto">
               <li class="nav__item">
-                <a href="<?php echo site_url('welcome/index') ?>" class="nav__item-link">Beranda</a>
+                <a href="<?= site_url('welcome/index') ?>" class="nav__item-link">Beranda</a>
               </li><!-- /.nav-item -->
               <li class="nav__item">
                 <a href="#" data-toggle="dropdown" class="nav__item-link">Tentang Kami</a>
               </li><!-- /.nav-item -->
               <li class="nav__item">
-                <a href="<?= site_url('dokter_pasien') ?>" class="nav__item-link">Dokter</a>
+                <a href="<?= site_url('dokter_pasien/dokter') ?>" class="nav__item-link">Dokter</a>
               </li><!-- /.nav-item -->
               <li class="nav__item has-dropdown">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Layanan</a>
@@ -94,7 +94,7 @@
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Informasi</a>
                 <ul class="dropdown-menu">
                   <li class="nav__item">
-                    <a href="shop.html" class="nav__item-link">Alur Pelayanan</a>
+                    <a href="<?= site_url(); ?>alur_pasien/alurLayanan" class="nav__item-link">Alur Pelayanan</a>
                   </li><!-- /.nav-item -->
                   <li class="nav__item">
                     <a href="shop-single-product.html" class="nav__item-link">Hubungi Kami</a>

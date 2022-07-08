@@ -12,7 +12,9 @@ class Pasien_login extends CI_Controller
 
     public function index()
     {
-        render3('pasien/index');
+
+        $data[] = "";
+        render3('pasien/index', $data);
 
         // if ($this->session->has_userdata('logged')) {
         //     render3('pasien/index');

@@ -50,8 +50,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                                        <select name="pekerjaan" id="pekerjaan" class="select2">
-                                            <option value="">Pilih Pekerjaan</option>
+                                        <select name="pekerjaan" id="pekerjaan" class="form-control">
+                                            <option></option>
                                             <?php foreach ($pekerjaan as $row) : ?>
                                                 <option <?= ($row['ID_PEKERJAAN'] == $db['ID_PEKERJAAN'] ? 'selected' : '') ?> value="<?= $row['ID_PEKERJAAN'] ?>"><?= $row['NAMA_PEKERJAAN']; ?></option>
                                             <?php endforeach; ?>
@@ -60,8 +60,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="gol" class="form-label">Golongan Darah</label>
-                                        <select name="gol" id="gol" class="select2">
-                                            <option value="">Pilih Golongan Darah</option>
+                                        <select name="gol" id="gol" class="form-control">
+                                            <option></option>
                                             <?php foreach ($gol as $row) : ?>
                                                 <option <?= ($row['ID_GOL'] == $db['ID_GOL'] ? 'selected' : '') ?> value="<?= $row['ID_GOL'] ?>"><?= $row['NAMA_GOL']; ?></option>
                                             <?php endforeach; ?>
@@ -70,31 +70,31 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="provinsi" class="form-label">Provinsi</label>
-                                        <select name="provinsi" id="provinsi">
-                                            <option value="">Pilih Provinsi</option>
+                                        <select name="provinsi" id="provinsi" class="form-control">
+                                            <option></option>
                                             <?php foreach ($provinsi as $row) : ?>
-                                                <option value="<?= $row['ID_PROV'] ?>" selected><?= $row['NAMA_PROV']; ?></option>
+                                                <option value="<?= $row['ID_PROV'] ?>"><?= $row['NAMA_PROV']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('prov'); ?></div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="kabupaten" class="form-label">Kabupaten</label>
-                                        <select name="kabupaten" id="kabupaten">
-
+                                        <select name="kabupaten" id="kabupaten" class="form-control">
+                                            <option value="">Pilih kabupaten</option>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kab'); ?></div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="provinsi" class="form-label">Kecamatan</label>
-                                        <select name="kecamatan" id="kecamatan">
+                                        <select name="kecamatan" id="kecamatan" class="form-control">
 
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kec'); ?></div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="provinsi" class="form-label">Kelurahan</label>
-                                        <select name="kelurahan" id="kelurahan">
+                                        <select name="kelurahan" id="kelurahan" class="form-control">
 
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kel'); ?></div>
@@ -119,18 +119,19 @@
 
 <script>
     $(document).ready(function() {
-        $('#pekerjaan').select2();
+        $('#gol').select2({
+            placeholder: "Pilih Golongan Darah",
+            allowClear: true
+        });
+        $('#pekerjaan').select2({
+            placeholder: "Pilih Pekerjaan",
+            allowClear: true
+        });
+        $('#provinsi').select2({
+            placeholder: "Pilih Provinsi",
+            allowClear: true
+        });
     })
-    $(document).ready(function() {
-        $('#gol').select2();
-    })
-    $(document).ready(function() {
-        $('#pekerjaan').select2();
-    })
-    $(document).ready(function() {
-        $('#provinsi').select2();
-    })
-
     $(document).ready(function() {
         $("#kabupaten").hide();
         $("#kecamatan").hide();

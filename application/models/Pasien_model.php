@@ -56,21 +56,25 @@ class Pasien_model extends CI_Model
   }
   public function getProv()
   {
+    $this->db->order_by('NAMA_PROV', 'ASC');
     return $query = $this->db->get('provinsi')->result_array();
   }
   public function getKota($id_provinsi)
   {
     $this->db->where('ID_PROV', $id_provinsi);
+    $this->db->order_by('NAMA_KAB', 'ASC');
     return $query = $this->db->get('kab_kota')->result_array();
   }
   public function getKecamatan($id_kabupaten)
   {
     $this->db->where('ID_KAB', $id_kabupaten);
+    $this->db->order_by('NAMA_KEC', 'ASC');
     return $query = $this->db->get('kecamatan')->result_array();
   }
   public function getKelurahan($id_kecamatan)
   {
     $this->db->where('ID_KEC', $id_kecamatan);
+    $this->db->order_by('NAMA_DESA', 'ASC');
     return $query = $this->db->get('desa')->result_array();
   }
   public function updateProfile($id)

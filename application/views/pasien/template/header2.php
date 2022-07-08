@@ -45,15 +45,8 @@
                                     </li>
                                 </ul><!-- /.contact__list -->
                                 <div class="d-flex">
-                                    <ul class="social-icons list-unstyled mb-0 mr-30">
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    </ul><!-- /.social-icons -->
-                                    <form class="header-topbar__search">
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                        <button class="header-topbar__search-btn"><i class="fa fa-search"></i></button>
-                                    </form>
+                                    <ul class="social-icons list-unstyled mb-0 mr-30 text-white">
+                                        Selamat Datang, <?= $this->session->NAMA_PASIEN; ?>
                                 </div>
                             </div>
                         </div><!-- /.col-12 -->
@@ -78,7 +71,7 @@
                                 <a href="#" data-toggle="dropdown" class="nav__item-link">Tentang Kami</a>
                             </li><!-- /.nav-item -->
                             <li class="nav__item">
-                                <a href="<?= site_url('Dokter_pasien/index') ?>" data-toggle="dropdown" class="nav__item-link">Dokter</a>
+                                <a href="<?= site_url('dokter_pasien/index') ?>" class="nav__item-link">Dokter</a>
                             </li><!-- /.nav-item -->
                             <li class="nav__item has-dropdown">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Layanan</a>
@@ -92,7 +85,7 @@
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Informasi</a>
                                 <ul class="dropdown-menu">
                                     <li class="nav__item">
-                                        <a href="shop.html" class="nav__item-link">Alur Pelayanan</a>
+                                        <a href="<?= site_url(); ?>alur_pasien/Alur" class="nav__item-link">Alur Pelayanan</a>
                                     </li><!-- /.nav-item -->
                                     <li class="nav__item">
                                         <a href="shop-single-product.html" class="nav__item-link">Hubungi Kami</a>
@@ -106,7 +99,7 @@
                         <ul class="navbar-nav ml-auto">
                             <li class="nav__item has-dropdown">
                                 <a href="#" data-toggle="dropdown" class="btn btn__primary btn__rounded ml-30"><i class="icon-user"></i>
-                                    <span>Profile <?php echo $this->session->ID_PASIEN; ?></span></a>
+                                    <span>Profile</span></a>
                                 <ul class="dropdown-menu">
                                     <li class="nav__item">
                                         <a href="<?php echo site_url('pasien_login/profile/' . $this->session->ID_PASIEN); ?>" class="nav__item-link">Informasi Akun</a>
