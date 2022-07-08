@@ -24,7 +24,6 @@
                                             <?php endif; ?>
                                         </div>
                                     </div>
-
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="nama" name="nama" value="<?= $db['NAMA_PASIEN'] ?>">
@@ -70,7 +69,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="provinsi" class="form-label">Provinsi</label>
-                                        <select name="provinsi" id="provinsi" class="form-control">
+                                        <select class="form-select" aria-label="Default select example" name="provinsi" id="provinsi">
                                             <option></option>
                                             <?php foreach ($provinsi as $row) : ?>
                                                 <option value="<?= $row['ID_PROV'] ?>"><?= $row['NAMA_PROV']; ?></option>
@@ -78,24 +77,25 @@
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('prov'); ?></div>
                                     </div>
+
                                     <div class="mb-3">
                                         <label for="kabupaten" class="form-label">Kabupaten</label>
-                                        <select name="kabupaten" id="kabupaten" class="form-control">
-                                            <option value="">Pilih kabupaten</option>
+                                        <select name="kabupaten" id="kabupaten" class="form-select">
+                                            <option></option>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kab'); ?></div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="provinsi" class="form-label">Kecamatan</label>
-                                        <select name="kecamatan" id="kecamatan" class="form-control">
-
+                                        <label for="kecamatan" class="form-label">Kecamatan</label>
+                                        <select name="kecamatan" id="kecamatan" class="form-select">
+                                            <option></option>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kec'); ?></div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="provinsi" class="form-label">Kelurahan</label>
-                                        <select name="kelurahan" id="kelurahan" class="form-control">
-
+                                        <label for="kelurahan" class="form-label">Kelurahan</label>
+                                        <select name="kelurahan" id="kelurahan" class="form-select">
+                                            <option></option>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kel'); ?></div>
                                     </div>
@@ -129,6 +129,18 @@
         });
         $('#provinsi').select2({
             placeholder: "Pilih Provinsi",
+            allowClear: true
+        });
+        $('#kabupaten').select2({
+            placeholder: "Pilih Kabupaten/Kota",
+            allowClear: true
+        });
+        $('#kecamatan').select2({
+            placeholder: "Pilih Kecamatan",
+            allowClear: true
+        });
+        $('#kelurahan').select2({
+            placeholder: "Pilih Kelurahan/Desa",
             allowClear: true
         });
     })

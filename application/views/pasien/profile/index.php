@@ -54,6 +54,22 @@
                                         <input type="text" class="form-control" id="gol" name="gol" value="<?= $db['NAMA_GOL'] ?>" readonly>
                                     </div>
                                     <div class="mb-3">
+                                        <label for="provinsi" class="form-label">Provinsi</label>
+                                        <input type="text" class="form-control" id="provinsi" name="provinsi" value="<?= $db['NAMA_PROV'] ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="kab_kota" class="form-label">Kabupaten/Kota</label>
+                                        <input type="text" class="form-control" id="kab_kota" name="kab_kota" value="<?= $db['NAMA_KAB'] ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="kecamatan" class="form-label">Kecamatan</label>
+                                        <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $db['NAMA_KEC'] ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="kelurahan" class="form-label">Kelurahan/Desa</label>
+                                        <input type="text" class="form-control" id="kelurahan" name="kelurahan" value="<?= $db['NAMA_DESA'] ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="alamat" class="form-label">Alamat</label>
                                         <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $db['ALAMAT_PASIEN'] ?>" readonly>
                                     </div>

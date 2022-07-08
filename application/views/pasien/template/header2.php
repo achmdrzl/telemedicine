@@ -10,6 +10,7 @@
     <title>Medcity - Medical Healthcare HTML5 Template</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/libraries.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style2.css">

@@ -30,10 +30,14 @@ class Pasien_model extends CI_Model
 
   public function getPasienByID($id)
   {
-    $this->db->select('ps.*, pk.NAMA_PEKERJAAN, gd.NAMA_GOL');
+    $this->db->select('ps.*, pk.NAMA_PEKERJAAN, gd.NAMA_GOL, kl.NAMA_DESA, kc.NAMA_KEC, kb.NAMA_KAB, prov.NAMA_PROV');
     $this->db->from('pasien as ps');
     $this->db->join('pekerjaan as pk', 'ps.ID_PEKERJAAN=pk.ID_PEKERJAAN', 'LEFT');
     $this->db->join('gol_darah as gd', 'ps.ID_GOL=gd.ID_GOL', 'LEFT');
+    $this->db->join('desa as kl', 'ps.ID_DESA=kl.ID_DESA', 'LEFT');
+    $this->db->join('kecamatan as kc', 'kc.ID_KEC=kl.ID_KEC', 'LEFT');
+    $this->db->join('kab_kota as kb', 'kb.ID_KAB=kc.ID_KAB', 'LEFT');
+    $this->db->join('provinsi as prov', 'prov.ID_PROV=kb.ID_PROV', 'LEFT');
     $this->db->where('ps.ID_PASIEN', $id);
     $query = $this->db->get();
     return $query->result_array();
@@ -85,7 +89,8 @@ class Pasien_model extends CI_Model
       "NIK_PASIEN" => $this->input->post('nik', true),
       "KELAHIRAN" => $this->input->post('kelahiran', true),
       "TGL_LAHIR" => $this->input->post('tgl_lahir', true),
-      "ALAMAT_PASIEN" => $this->input->post('alamat', true)
+      "ALAMAT_PASIEN" => $this->input->post('alamat', true),
+      "ID_DESA" => $this->input->post('kelurahan', true)
     ];
     $this->db->where('ID_PASIEN', $id);
     $this->db->update('pasien', $data);
