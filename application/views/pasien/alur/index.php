@@ -1,0 +1,1 @@
+<img src="<?= base_url(); ?>assets/pasien/images/alur layanan.png" alt="">
