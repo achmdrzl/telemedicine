@@ -56,7 +56,7 @@ class Pasien_login extends CI_Controller
         $data = $this->auth_pasien->getUser2($username);
         $id = $data->ID_PASIEN;
         $user['pasien'] = $this->Pasien_model->getPasienByID($id);
-        render4('pasien/profile/index', $user); 
+        render4('pasien/profile/index', $user);
 
         // $data['pasien'] = $this->Pasien_model->getPasienByID($id);
         // render4('pasien/profile/index', $data);
@@ -65,7 +65,8 @@ class Pasien_login extends CI_Controller
     public function editProfile($id)
     {
         $this->form_validation->set_rules('kelahiran', 'Kelahiran', 'required');
-        $this->form_validation->set_rules('nik', 'NIK', 'required|exact_length[16]');
+        $this->form_validation->set_rules('nik', 'NIK', 'required|exact_length[16]|numeric');
+        $this->form_validation->set_rules('hp', 'HP', 'required|numeric');
         $this->form_validation->set_rules('tgl_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('pekerjaan', 'Pekerjaan', 'required');
         $this->form_validation->set_rules('gol', 'Golongan Darah', 'required');
@@ -75,6 +76,7 @@ class Pasien_login extends CI_Controller
             $data['pekerjaan'] = $this->Pasien_model->getPekerjaan();
             $data['gol'] = $this->Pasien_model->getGol();
             $data['provinsi'] = $this->Pasien_model->getProv();
+            $data['kota'] = $this->Pasien_model->getKab();
             render4('pasien/profile/edit_profile', $data);
         } else {
             $this->Pasien_model->updateProfile($id);
@@ -103,7 +105,8 @@ class Pasien_login extends CI_Controller
         echo json_encode($getdatakel);
     }
 
-    public function getJadwal(){
+    public function getJadwal()
+    {
         //get data
         $date = $this->input->post('tgl_konsul');
         $sesi = $this->input->post('sesi');
@@ -137,15 +140,16 @@ class Pasien_login extends CI_Controller
         render4('pasien/book/data_dokter', $data);
     }
 
-    public function inputKel($id){
+    public function inputKel($id)
+    {
         $data['detail'] = $this->Pasien_model->getIdDetJadwal($id);
         render4('pasien/book/keluhan', $data);
     }
 
-    public function getKel(){
+    public function getKel()
+    {
         $keluhan = $this->input->post('keluhan');
         $data['detail'] = $this->Pasien_model->getIdDetJadwal($keluhan);
         render4('pasien/book/keluhan', $data);
     }
-
 }

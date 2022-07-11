@@ -70,7 +70,8 @@ class Pasien_model extends CI_Model
     return $this->db->where('ID_DETAIL_JADWAL', $id)->get('detail_jadwal')->result_array();
   }
 
-  public function getDetailJadwal($id_jadwal, $sesi){
+  public function getDetailJadwal($id_jadwal, $sesi)
+  {
     $this->db->select('dj.ID_DETAIL_JADWAL, dr.ID_DOKTER, dr.NAMA_DOKTER, dr.SPESIALISASI, dr.PROFIL_DOKTER');
     $this->db->from('dokter as dr');
     $this->db->join('detail_jadwal as dj', 'dr.ID_DOKTER=dj.ID_DOKTER', 'JOIN');
@@ -103,6 +104,11 @@ class Pasien_model extends CI_Model
     $this->db->order_by('NAMA_KAB', 'ASC');
     return $query = $this->db->get('kab_kota')->result_array();
   }
+  public function getKab()
+  {
+    $this->db->order_by('NAMA_KAB', 'ASC');
+    return $query = $this->db->get('kab_kota')->result_array();
+  }
 
   public function getKecamatan($id_kabupaten)
   {
@@ -127,10 +133,11 @@ class Pasien_model extends CI_Model
       "KELAHIRAN" => $this->input->post('kelahiran', true),
       "TGL_LAHIR" => $this->input->post('tgl_lahir', true),
       "ALAMAT_PASIEN" => $this->input->post('alamat', true),
+      "HP_PASIEN" => $this->input->post('hp', true),
+      "JENIS_KELAMIN" => $this->input->post('jk', true),
       "ID_DESA" => $this->input->post('kelurahan', true)
     ];
     $this->db->where('ID_PASIEN', $id);
     $this->db->update('pasien', $data);
   }
-
 }
