@@ -121,10 +121,8 @@ class Auth extends CI_Controller
         require_once __DIR__ . '/../../vendor/autoload.php';
         $client = new Google_Client();
         $client->setApplicationName('Sign In With Google Account');
-        $client->setClientId('client key');
-        $client->setClientSecret('secret key');
-        // $client->setClientId('854942494395-cc3sj5lb1vr42vtit904msm749m0vhmq.apps.googleusercontent.com');
-        // $client->setClientSecret('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');
+        $client->setClientId('854942494395-cc3sj5lb1vr42vtit904msm749m0vhmq.apps.googleusercontent.com');
+        $client->setClientSecret('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');
         $client->setRedirectUri('http://localhost/telemedicine/auth/google_login');
         $client->addScope(['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile'], '[https://www.googleapis.com/auth/user.phonenumbers.read]');
         // $client->addScope('email');
