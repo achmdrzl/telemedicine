@@ -11,6 +11,11 @@ class Auth extends CI_Controller
         parent::__construct();
         $this->load->model('auth_pasien');
     }
+    
+    public function getSesi()
+    {
+        return $query = $this->db->get('sesi')->result_array();
+    }
 
     public function register()
     {
@@ -116,8 +121,8 @@ class Auth extends CI_Controller
         require_once __DIR__ . '/../../vendor/autoload.php';
         $client = new Google_Client();
         $client->setApplicationName('Sign In With Google Account');
-        $client->setClientId('976962102988-d0aalamruaq8v40tbinoe82ndlag0sgl.apps.googleusercontent.com');
-        $client->setClientSecret('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');
+        $client->setClientId('854942494395-cc3sj5lb1vr42vtit904msm749m0vhmq.apps.googleusercontent.com');
+        $client->setClientSecret('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');
         $client->setRedirectUri('http://localhost/telemedicine/auth/google_login');
         $client->addScope(['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile'], '[https://www.googleapis.com/auth/user.phonenumbers.read]');
         // $client->addScope('email');
@@ -134,23 +139,28 @@ class Auth extends CI_Controller
             $profile = $data['FILE_FOTO'] = $user_info->picture;
             $nohp = $data['HP_PASIEN'] = $user_info->phoneNumber;
 
-            $user = $this->auth_pasien->getUser2($username);
-
+            $user = $this->auth_pasien->getUser($username);
             $session = array(
-                'ID_PASIEN' => $user->ID_PASIEN,
                 'NAMA_PASIEN' => $nama,
                 'EMAIL_PASIEN' => $username,
                 'HP_PASIEN' => $nohp
             );
-
-            if ($this->auth_pasien->getUser($user_info->email)) {
+             if ($this->auth_pasien->getUser($username)) {
                 $this->session->set_userdata($session);
-            } else {
+
+            }else{
                 $this->auth_pasien->createUser($nama, $username, $profile, $nohp);
                 $this->session->set_userdata($session);
             }
 
             redirect('pasien_login/index');
+            // if ($this->auth_pasien->getUser($user_info->email)) {
+            //     $this->session->set_userdata($session);
+            // } else {
+            //     $this->auth_pasien->createUser($nama, $username, $profile, $nohp);
+            //     $this->session->set_userdata($session);
+            // }
+            
         } else {
             $url = $client->createAuthUrl();
             header('Location:' . filter_var($url, FILTER_SANITIZE_URL));

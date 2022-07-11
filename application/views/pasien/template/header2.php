@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="description" content="Medcity - Medical Healthcare HTML5 Template">
-    <link href="<?php echo base_url() ?>assets/pasien/images/favicon/favicon.png" rel="icon">
+    <link href="<?php echo base_url() ?>assets/pasien/images/favicon/favicon2.png" rel="icon">
     <title>Medcity - Medical Healthcare HTML5 Template</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
@@ -78,7 +78,7 @@
                                 <a href="#" data-toggle="dropdown" class="nav__item-link">Tentang Kami</a>
                             </li><!-- /.nav-item -->
                             <li class="nav__item">
-                                <a href="<?= site_url('Dokter_pasien/index') ?>" data-toggle="dropdown" class="nav__item-link">Dokter</a>
+                                <a href="<?= site_url('dokter_pasien/index2') ?>" class="nav__item-link">Dokter</a>
                             </li><!-- /.nav-item -->
                             <li class="nav__item has-dropdown">
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Layanan</a>
@@ -102,14 +102,14 @@
                         </ul><!-- /.navbar-nav -->
                         <button class="close-mobile-menu d-block d-lg-none"><i class="fas fa-times"></i></button>
                     </div><!-- /.navbar-collapse -->
-                    <div class="d-none d-xl-flex align-items-center position-relative ml-30">
+                    <div class="d-none d-xl-flex align-items-center ml-30">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav__item has-dropdown">
                                 <a href="#" data-toggle="dropdown" class="btn btn__primary btn__rounded ml-30"><i class="icon-user"></i>
-                                    <span>Profile <?php echo $this->session->ID_PASIEN; ?></span></a>
+                                    <span>Profile <?php echo $this->session->NAMA_PASIEN; ?></span></a>
                                 <ul class="dropdown-menu">
                                     <li class="nav__item">
-                                        <a href="<?php echo site_url('pasien_login/profile/' . $this->session->ID_PASIEN); ?>" class="nav__item-link">Informasi Akun</a>
+                                        <a href="<?php echo site_url('pasien_login/profile/' . $this->session->NAMA_PASIEN); ?>" class="nav__item-link">Informasi Akun</a>
                                     </li><!-- /.nav-item -->
                                     <li class="nav__item">
                                         <a href="<?php echo site_url('pasien_login/logout') ?>" class="nav__item-link">Log Out</a>
