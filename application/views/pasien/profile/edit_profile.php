@@ -17,12 +17,11 @@
                                     <h4 class="contact-panel__title">Profile Pasien</h4>
                                     <p class="contact-panel__desc mb-30">Silahkan Melengekapi Data Berikut dengan Data yang Benar, Sebelum Melakukan Konsultasi
                                     </p>
-                                    <div class="col-sm-6 col-md-6 col-lg-4">
-                                        <div class="product__img">
-                                            <?php if ($db['FILE_FOTO'] !== NULL) : ?>
-                                                <img src="<?= $db['FILE_FOTO']; ?>" alt="foto_pasien" class="rounded mx-auto d-block">
-                                            <?php endif; ?>
-                                        </div>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
+                                        <a href="#" class="image">
+                                            <img src="" alt="profil">
+                                            <span>edit profil</span>
+                                        </a>
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
@@ -72,7 +71,7 @@
                                         <select class="form-select" aria-label="Default select example" name="provinsi" id="provinsi">
                                             <option></option>
                                             <?php foreach ($provinsi as $row) : ?>
-                                                <option value="<?= $row['ID_PROV'] ?>"><?= $row['NAMA_PROV']; ?></option>
+                                                <option <?= ($row['ID_PROV'] == $db['ID_PROV'] ? 'selected' : '') ?> value="<?= $row['ID_PROV'] ?>"><?= $row['NAMA_PROV']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('prov'); ?></div>
@@ -82,6 +81,9 @@
                                         <label for="kabupaten" class="form-label">Kabupaten</label>
                                         <select name="kabupaten" id="kabupaten" class="form-select">
                                             <option></option>
+                                            <?php foreach ($kab_kota as $row) : ?>
+                                                <option <?= ($row['ID_KAB'] == $db['ID_KAB'] ? 'selected' : '') ?> value="<?= $row['ID_KAB'] ?>"><?= $row['NAMA_KAB']; ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kab'); ?></div>
                                     </div>

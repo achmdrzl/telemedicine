@@ -30,7 +30,7 @@ class Pasien_model extends CI_Model
 
   public function getPasienByID($id)
   {
-    $this->db->select('ps.*, pk.NAMA_PEKERJAAN, gd.NAMA_GOL, kl.NAMA_DESA, kc.NAMA_KEC, kb.NAMA_KAB, prov.NAMA_PROV');
+    $this->db->select('ps.*, pk.NAMA_PEKERJAAN, gd.NAMA_GOL, kl.*, kc.*, kb.*, prov.*');
     $this->db->from('pasien as ps');
     $this->db->join('pekerjaan as pk', 'ps.ID_PEKERJAAN=pk.ID_PEKERJAAN', 'LEFT');
     $this->db->join('gol_darah as gd', 'ps.ID_GOL=gd.ID_GOL', 'LEFT');

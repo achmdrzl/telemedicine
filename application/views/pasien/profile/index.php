@@ -17,11 +17,10 @@
                                     <h4 class="contact-panel__title">Profile Pasien</h4>
                                     <p class="contact-panel__desc mb-30">Silahkan Melengekapi Data Berikut dengan Data yang Benar, Sebelum Melakukan Konsultasi
                                     </p>
-                                    <div class="col-sm-6 col-md-6 col-lg-4">
-                                        <div class="product__img">
-                                            <?php if ($db['FILE_FOTO'] !== NULL) : ?>
-                                                <img src="<?php echo $db['FILE_FOTO']; ?>" alt="foto_pasien" class="rounded mx-auto d-block">
-                                            <?php endif; ?>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
+                                        <div class="image">
+                                            <img src="<?= $db['FOTO_PROFIL']; ?>" alt="profil">
+                                            <span>edit profil</span>
                                         </div>
                                     </div>
                                     <div class="product__action">

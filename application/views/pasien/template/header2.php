@@ -78,7 +78,7 @@
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Layanan</a>
                                 <ul class="dropdown-menu">
                                     <li class="nav__item">
-                                        <a href="blog.html" class="nav__item-link">Konsultasi Online</a>
+                                        <a href="#" class="nav__item-link">Konsultasi Online</a>
                                     </li><!-- /.nav-item -->
                                 </ul><!-- /.dropdown-menu -->
                             </li><!-- /.nav-item -->
@@ -89,7 +89,7 @@
                                         <a href="<?= site_url(); ?>alur_pasien/Alur" class="nav__item-link">Alur Pelayanan</a>
                                     </li><!-- /.nav-item -->
                                     <li class="nav__item">
-                                        <a href="shop-single-product.html" class="nav__item-link">Hubungi Kami</a>
+                                        <a href="" class="nav__item-link">Hubungi Kami</a>
                                     </li><!-- /.nav-item -->
                                 </ul><!-- /.dropdown-menu -->
                             </li><!-- /.nav-item -->
