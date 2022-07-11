@@ -81,6 +81,7 @@ class Pasien_login extends CI_Controller
             redirect('pasien_login/profile/' . $id);
         }
     }
+
     public function getDataKabupaten()
     {
         $id_provinsi = $this->input->post('provinsi');

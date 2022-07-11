@@ -49,8 +49,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                                        <select name="pekerjaan" size="10" id="" class="select2 form-control">
-                                            <option value="" selected>Pilih Pekerjaan</option>
+                                        <select name="pekerjaan" id="pekerjaan" class="form-control">
+                                            <option></option>
                                             <?php foreach ($pekerjaan as $row) : ?>
                                                 <option <?= ($row['ID_PEKERJAAN'] == $db['ID_PEKERJAAN'] ? 'selected' : '') ?> value="<?= $row['ID_PEKERJAAN'] ?>"><?= $row['NAMA_PEKERJAAN']; ?></option>
                                             <?php endforeach; ?>
@@ -59,8 +59,8 @@
                                     </div><!-- /.col-lg-6 -->
                                     <div class="mb-3">
                                         <label for="gol" class="form-label">Golongan Darah</label>
-                                        <select name="gol" id="gol" class="select2">
-                                            <option value="">Pilih Golongan Darah</option>
+                                        <select name="gol" id="gol" class="form-control">
+                                            <option></option>
                                             <?php foreach ($gol as $row) : ?>
                                                 <option <?= ($row['ID_GOL'] == $db['ID_GOL'] ? 'selected' : '') ?> value="<?= $row['ID_GOL'] ?>"><?= $row['NAMA_GOL']; ?></option>
                                             <?php endforeach; ?>
@@ -69,35 +69,34 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="provinsi" class="form-label">Provinsi</label>
-                                        <select name="provinsi" id="provinsi" class="select2">
-                                            <option value="">Pilih Provinsi</option>
+                                        <select class="form-select" aria-label="Default select example" name="provinsi" id="provinsi">
+                                            <option></option>
                                             <?php foreach ($provinsi as $row) : ?>
-                                                <option value="<?= $row['ID_PROV'] ?>" selected><?= $row['NAMA_PROV']; ?></option>
+                                                <option <?= ($row['ID_PROV'] == $db['ID_PROV'] ? 'selected' : '') ?> value="<?= $row['ID_PROV'] ?>"><?= $row['NAMA_PROV']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('prov'); ?></div>
                                     </div>
+
                                     <div class="mb-3">
                                         <label for="kabupaten" class="form-label">Kabupaten</label>
-                                        <select name="kabupaten" id="kabupaten" class="form-select select2">
-                                            <option value="">Pilih Kabupaten</option>
-                                            <?php foreach ($kabupaten as $row) : ?>
-                                                <option <?= ($row['ID_KAB'] == $db['ID_KAB'] ? 'selected' : '') ?> value="<?= $row['ID_KAB'] ?>"><?= $row['NAMA_KAB']; ?></option>
-                                            <?php endforeach; ?>
+                                        <select name="kabupaten" id="kabupaten" class="form-select">
+                                            <option></option>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kab'); ?></div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="provinsi" class="form-label">Kecamatan</label>
-                                        <select name="kecamatan" id="kecamatan" class="select2">
+                                        <label for="kecamatan" class="form-label">Kecamatan</label>
+                                        <select name="kecamatan" id="kecamatan" class="form-select">
+                                            <option></option>
 
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kec'); ?></div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="provinsi" class="form-label">Kelurahan</label>
-                                        <select name="kelurahan" id="kelurahan" class="select2">
-
+                                        <label for="kelurahan" class="form-label">Kelurahan</label>
+                                        <select name="kelurahan" id="kelurahan" class="form-select">
+                                            <option></option>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kel'); ?></div>
                                     </div>
@@ -121,22 +120,31 @@
 
 <script>
     $(document).ready(function() {
-        $('#pekerjaan').select2();
+        $('#gol').select2({
+            placeholder: "Pilih Golongan Darah",
+            allowClear: true
+        });
+        $('#pekerjaan').select2({
+            placeholder: "Pilih Pekerjaan",
+            allowClear: true
+        });
+        $('#provinsi').select2({
+            placeholder: "Pilih Provinsi",
+            allowClear: true
+        });
+        $('#kabupaten').select2({
+            placeholder: "Pilih Kabupaten/Kota",
+            allowClear: true
+        });
+        $('#kecamatan').select2({
+            placeholder: "Pilih Kecamatan",
+            allowClear: true
+        });
+        $('#kelurahan').select2({
+            placeholder: "Pilih Kelurahan/Desa",
+            allowClear: true
+        });
     })
-
-    $(".pekerjaan").select2({
-        theme: "classic"
-    });
-    $(document).ready(function() {
-        $('#gol').select2();
-    })
-    $(document).ready(function() {
-        $('#pekerjaan').select2();
-    })
-    $(document).ready(function() {
-        $('#provinsi').select2();
-    })
-
     $(document).ready(function() {
         $("#kabupaten").hide();
         $("#kecamatan").hide();

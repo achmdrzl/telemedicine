@@ -17,11 +17,10 @@
                                     <h4 class="contact-panel__title">Profile Pasien</h4>
                                     <p class="contact-panel__desc mb-30">Silahkan Melengekapi Data Berikut dengan Data yang Benar, Sebelum Melakukan Konsultasi
                                     </p>
-                                    <div class="col-sm-6 col-md-6 col-lg-4">
-                                        <div class="product__img">
-                                            <?php if ($db['FILE_FOTO'] !== NULL) : ?>
-                                                <img src="<?php echo $db['FILE_FOTO']; ?>" alt="foto_pasien" class="rounded mx-auto d-block">
-                                            <?php endif; ?>
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
+                                        <div class="image">
+                                            <img src="<?= $db['FOTO_PROFIL']; ?>" alt="profil">
+                                            <span>edit profil</span>
                                         </div>
                                     </div>
                                     <div class="product__action">
@@ -52,6 +51,22 @@
                                     <div class="mb-3">
                                         <label for="gol" class="form-label">Golongan Darah</label>
                                         <input type="text" class="form-control" id="gol" name="gol" value="<?= $db['NAMA_GOL'] ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="provinsi" class="form-label">Provinsi</label>
+                                        <input type="text" class="form-control" id="provinsi" name="provinsi" value="<?= $db['NAMA_PROV'] ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="kab_kota" class="form-label">Kabupaten/Kota</label>
+                                        <input type="text" class="form-control" id="kab_kota" name="kab_kota" value="<?= $db['NAMA_KAB'] ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="kecamatan" class="form-label">Kecamatan</label>
+                                        <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $db['NAMA_KEC'] ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="kelurahan" class="form-label">Kelurahan/Desa</label>
+                                        <input type="text" class="form-control" id="kelurahan" name="kelurahan" value="<?= $db['NAMA_DESA'] ?>" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="alamat" class="form-label">Alamat</label>

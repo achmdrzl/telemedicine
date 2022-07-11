@@ -10,6 +10,7 @@
     <title>Medcity - Medical Healthcare HTML5 Template</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/libraries.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style2.css">
@@ -45,15 +46,8 @@
                                     </li>
                                 </ul><!-- /.contact__list -->
                                 <div class="d-flex">
-                                    <ul class="social-icons list-unstyled mb-0 mr-30">
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    </ul><!-- /.social-icons -->
-                                    <form class="header-topbar__search">
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                        <button class="header-topbar__search-btn"><i class="fa fa-search"></i></button>
-                                    </form>
+                                    <ul class="social-icons list-unstyled mb-0 mr-30 text-white">
+                                        Selamat Datang, <?= $this->session->NAMA_PASIEN; ?>
                                 </div>
                             </div>
                         </div><!-- /.col-12 -->
@@ -84,7 +78,7 @@
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Layanan</a>
                                 <ul class="dropdown-menu">
                                     <li class="nav__item">
-                                        <a href="blog.html" class="nav__item-link">Konsultasi Online</a>
+                                        <a href="#" class="nav__item-link">Konsultasi Online</a>
                                     </li><!-- /.nav-item -->
                                 </ul><!-- /.dropdown-menu -->
                             </li><!-- /.nav-item -->
@@ -92,10 +86,10 @@
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Informasi</a>
                                 <ul class="dropdown-menu">
                                     <li class="nav__item">
-                                        <a href="shop.html" class="nav__item-link">Alur Pelayanan</a>
+                                        <a href="<?= site_url(); ?>alur_pasien/Alur" class="nav__item-link">Alur Pelayanan</a>
                                     </li><!-- /.nav-item -->
                                     <li class="nav__item">
-                                        <a href="shop-single-product.html" class="nav__item-link">Hubungi Kami</a>
+                                        <a href="" class="nav__item-link">Hubungi Kami</a>
                                     </li><!-- /.nav-item -->
                                 </ul><!-- /.dropdown-menu -->
                             </li><!-- /.nav-item -->
