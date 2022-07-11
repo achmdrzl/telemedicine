@@ -11,7 +11,7 @@ class Auth extends CI_Controller
         parent::__construct();
         $this->load->model('auth_pasien');
     }
-    
+
     public function getSesi()
     {
         return $query = $this->db->get('sesi')->result_array();
@@ -145,10 +145,9 @@ class Auth extends CI_Controller
                 'EMAIL_PASIEN' => $username,
                 'HP_PASIEN' => $nohp
             );
-             if ($this->auth_pasien->getUser($username)) {
+            if ($this->auth_pasien->getUser($username)) {
                 $this->session->set_userdata($session);
-
-            }else{
+            } else {
                 $this->auth_pasien->createUser($nama, $username, $profile, $nohp);
                 $this->session->set_userdata($session);
             }
@@ -160,7 +159,7 @@ class Auth extends CI_Controller
             //     $this->auth_pasien->createUser($nama, $username, $profile, $nohp);
             //     $this->session->set_userdata($session);
             // }
-            
+
         } else {
             $url = $client->createAuthUrl();
             header('Location:' . filter_var($url, FILTER_SANITIZE_URL));
