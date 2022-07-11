@@ -6,7 +6,7 @@
     <!-- ==========================
         contact layout 2
     =========================== -->
-    <section class="contact-layout2 pt-0">
+    <section class="contact-layout2 pt-0 mt-2">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="contact-panel">
@@ -20,11 +20,10 @@
                                     <div class="col-sm-6 col-md-6 col-lg-4">
                                         <div class="product__img">
                                             <?php if ($db['FILE_FOTO'] !== NULL) : ?>
-                                                <img src="<?= $db['FILE_FOTO']; ?>" alt="foto_pasien" class="rounded mx-auto d-block">
+                                                <img src="<?= $db['FILE_FOTO']; ?>" alt="FOTO PASIEN" class="rounded mx-auto d-block">
                                             <?php endif; ?>
                                         </div>
                                     </div>
-
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="nama" name="nama" value="<?= $db['NAMA_PASIEN'] ?>">
@@ -48,16 +47,16 @@
                                         <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" value="<?= $db['TGL_LAHIR'] ?>">
                                         <div id="error" class="form-text text-danger"><?= form_error('tgl_lahir'); ?></div>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="form-group">
                                         <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                                        <select name="pekerjaan" id="pekerjaan" class="select2">
-                                            <option value="">Pilih Pekerjaan</option>
+                                        <select name="pekerjaan" size="10" id="" class="select2 form-control">
+                                            <option value="" selected>Pilih Pekerjaan</option>
                                             <?php foreach ($pekerjaan as $row) : ?>
                                                 <option <?= ($row['ID_PEKERJAAN'] == $db['ID_PEKERJAAN'] ? 'selected' : '') ?> value="<?= $row['ID_PEKERJAAN'] ?>"><?= $row['NAMA_PEKERJAAN']; ?></option>
                                             <?php endforeach; ?>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('pekerjaan'); ?></div>
-                                    </div>
+                                    </div><!-- /.col-lg-6 -->
                                     <div class="mb-3">
                                         <label for="gol" class="form-label">Golongan Darah</label>
                                         <select name="gol" id="gol" class="select2">
@@ -70,7 +69,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="provinsi" class="form-label">Provinsi</label>
-                                        <select name="provinsi" id="provinsi">
+                                        <select name="provinsi" id="provinsi" class="select2">
                                             <option value="">Pilih Provinsi</option>
                                             <?php foreach ($provinsi as $row) : ?>
                                                 <option value="<?= $row['ID_PROV'] ?>" selected><?= $row['NAMA_PROV']; ?></option>
@@ -80,21 +79,24 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kabupaten" class="form-label">Kabupaten</label>
-                                        <select name="kabupaten" id="kabupaten">
-
+                                        <select name="kabupaten" id="kabupaten" class="form-select select2">
+                                            <option value="">Pilih Kabupaten</option>
+                                            <?php foreach ($kabupaten as $row) : ?>
+                                                <option <?= ($row['ID_KAB'] == $db['ID_KAB'] ? 'selected' : '') ?> value="<?= $row['ID_KAB'] ?>"><?= $row['NAMA_KAB']; ?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kab'); ?></div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="provinsi" class="form-label">Kecamatan</label>
-                                        <select name="kecamatan" id="kecamatan">
+                                        <select name="kecamatan" id="kecamatan" class="select2">
 
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kec'); ?></div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="provinsi" class="form-label">Kelurahan</label>
-                                        <select name="kelurahan" id="kelurahan">
+                                        <select name="kelurahan" id="kelurahan" class="select2">
 
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kel'); ?></div>
@@ -121,6 +123,10 @@
     $(document).ready(function() {
         $('#pekerjaan').select2();
     })
+
+    $(".pekerjaan").select2({
+        theme: "classic"
+    });
     $(document).ready(function() {
         $('#gol').select2();
     })
@@ -181,6 +187,7 @@
                     for (i = 0; i < data.length; i++) {
                         html += '<option value="' + data[i].ID_KEC + '">' + data[i].NAMA_KEC + '</option>';
                     }
+
                     $("#kecamatan").html(html);
                     $("#kecamatan").show();
                 }
