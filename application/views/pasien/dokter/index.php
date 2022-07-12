@@ -21,7 +21,7 @@
         <div class="col-sm-6 col-md-6 col-lg-3">
           <div class="member">
             <div class="member__img">
-              <img src="<?= base_url(); ?>/assets/admin/images/<?= $row['PROFIL_DOKTER']; ?>" alt="Foto Dokter <?= $row['NAMA_DOKTER']; ?>" class="dokter">
+              <img src="<?= base_url(); ?>/assets/admin/images/<?= $row['PROFIL_DOKTER']; ?>" alt="Foto Dokter <?= $row['NAMA_DOKTER']; ?>" class="dokter" style="height: 200px;">
             </div><!-- /.member-img -->
             <div class="member__info">
               <h5 class="member__name"><a href="doctors-single-doctor1.html"><?= $row['NAMA_DOKTER']; ?></a></h5>
