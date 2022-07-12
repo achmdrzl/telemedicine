@@ -34,7 +34,10 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="hp" class="form-label">No HP Aktif</label>
-                                        <input type="hp" class="form-control" id="hp" name="hp" value="<?= $db['HP_PASIEN'] ?>">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" value="<?= $db['HP_PASIEN']; ?>">
+                                            <button class="btn btn-success" type="submit" id="button-addon2">Button</button>
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="nik" class="form-label">NIK</label>

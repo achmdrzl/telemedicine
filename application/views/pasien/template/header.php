@@ -11,6 +11,7 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/libraries.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style.css">
@@ -77,7 +78,7 @@
                 <a href="<?= site_url('welcome/index') ?>" class="nav__item-link">Beranda</a>
               </li><!-- /.nav-item -->
               <li class="nav__item">
-                <a href="#" data-toggle="dropdown" class="nav__item-link">Tentang Kami</a>
+                <a href="<?= site_url() ?>tentang_kami" class="nav__item-link">Tentang Kami</a>
               </li><!-- /.nav-item -->
               <li class="nav__item">
                 <a href="<?= site_url('dokter_pasien/dokter') ?>" class="nav__item-link">Dokter</a>
@@ -95,9 +96,6 @@
                 <ul class="dropdown-menu">
                   <li class="nav__item">
                     <a href="<?= site_url(); ?>alur_pasien/alurLayanan" class="nav__item-link">Alur Pelayanan</a>
-                  </li><!-- /.nav-item -->
-                  <li class="nav__item">
-                    <a href="#" class="nav__item-link">Hubungi Kami</a>
                   </li><!-- /.nav-item -->
                 </ul><!-- /.dropdown-menu -->
               </li><!-- /.nav-item -->
