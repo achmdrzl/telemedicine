@@ -86,7 +86,10 @@
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Layanan</a>
                 <ul class="dropdown-menu">
                   <li class="nav__item">
-                    <a href="#" class="nav__item-link">Konsultasi Online</a>
+                    <a href="<?= site_url('book/index') ?>" class="nav__item-link">Konsultasi Online</a>
+                  </li><!-- /.nav-item -->
+                  <li class="nav__item">
+                    <a href="<?= site_url('') ?>" class="nav__item-link">Pembayaran Konsultasi</a>
                   </li><!-- /.nav-item -->
                 </ul><!-- /.dropdown-menu -->
               </li><!-- /.nav-item -->

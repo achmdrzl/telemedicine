@@ -19,7 +19,7 @@
                                     </p>
                                     <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
                                         <div class="image">
-                                            <img src="<?= $db['FOTO_PROFIL']; ?>" alt="profil">
+                                            <img src="<?= $db['FILE_FOTO']; ?>" alt="profil">
                                             <span>edit profil</span>
                                         </div>
                                     </div>
