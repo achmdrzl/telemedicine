@@ -52,6 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['admin'] = 'home';
 $route['dokter'] = 'dokter';
+$route['doktermain'] = 'doktermain';
 $route['pasien'] = 'pasien';
 $route['jadwal'] = 'jadwal';
 $route['konsultasi'] = 'konsultasi';
