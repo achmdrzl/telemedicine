@@ -24,7 +24,7 @@
                                         </div>
                                     </div>
                                     <div class="product__action">
-                                        <a href="<?php echo site_url('pasien_login/editProfile/' . $db['ID_PASIEN']); ?>" class="btn btn__primary btn__rounded mb-3">
+                                        <a href="<?php echo site_url('profil_pasien/editProfile/' . $db['ID_PASIEN']); ?>" class="btn btn__primary btn__rounded mb-3">
                                             <i class="icon-cart"></i> <span>Edit Profile</span>
                                         </a>
                                     </div>
@@ -37,12 +37,20 @@
                                         <input type="email" class="form-control" id="email" name="email" value="<?= $db['EMAIL_PASIEN'] ?>" readonly>
                                     </div>
                                     <div class="mb-3">
+                                        <label for="hp" class="form-label">No HP</label>
+                                        <input type="text" class="form-control" id="hp" name="hp" value="<?= $db['HP_PASIEN'] ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="nik" class="form-label">NIK</label>
                                         <input type="text" class="form-control" id="nik" name="nik" value="<?= $db['NIK_PASIEN'] ?>" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="kelahiran" class="form-label">Tempat, Tanggal Lahir</label>
-                                        <input type="text" class="form-control" id="kelahiran" name="kelahiran" value="<?= $db['KELAHIRAN'] ?>, <?= $db['TGL_LAHIR'] ?>" readonly>
+                                        <input type="text" class="form-control" id="kelahiran" name="kelahiran" value="<?= $db['KELAHIRAN'] ?>, <?= format_indo($db['TGL_LAHIR']) ?>" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="jk" class="form-label">Jenis Kelamin</label>
+                                        <input type="text" class="form-control" id="jk" name="jk" value="<?= $db['JENIS_KELAMIN'] ?>" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="pekerjaan" class="form-label">Pekerjaan</label>
@@ -53,24 +61,8 @@
                                         <input type="text" class="form-control" id="gol" name="gol" value="<?= $db['NAMA_GOL'] ?>" readonly>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="provinsi" class="form-label">Provinsi</label>
-                                        <input type="text" class="form-control" id="provinsi" name="provinsi" value="<?= $db['NAMA_PROV'] ?>" readonly>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="kab_kota" class="form-label">Kabupaten/Kota</label>
-                                        <input type="text" class="form-control" id="kab_kota" name="kab_kota" value="<?= $db['NAMA_KAB'] ?>" readonly>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="kecamatan" class="form-label">Kecamatan</label>
-                                        <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="<?= $db['NAMA_KEC'] ?>" readonly>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="kelurahan" class="form-label">Kelurahan/Desa</label>
-                                        <input type="text" class="form-control" id="kelurahan" name="kelurahan" value="<?= $db['NAMA_DESA'] ?>" readonly>
-                                    </div>
-                                    <div class="mb-3">
                                         <label for="alamat" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $db['ALAMAT_PASIEN'] ?>" readonly>
+                                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $db['ALAMAT_PASIEN'] ?>, Kelurahan <?= $db['NAMA_DESA'] ?>, Kecamatan <?= $db['NAMA_KEC'] ?>, Kabupaten <?= $db['NAMA_KAB'] ?>, Provinsi <?= $db['NAMA_PROV'] ?>" readonly>
                                     </div>
                                 </div>
                             </div>

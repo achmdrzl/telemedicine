@@ -9,9 +9,8 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
         <div class="heading text-center mb-40">
-          <h3 class="heading__title">Meet Our Doctors</h3>
-          <p class="heading__desc">Our administration and support staff all have exceptional people skills and
-            trained to assist you with all medical enquiries.
+          <h3 class="heading__title">Dokter Jaga Telemedicine</h3>
+          <p class="heading__desc">RSUD Kabupaten Jombang
           </p>
         </div><!-- /.heading -->
       </div><!-- /.col-lg-6 -->

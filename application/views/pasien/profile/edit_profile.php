@@ -17,8 +17,8 @@
                                     <h4 class="contact-panel__title">Profile Pasien</h4>
                                     <p class="contact-panel__desc mb-30">Silahkan Melengekapi Data Berikut dengan Data yang Benar, Sebelum Melakukan Konsultasi
                                     </p>
-                                    <div class="col-sm-6 col-md-6 col-lg-4">
-                                        <div class="product__img">
+                                    <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
+                                        <div class="image">
                                             <?php if ($db['FILE_FOTO'] !== NULL) : ?>
                                                 <img src="<?= $db['FILE_FOTO']; ?>" alt="FOTO PASIEN" class="rounded mx-auto d-block">
                                             <?php endif; ?>
@@ -26,11 +26,18 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
-                                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $db['NAMA_PASIEN'] ?>">
+                                        <input type="text" class="form-control" id="nama" name="nama" value="<?= $db['NAMA_PASIEN'] ?>" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" name="email" value="<?= $db['EMAIL_PASIEN'] ?>">
+                                        <input type="email" class="form-control" id="email" name="email" value="<?= $db['EMAIL_PASIEN'] ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="hp" class="form-label">No HP Aktif</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" value="<?= $db['HP_PASIEN']; ?>">
+                                            <button class="btn btn-success" type="submit" id="button-addon2">Button</button>
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="nik" class="form-label">NIK</label>
@@ -39,13 +46,38 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kelahiran" class="form-label">Tempat Lahir</label>
-                                        <input type="text" class="form-control" id="kelahiran" name="kelahiran" value="<?= $db['KELAHIRAN'] ?>">
+                                        <select name="kelahiran" id="kelahiran" class="form-control">
+                                            <option></option>
+                                            <?php foreach ($kota as $row) : ?>
+                                                <option <?= ($row['NAMA_KAB'] == $db['KELAHIRAN'] ? 'selected' : '') ?> value="<?= $row['NAMA_KAB'] ?>"><?= $row['NAMA_KAB']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kelahiran'); ?></div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
                                         <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" value="<?= $db['TGL_LAHIR'] ?>">
                                         <div id="error" class="form-text text-danger"><?= form_error('tgl_lahir'); ?></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="jk" class="form-label">Jenis Kelamin</label>
+                                        <select name="jk" id="jk" class="form-control">
+                                            <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                                            <?php if ($db['JENIS_KELAMIN'] == NULL) :
+                                            ?>
+                                                <option value="L">Laki-Laki</option>
+                                                <option value="P">Perempuan</option>
+                                            <?php else : ?>
+                                                <?php if ($db['JENIS_KELAMIN'] == 'L') : ?>
+                                                    <option value="L" selected>Laki-Laki</option>
+                                                    <option value="P">Perempuan</option>
+                                                <?php else : ?>
+                                                    <option value="L">Laki-Laki</option>
+                                                    <option value="P" selected>Perempuan</option>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        </select>
+                                        <div id="error" class="form-text text-danger"><?= form_error('pekerjaan'); ?></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="pekerjaan" class="form-label">Pekerjaan</label>
@@ -128,6 +160,10 @@
             placeholder: "Pilih Pekerjaan",
             allowClear: true
         });
+        $('#kelahiran').select2({
+            placeholder: "Pilih Tempat Lahir",
+            allowClear: true
+        });
         $('#provinsi').select2({
             placeholder: "Pilih Provinsi",
             allowClear: true
@@ -146,9 +182,6 @@
         });
     })
     $(document).ready(function() {
-        $("#kabupaten").hide();
-        $("#kecamatan").hide();
-        $("#kelurahan").hide();
         loadkabupaten();
         loadkecamatan();
         loadkelurahan();
@@ -160,7 +193,7 @@
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "<?= base_url(); ?>pasien_login/getDataKabupaten",
+                url: "<?= base_url(); ?>profil_pasien/getDataKabupaten",
                 data: {
                     provinsi: getprovinsi
                 },
@@ -172,7 +205,7 @@
                         html += '<option value="' + data[i].ID_KAB + '">' + data[i].NAMA_KAB + '</option>';
                     }
                     $("#kabupaten").html(html);
-                    $("#kabupaten").show();
+
                 }
             });
         });
@@ -184,7 +217,7 @@
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "<?= base_url(); ?>pasien_login/getDataKecamatan",
+                url: "<?= base_url(); ?>profil_pasien/getDataKecamatan",
                 data: {
                     kabupaten: getkabupaten
                 },
@@ -197,7 +230,7 @@
                     }
 
                     $("#kecamatan").html(html);
-                    $("#kecamatan").show();
+
                 }
             });
         });
@@ -209,7 +242,7 @@
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "<?= base_url(); ?>pasien_login/getDataKelurahan",
+                url: "<?= base_url(); ?>profil_pasien/getDataKelurahan",
                 data: {
                     kecamatan: getkecamatan
                 },
@@ -221,7 +254,6 @@
                         html += '<option value="' + data[i].ID_DESA + '">' + data[i].NAMA_DESA + '</option>';
                     }
                     $("#kelurahan").html(html);
-                    $("#kelurahan").show();
                 }
             });
         });

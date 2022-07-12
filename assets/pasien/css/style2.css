@@ -42,3 +42,6 @@ img {
 .image:hover span {
 	display: block;
 }
+.logo-footer {
+	height: 10px;
+}

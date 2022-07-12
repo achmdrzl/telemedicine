@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="Medcity - Medical Healthcare HTML5 Template">
+    <meta name="description" content="Telemedicine RSUD Kabupaten Jombang">
     <link href="<?php echo base_url() ?>assets/pasien/images/favicon/favicon2.png" rel="icon">
-    <title>Medcity - Medical Healthcare HTML5 Template</title>
+    <title>Telemedicine RSUD Kabupaten Jombang</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/libraries.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style2.css">
@@ -69,7 +69,7 @@
                                 <a href="<?php echo site_url('pasien_login/index') ?>" class="nav__item-link">Beranda</a>
                             </li><!-- /.nav-item -->
                             <li class="nav__item">
-                                <a href="#" data-toggle="dropdown" class="nav__item-link">Tentang Kami</a>
+                                <a href="<?= site_url() ?>tentang_kami/about" class="nav__item-link">Tentang Kami</a>
                             </li><!-- /.nav-item -->
                             <li class="nav__item">
                                 <a href="<?= site_url('dokter_pasien/index2') ?>" class="nav__item-link">Dokter</a>
@@ -91,9 +91,6 @@
                                     <li class="nav__item">
                                         <a href="<?= site_url(); ?>alur_pasien/Alur" class="nav__item-link">Alur Pelayanan</a>
                                     </li><!-- /.nav-item -->
-                                    <li class="nav__item">
-                                        <a href="" class="nav__item-link">Hubungi Kami</a>
-                                    </li><!-- /.nav-item -->
                                 </ul><!-- /.dropdown-menu -->
                             </li><!-- /.nav-item -->
                         </ul><!-- /.navbar-nav -->
@@ -106,7 +103,7 @@
                                     <span>Profile <?php echo $this->session->NAMA_PASIEN; ?></span></a>
                                 <ul class="dropdown-menu">
                                     <li class="nav__item">
-                                        <a href="<?php echo site_url('pasien_login/profile/' . $this->session->NAMA_PASIEN); ?>" class="nav__item-link">Informasi Akun</a>
+                                        <a href="<?php echo site_url('profil_pasien/profile/' . $this->session->NAMA_PASIEN); ?>" class="nav__item-link">Informasi Akun</a>
                                     </li><!-- /.nav-item -->
                                     <li class="nav__item">
                                         <a href="<?php echo site_url('pasien_login/logout') ?>" class="nav__item-link">Log Out</a>
