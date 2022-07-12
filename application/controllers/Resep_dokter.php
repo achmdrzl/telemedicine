@@ -5,6 +5,7 @@ class Resep_dokter extends CI_Controller
 {
   public function index()
   {
-    dokter('doktermain/resep/index');
+    $data[] = '';
+    dokter('doktermain/resep/index', $data);
   }
 }

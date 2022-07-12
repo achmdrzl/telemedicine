@@ -5,6 +5,7 @@ class Profil_dokter extends CI_Controller
 {
   public function index()
   {
-    dokter('doktermain/profil/index');
+    $data[] = '';
+    dokter('doktermain/profil/index', $data);
   }
 }

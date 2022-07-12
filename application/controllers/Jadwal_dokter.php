@@ -5,6 +5,7 @@ class Jadwal_dokter extends CI_Controller
 {
   public function index()
   {
-    dokter('doktermain/jadwal/index');
+    $data[] = '';
+    dokter('doktermain/jadwal/index', $data);
   }
 }
