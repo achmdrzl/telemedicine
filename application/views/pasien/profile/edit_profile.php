@@ -1,3 +1,30 @@
+<style>
+    .select2-container .select2-selection--single {
+        font-size: 14px;
+        height: 60px;
+        width: 100%;
+        padding: 0 20px;
+        border-radius: 55px;
+        background-color: #ffffff;
+        border: 2px solid #e6e8eb;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        content: '';
+        position: absolute;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        right: 12px;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        z-index: 1;
+        border-radius: 50%;
+        background-color: #213360;
+    }
+</style>
+
+
 <!-- ========================
        page title 
     =========================== -->
@@ -81,7 +108,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                                        <select name="pekerjaan" id="pekerjaan" class="form-control">
+                                        <select name="pekerjaan" id="pekerjaan" class="form-control py-auto">
                                             <option></option>
                                             <?php foreach ($pekerjaan as $row) : ?>
                                                 <option <?= ($row['ID_PEKERJAAN'] == $db['ID_PEKERJAAN'] ? 'selected' : '') ?> value="<?= $row['ID_PEKERJAAN'] ?>"><?= $row['NAMA_PEKERJAAN']; ?></option>
@@ -109,11 +136,9 @@
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('prov'); ?></div>
                                     </div>
-
                                     <div class="mb-3">
                                         <label for="kabupaten" class="form-label">Kabupaten</label>
                                         <select name="kabupaten" id="kabupaten" class="form-select">
-                                            <option></option>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kab'); ?></div>
                                     </div>
@@ -188,26 +213,25 @@
     });
 
     function loadkabupaten() {
-        $("#provinsi").change(function() {
-            var getprovinsi = $("#provinsi").val();
-            $.ajax({
-                type: "POST",
-                dataType: "JSON",
-                url: "<?= base_url(); ?>profil_pasien/getDataKabupaten",
-                data: {
-                    provinsi: getprovinsi
-                },
-                success: function(data) {
-                    console.log(data);
-                    var html = "";
-                    var i;
-                    for (i = 0; i < data.length; i++) {
-                        html += '<option value="' + data[i].ID_KAB + '">' + data[i].NAMA_KAB + '</option>';
-                    }
-                    $("#kabupaten").html(html);
-
+        var getprovinsi = $("#provinsi").val();
+        var id_kabupaten = '<?= $db['ID_KAB'] ?>';
+        console.log(id_kabupaten);
+        $.ajax({
+            type: "POST",
+            dataType: "JSON",
+            url: "<?= base_url(); ?>profil_pasien/getDataKabupaten",
+            data: {
+                provinsi: getprovinsi
+            },
+            success: function(data) {
+                console.log(data);
+                var html = "";
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    html += '<option' + (id_kabupaten == data[i].ID_KAB ? 'selected' : null) + ' value="' + data[i].ID_KAB + '">' + data[i].NAMA_KAB + '</option>';
                 }
-            });
+                $("#kabupaten").html(html);
+            }
         });
     }
 
