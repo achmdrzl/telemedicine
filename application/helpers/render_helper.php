@@ -49,15 +49,16 @@ function render4($link, $data)
 function dokterauth($link, $data)
 {
   $a = get_instance();
-  $a->load->view('doktermain/template/pasien/header');
+  $a->load->view('doktermain/template/header', $data);
   $a->load->view($link, $data);
-  $a->load->view('doktermain/template/pasien/footer');
+  $a->load->view('pasien/template/footer');
 }
 
-function dokter($link)
+function dokter($link, $data)
 {
   $a = get_instance();
   $a->load->view('doktermain/template/dokter/header');
-  $a->load->view($link);
+  $a->load->view('doktermain/template/dokter/sidebar');
+  $a->load->view($link, $data);
   $a->load->view('doktermain/template/dokter/footer');
 }
