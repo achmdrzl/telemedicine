@@ -45,3 +45,19 @@ function render4($link, $data)
   $a->load->view($link, $data);
   $a->load->view('pasien/template/footer');
 }
+
+function dokterauth($link, $data)
+{
+  $a = get_instance();
+  $a->load->view('doktermain/template/pasien/header');
+  $a->load->view($link, $data);
+  $a->load->view('doktermain/template/pasien/footer');
+}
+
+function dokter($link)
+{
+  $a = get_instance();
+  $a->load->view('doktermain/template/dokter/header');
+  $a->load->view($link);
+  $a->load->view('doktermain/template/dokter/footer');
+}

@@ -16,8 +16,7 @@
             </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
         <div class="row">
-            <?php
-            foreach ($data as $row) :
+            <?php foreach ($data as $row) :
                 $id = $row['ID_DETAIL_JADWAL'];
             ?>
                 <div class="col-sm-5 col-md-5 col-lg-3">
