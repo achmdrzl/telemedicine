@@ -24,7 +24,7 @@
                                         </div>
                                     </div>
                                     <div class="product__action">
-                                        <a href="<?php echo site_url('pasien_login/editProfile/' . $db['ID_PASIEN']); ?>" class="btn btn__primary btn__rounded mb-3">
+                                        <a href="<?php echo site_url('profil_pasien/editProfile/' . $db['ID_PASIEN']); ?>" class="btn btn__primary btn__rounded mb-3">
                                             <i class="icon-cart"></i> <span>Edit Profile</span>
                                         </a>
                                     </div>

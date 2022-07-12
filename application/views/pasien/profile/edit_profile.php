@@ -190,7 +190,7 @@
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "<?= base_url(); ?>pasien_login/getDataKabupaten",
+                url: "<?= base_url(); ?>profil_pasien/getDataKabupaten",
                 data: {
                     provinsi: getprovinsi
                 },
@@ -214,7 +214,7 @@
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "<?= base_url(); ?>pasien_login/getDataKecamatan",
+                url: "<?= base_url(); ?>profil_pasien/getDataKecamatan",
                 data: {
                     kabupaten: getkabupaten
                 },
@@ -239,7 +239,7 @@
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
-                url: "<?= base_url(); ?>pasien_login/getDataKelurahan",
+                url: "<?= base_url(); ?>profil_pasien/getDataKelurahan",
                 data: {
                     kecamatan: getkecamatan
                 },

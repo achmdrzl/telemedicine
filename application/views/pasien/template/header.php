@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="description" content="Medcity - Medical Healthcare HTML5 Template">
+  <meta name="description" content="Telemedicine RSUD Kabupaten Jombang">
   <link href="<?php echo base_url() ?>assets/pasien/images/favicon/favicon2.png" rel="icon">
   <title>Telemedicine RSUD Kabupaten Jombang</title>
 
