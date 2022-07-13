@@ -38,7 +38,7 @@
             <div class="row justify-content-center align-items-center">
                 <div class="contact-panel">
                     <?php foreach ($pasien as $db) : ?>
-                        <form class="form-group" method="POST" action="">
+                        <form class="form-group" method="POST" action="" enctype="multipart/form-data">
                             <div class="row justify-content-center align-items-center">
                                 <div class="col-sm-12">
                                     <h4 class="contact-panel__title">Profile Pasien</h4>
@@ -47,7 +47,10 @@
                                     <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
                                         <div class="image">
                                             <?php if ($db['FILE_FOTO'] !== NULL) : ?>
-                                                <img src="<?= $db['FILE_FOTO']; ?>" alt="FOTO PASIEN" class="rounded mx-auto d-block">
+                                                <img src="<?= base_url() ?>assets/foto_profil/<?= $db['FILE_FOTO']; ?>" alt="FOTO PASIEN" class="rounded mx-auto d-block">
+                                                <span>Edit Profil
+                                                    <input type="file" name="foto" id="foto">
+                                                </span>
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -62,7 +65,7 @@
                                     <div class="mb-3">
                                         <label for="hp" class="form-label">No HP Aktif</label>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" value="<?= $db['HP_PASIEN']; ?>">
+                                            <input type="text" class="form-control" value="<?= $db['HP_PASIEN']; ?>" name="hp" id="hp">
                                             <button class="btn btn-success" type="submit" id="button-addon2">Button</button>
                                         </div>
                                     </div>
@@ -213,25 +216,27 @@
     });
 
     function loadkabupaten() {
-        var getprovinsi = $("#provinsi").val();
-        var id_kabupaten = '<?= $db['ID_KAB'] ?>';
-        console.log(id_kabupaten);
-        $.ajax({
-            type: "POST",
-            dataType: "JSON",
-            url: "<?= base_url(); ?>profil_pasien/getDataKabupaten",
-            data: {
-                provinsi: getprovinsi
-            },
-            success: function(data) {
-                console.log(data);
-                var html = "";
-                var i;
-                for (i = 0; i < data.length; i++) {
-                    html += '<option' + (id_kabupaten == data[i].ID_KAB ? 'selected' : null) + ' value="' + data[i].ID_KAB + '">' + data[i].NAMA_KAB + '</option>';
+        $("#provinsi").change(function() {
+            var getprovinsi = $("#provinsi").val();
+            var id_kabupaten = '<?= $db['ID_KAB'] ?>';
+            console.log(id_kabupaten);
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "<?= base_url(); ?>profil_pasien/getDataKabupaten",
+                data: {
+                    provinsi: getprovinsi
+                },
+                success: function(data) {
+                    console.log(data);
+                    var html = "";
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        html += '<option value="' + data[i].ID_KAB + '">' + data[i].NAMA_KAB + '</option>';
+                    }
+                    $("#kabupaten").html(html);
                 }
-                $("#kabupaten").html(html);
-            }
+            });
         });
     }
 
