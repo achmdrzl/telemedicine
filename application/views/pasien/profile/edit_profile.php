@@ -7,6 +7,7 @@
         border-radius: 55px;
         background-color: #ffffff;
         border: 2px solid #e6e8eb;
+        text-align: left;
     }
 
     .select2-container--default .select2-selection--single .select2-selection__arrow {
@@ -44,7 +45,7 @@
                                     <h4 class="contact-panel__title">Profile Pasien</h4>
                                     <p class="contact-panel__desc mb-30">Silahkan Melengekapi Data Berikut dengan Data yang Benar, Sebelum Melakukan Konsultasi
                                     </p>
-                                    <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
+                                    <!-- <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
                                         <div class="image">
                                             <?php if ($db['FILE_FOTO'] !== NULL) : ?>
                                                 <img src="<?= base_url() ?>assets/foto_profil/<?= $db['FILE_FOTO']; ?>" alt="FOTO PASIEN" class="rounded mx-auto d-block">
@@ -53,7 +54,7 @@
                                                 </span>
                                             <?php endif; ?>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="nama" name="nama" value="<?= $db['NAMA_PASIEN'] ?>" readonly>
@@ -165,6 +166,33 @@
                                         <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $db['ALAMAT_PASIEN'] ?>">
                                         <div id="error" class="form-text text-danger"><?= form_error('alamat'); ?></div>
                                     </div>
+                                    <?php if ($db['FILE_KTP'] == NULL) : ?>
+                                        <h5>
+                                            <span class="badge badge-danger">
+                                                <i class="fa fa-circle" aria-hidden="true"></i>
+                                                Akun belum terverifikasi. Silakan upload foto KTP untuk verifikasi akun Anda.
+                                            </span>
+                                        </h5>
+                                        <div class="mb-3">
+                                            <label for="ktp" class="form-label">Upload Scan/Foto KTP</label>
+                                            <input type="file" class="form-control" id="ktp" name="ktp">
+                                            <div id="error" class="form-text text-danger"><?= form_error('alamat'); ?></div>
+                                        </div>
+                                    <?php elseif ($db['FILE_KTP'] != NULL && $db['STATUS_AKUN'] == NULL) : ?>
+                                        <h5>
+                                            <span class="badge badge-warning">
+                                                <i class="fa fa-circle" aria-hidden="true"></i>
+                                                Menunggu verifikasi akun oleh admin.
+                                            </span>
+                                        </h5>
+                                    <?php else : ?>
+                                        <h5>
+                                            <span class="badge badge-success">
+                                                <i class="fa fa-circle" aria-hidden="true"></i>
+                                                Akun Terverifikasi
+                                            </span>
+                                        </h5>
+                                    <?php endif; ?>
                                     <button type="submit" class="btn btn__primary btn__rounded mt-3">
                                         <span>Edit Profile</span>
                                     </button>

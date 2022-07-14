@@ -17,14 +17,14 @@
                                     <h4 class="contact-panel__title">Profile Pasien</h4>
                                     <p class="contact-panel__desc mb-30">Silahkan Melengekapi Data Berikut dengan Data yang Benar, Sebelum Melakukan Konsultasi
                                     </p>
-                                    <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
+                                    <!-- <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
                                         <div class="image">
                                             <img src="<?= base_url() ?>assets/foto_profil/<?= $db['FILE_FOTO']; ?>" alt="profil">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="product__action">
                                         <a href="<?php echo site_url('profil_pasien/editProfile/' . $db['ID_PASIEN']); ?>" class="btn btn__primary btn__rounded mb-3">
-                                            <i class="icon-cart"></i> <span>Edit Profile</span>
+                                            <span>Edit Profile</span>
                                         </a>
                                     </div>
                                     <div class="mb-3">
@@ -45,7 +45,11 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kelahiran" class="form-label">Tempat, Tanggal Lahir</label>
-                                        <input type="text" class="form-control" id="kelahiran" name="kelahiran" value="<?= $db['KELAHIRAN'] ?>, <?= format_indo($db['TGL_LAHIR']) ?>" readonly>
+                                        <?php if ($db['KELAHIRAN'] !== NULL && $db['TGL_LAHIR'] !== NULL) : ?>
+                                            <input type="text" class="form-control" id="kelahiran" name="kelahiran" value="<?= $db['KELAHIRAN'] ?>, <?= format_indo($db['TGL_LAHIR']) ?>" readonly>
+                                        <?php else : ?>
+                                            <input type="text" name="" id="" class="form-control" readonly>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="form-group">
                                         <label for="jk" class="form-label">Jenis Kelamin</label>
@@ -61,7 +65,11 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="alamat" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $db['ALAMAT_PASIEN'] ?>, Kelurahan <?= $db['NAMA_DESA'] ?>, Kecamatan <?= $db['NAMA_KEC'] ?>, Kabupaten <?= $db['NAMA_KAB'] ?>, Provinsi <?= $db['NAMA_PROV'] ?>" readonly>
+                                        <?php if ($db['ALAMAT_PASIEN'] !== NULL) : ?>
+                                            <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $db['ALAMAT_PASIEN'] ?>, Kelurahan <?= $db['NAMA_DESA'] ?>, Kecamatan <?= $db['NAMA_KEC'] ?>, Kabupaten <?= $db['NAMA_KAB'] ?>, Provinsi <?= $db['NAMA_PROV'] ?>" readonly>
+                                        <?php else : ?>
+                                            <input type="text" name="" id="" class="form-control" readonly>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>

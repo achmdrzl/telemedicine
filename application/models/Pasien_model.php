@@ -124,7 +124,7 @@ class Pasien_model extends CI_Model
     return $query = $this->db->get('desa')->result_array();
   }
 
-  public function updateProfile($id, $uploaded_data, $uploaded_data_ktp)
+  public function updateProfile($id, $uploaded_data_ktp)
   {
     $data = [
       "ID_PEKERJAAN" => $this->input->post('pekerjaan', true),
@@ -135,8 +135,8 @@ class Pasien_model extends CI_Model
       "ALAMAT_PASIEN" => $this->input->post('alamat', true),
       "HP_PASIEN" => $this->input->post('hp', true),
       "JENIS_KELAMIN" => $this->input->post('jk', true),
-      "ID_DESA" => $this->input->post('kelurahan', true),
-      "FILE_FOTO" => $uploaded_data['file_name'],
+      // "ID_DESA" => $this->input->post('kelurahan', true),
+      // "FILE_FOTO" => $uploaded_data['file_name'],
       "FILE_KTP" => $uploaded_data_ktp['file_name']
     ];
     $this->db->where('ID_PASIEN', $id);

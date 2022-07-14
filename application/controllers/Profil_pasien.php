@@ -39,13 +39,30 @@ class Profil_pasien extends CI_Controller
       $data['kota'] = $this->Pasien_model->getKab();
       render4('pasien/profile/edit_profile', $data); //helper
     } else {
-
-      $foto = $_FILES['foto'];
+      // $foto = $_FILES['foto'];
       $ktp = $_FILES['ktp'];
-      if ($foto == '') {
+      // if ($foto == '') {
+      // } else {
+      //   $file_name = $this->session->ID_PASIEN;
+      //   $config['upload_path']          = './assets/foto_profil';
+      //   $config['allowed_types']        = 'jpg|jpeg|png';
+      //   $config['file_name']            = $file_name;
+      //   $config['overwrite']            = true;
+      //   // $config['max_size']             = 1024; // 1MB
+      //   // $config['max_width']            = 1080;
+      //   // $config['max_height']           = 1080;
+      //   $this->load->library('upload', $config);
+      //   if (!$this->upload->do_upload('foto')) {
+      //     echo ('gagal');
+      //     $data['error'] = $this->upload->display_errors();
+      //   } else {
+      //     $uploaded_data = $this->upload->data();
+      //   }
+      // }
+      if ($ktp == '') {
       } else {
         $file_name = $this->session->ID_PASIEN;
-        $config['upload_path']          = './assets/foto_profil';
+        $config['upload_path']          = './assets/foto_ktp';
         $config['allowed_types']        = 'jpg|jpeg|png';
         $config['file_name']            = $file_name;
         $config['overwrite']            = true;
@@ -53,12 +70,6 @@ class Profil_pasien extends CI_Controller
         // $config['max_width']            = 1080;
         // $config['max_height']           = 1080;
         $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('foto')) {
-          echo ('gagal');
-          $data['error'] = $this->upload->display_errors();
-        } else {
-          $uploaded_data = $this->upload->data();
-        }
         if (!$this->upload->do_upload('ktp')) {
           echo ('gagal');
           $data['error'] = $this->upload->display_errors();
@@ -66,7 +77,7 @@ class Profil_pasien extends CI_Controller
           $uploaded_data_ktp = $this->upload->data();
         }
       }
-      $this->Pasien_model->updateProfile($id, $uploaded_data, $uploaded_data_ktp);
+      $this->Pasien_model->updateProfile($id, $uploaded_data_ktp);
       redirect('profil_pasien/profile/' . $id);
     }
   }
