@@ -19,8 +19,7 @@
                                     </p>
                                     <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
                                         <div class="image">
-                                            <img src="<?= $db['FILE_FOTO']; ?>" alt="profil">
-                                            <span>edit profil</span>
+                                            <img src="<?= base_url() ?>assets/foto_profil/<?= $db['FILE_FOTO']; ?>" alt="profil">
                                         </div>
                                     </div>
                                     <div class="product__action">

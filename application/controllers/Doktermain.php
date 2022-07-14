@@ -11,7 +11,7 @@ class Doktermain extends CI_Controller
     }
     public function index()
     {
-        $data=[''];
+        $data['title'] = 'Dokter Site';
         dokterauth('doktermain/auth/login', $data);
     }
 
