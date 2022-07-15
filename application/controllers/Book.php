@@ -7,9 +7,11 @@ class Book extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Book_model');
+        $this->load->model('Auth_pasien');
     }
 
-    public function index(){
+    public function index()
+    {
         $data['sesi'] = $this->Book_model->getSesi();
         render4('pasien/book/index', $data);
     }
@@ -49,12 +51,12 @@ class Book extends CI_Controller
             'HARI' => $getJadwal->HARI,
             'KUOTA' => $getJadwal->KUOTA
         );
-        
+
         $session = array(
             'TGL_KONSUL' => $date,
             'SESI' => $sesi,
         );
-        
+
         $this->session->set_userdata($session);
         $id = $jadwal['ID_JADWAL'];
         $data['data'] = $this->Book_model->getDetailJadwal($id, $sesi);
@@ -67,10 +69,57 @@ class Book extends CI_Controller
         render4('pasien/book/keluhan', $data);
     }
 
-    public function getKel()
+    public function getKel($id)
     {
+        //get data
+        $date = $this->session->TGL_KONSUL;
+        $sesi = $this->session->SESI;
+
+        //get data sesi
+        $getSesi = $this->Book_model->getJam($sesi);
+        $sesi = array(
+            'JAM' => $getSesi->JAM
+        );
+
+        //get keluhan
         $keluhan = $this->input->post('keluhan');
-        $data['detail'] = $this->Book_model->getIdDetJadwal($keluhan);
-        render4('pasien/book/keluhan', $data);
+
+        // get id_pasien
+        $user = $this->session->EMAIL_PASIEN;
+        $id_user = $this->auth_pasien->getUser($user);
+        $user = array(
+            'ID_PASIEN' => $id_user->ID_PASIEN
+        );
+
+        // get id_dokter
+        $detail_jadwal = $this->Book_model->getIdDetJadwal($id);
+
+        //generate zoom
+        // include('../../config/api.php');
+        // define('API_KEY', 'fNzJYpyUQ0C5z7DDZKd3PA');
+        // define('API_SECRET','cFegouy1N8G9snRuRtQC8BsWKZRvMk1hoo3o');
+        // define('EMAIL_ID', 'cobamining2@gmail.com');
+
+        // $arr['topic'] = 'Konsultasi RSUD Jombang';
+        // $arr['start_date'] = date($date . ' Sesi' . $sesi . ' Jam' . $sesi['JAM']);
+        // $arr['duration'] = 30;
+        // $arr['password'] = 'jombang';
+        // $arr['type'] = '2';
+        // $result = createMeeting($arr);
+        // $url = $result->join_url;
+        
+        //insert data
+        $data = array(
+            'ID_PASIEN' => $user['ID_PASIEN'],
+            'ID_DOKTER' => $detail_jadwal[0]['ID_DOKTER'],
+            'TGL_KONSUL' => $date,
+            'KELUHAN' => $keluhan,
+            'BIAYA' => 100000,
+            // 'LINK_ZOOM' => $url
+        );
+
+        $this->db->insert('konsultasi', $data);
+
+        render4('pasien/book/success', $data);
     }
 }

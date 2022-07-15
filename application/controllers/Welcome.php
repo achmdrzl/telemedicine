@@ -27,4 +27,10 @@ class Welcome extends CI_Controller
 		$data[] = "";
 		render2('pasien/auth/verif');
 	}
+
+	public function konsul()
+	{
+		$data[] = "";
+		render2('pasien/book/index');
+	}
 }

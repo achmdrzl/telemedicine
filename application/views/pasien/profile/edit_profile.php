@@ -69,6 +69,7 @@
                                             <input type="text" class="form-control" value="<?= $db['HP_PASIEN']; ?>" name="hp" id="hp">
                                             <button class="btn btn-success" type="submit" id="button-addon2">Button</button>
                                         </div>
+                                        <a href="<?= site_url() ?>pasien/verifikasi/<?= $db['ID_PASIEN'] ?>" data-no="<?= $db['HP_PASIEN'] ?>" data-pesan="<?= $db['OTP'] ?>" onclick="kirimpesanselesai(this)" class="btn btn-success btn-block">Verifikasi</a>
                                     </div>
                                     <div class="mb-3">
                                         <label for="nik" class="form-label">NIK</label>
