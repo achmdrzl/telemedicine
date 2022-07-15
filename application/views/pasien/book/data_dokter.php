@@ -25,7 +25,6 @@
                             <img src="<?= base_url(); ?>/assets/admin/images/<?= $row['PROFIL_DOKTER']; ?>" alt="Foto Dokter <?= $row['NAMA_DOKTER']; ?>" class="dokter">
                         </div><!-- /.member-img -->
                         <div class="member__info">
-                            <h5 class="member__name"><a href="doctors-single-doctor1.html"><?= $this->session->TGL_KONSUL; ?></a></h5>
                             <h5 class="member__name"><a href="doctors-single-doctor1.html"><?= $row['NAMA_DOKTER']; ?></a></h5>
                             <p class="member__job">Dokter <?= $row['SPESIALISASI']; ?></p>
                             <div class="mt-20 d-flex flex-wrap justify-content-between align-items-center">

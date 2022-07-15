@@ -30,7 +30,7 @@ class Auth extends CI_Controller
             $nohp = $this->input->post('nohp');
             $this->auth_pasien->register($name, $username, $password, $nohp);
             $this->session->set_flashdata('success_register', 'Proses Pendaftaran User Berhasil');
-            redirect('welcome/verif');
+            redirect('welcome/login');
         } else {
             $this->session->set_flashdata('error', validation_errors());
             redirect('welcome/register');
@@ -117,7 +117,6 @@ class Auth extends CI_Controller
 
     public function google_login()
     {
-        // include_once APPPATH . "../../vendor/autoload.php";
         require_once __DIR__ . '/../../vendor/autoload.php';
         $client = new Google_Client();
         $client->setApplicationName('Sign In With Google Account');
@@ -125,8 +124,6 @@ class Auth extends CI_Controller
         $client->setClientSecret('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');
         $client->setRedirectUri('http://localhost/telemedicine/auth/google_login');
         $client->addScope(['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile'], '[https://www.googleapis.com/auth/user.phonenumbers.read]');
-        // $client->addScope('email');
-        // $client->addScope('profile');
 
         if ($code = $this->input->get('code')) {
             $token = $client->fetchAccessTokenWithAuthCode($code);

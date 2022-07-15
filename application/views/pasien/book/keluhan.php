@@ -4,30 +4,31 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-7">
                 <div class="contact-panel mb-50">
-                    <?php foreach ($detail as $db) {
-                        echo $db['ID_DETAIL_JADWAL'];
-                    } ?>
-                    <form class="form-group" method="post" action="<?= site_url('pasien_login/getJadwal') ?>">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4 class="contact-panel__title">Silahkan mengisikan keluhan pada kolom di bawah ini.</h4>
-                                <p class="contact-panel__desc mb-30">
-                                </p>
-                            </div>
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <div class="form-group">
-                                    <label for="keluhan" class="form-label"></label>
-                                    <textarea class="form-control" id="keluhan" name="keluhan"" rows="4"" placeholder="Badan demam, dan tenggorokan terasa sakit ketika menelan makanan."></textarea>
-                                    <div id="error" class="form-text text-danger"><?= form_error('konsul'); ?></div>
+                    <?php foreach ($detail as $row) :
+                        $id = $row['ID_DETAIL_JADWAL'];
+                    ?>
+                        <form class="form-group" method="post" action="<?= site_url('book/getKel/' . $id) ?>">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4 class="contact-panel__title">Silahkan mengisikan keluhan pada kolom di bawah ini.</h4>
+                                    <p class="contact-panel__desc mb-30">
+                                    </p>
                                 </div>
-                            </div><!-- /.col-lg-6 -->
-                            <div class="col-12">
-                                <button type="submit" class="btn btn__secondary btn__rounded btn__block btn__xhight mt-10">
-                                    <span>Selanjutnya</span> <i class="icon-arrow-right"></i>
-                                </button>
-                            </div><!-- /.col-lg-12 -->
-                        </div><!-- /.row -->
-                    </form>
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <label for="keluhan" class="form-label"></label>
+                                        <textarea class="form-control" id="keluhan" name="keluhan"" rows=" 4"" placeholder="Badan demam, dan tenggorokan terasa sakit ketika menelan makanan."></textarea>
+                                        <div id="error" class="form-text text-danger"><?= form_error('konsul'); ?></div>
+                                    </div>
+                                </div><!-- /.col-lg-6 -->
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn__secondary btn__rounded btn__block btn__xhight mt-10">
+                                        <span>Selanjutnya</span> <i class="icon-arrow-right"></i>
+                                    </button>
+                                </div><!-- /.col-lg-12 -->
+                            </div><!-- /.row -->
+                        </form>
+                    <?php endforeach; ?>
                 </div>
             </div><!-- /.col-lg-7 -->
             <div class="col-sm-12 col-md-12 col-lg-5">

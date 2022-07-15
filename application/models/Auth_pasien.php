@@ -62,7 +62,7 @@ class Auth_pasien extends CI_Model
 
     public function getUser($username)
     {
-        $this->db->select('ur.USERNAME, ur.PASSWORD, ps.NAMA_PASIEN, ps.EMAIL_PASIEN');
+        $this->db->select('ur.USERNAME, ur.PASSWORD, ps.ID_PASIEN, ps.NAMA_PASIEN, ps.EMAIL_PASIEN');
         $this->db->from('pasien as ps');
         $this->db->join('user as ur', 'ps.EMAIL_PASIEN=ur.USERNAME', 'JOIN');
         $this->db->where('ps.EMAIL_PASIEN', $username);
