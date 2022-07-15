@@ -45,11 +45,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kelahiran" class="form-label">Tempat, Tanggal Lahir</label>
-                                        <?php if ($db['KELAHIRAN'] !== NULL && $db['TGL_LAHIR'] !== NULL) : ?>
-                                            <input type="text" class="form-control" id="kelahiran" name="kelahiran" value="<?= $db['KELAHIRAN'] ?>, <?= format_indo($db['TGL_LAHIR']) ?>" readonly>
-                                        <?php else : ?>
-                                            <input type="text" name="" id="" class="form-control" readonly>
-                                        <?php endif; ?>
+                                        <input type="text" class="form-control" id="kelahiran" name="kelahiran" <?php if ($db['KELAHIRAN'] !== NULL && $db['TGL_LAHIR'] !== NULL) : ?> value="<?= $db['KELAHIRAN'] ?>, <?= format_indo($db['TGL_LAHIR']) ?>" <?php else : ?> value="" <?php endif; ?> readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="jk" class="form-label">Jenis Kelamin</label>
@@ -65,11 +61,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="alamat" class="form-label">Alamat</label>
-                                        <?php if ($db['ALAMAT_PASIEN'] !== NULL) : ?>
-                                            <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $db['ALAMAT_PASIEN'] ?>, Kelurahan <?= $db['NAMA_DESA'] ?>, Kecamatan <?= $db['NAMA_KEC'] ?>, Kabupaten <?= $db['NAMA_KAB'] ?>, Provinsi <?= $db['NAMA_PROV'] ?>" readonly>
-                                        <?php else : ?>
-                                            <input type="text" name="" id="" class="form-control" readonly>
-                                        <?php endif; ?>
+                                        <input type="text" class="form-control" id="alamat" name="alamat" <?php if ($db['ALAMAT_PASIEN'] !== NULL) : ?> value="<?= $db['ALAMAT_PASIEN'] ?>, Kelurahan <?= $db['NAMA_DESA'] ?>, Kecamatan <?= $db['NAMA_KEC'] ?>, Kabupaten <?= $db['NAMA_KAB'] ?>, Provinsi <?= $db['NAMA_PROV'] ?>" <?php else : ?> value="" <?php endif; ?> readonly>
                                     </div>
                                 </div>
                             </div>
