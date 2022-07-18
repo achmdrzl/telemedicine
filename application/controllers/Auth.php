@@ -10,6 +10,7 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->model('auth_pasien');
+        $this->load->model('doktermain_model');
     }
 
     public function getSesi()
@@ -75,15 +76,9 @@ class Auth extends CI_Controller
 
         $data = $this->auth_pasien->login($username, $password);
 
-        $user = $this->auth_pasien->getUser2($username);
-
-        $session = array(
-            'ID_PASIEN' => $user->ID_PASIEN,
-            'NAMA_PASIEN' => $user->NAMA_PASIEN,
-            'EMAIL_PASIEN' => $user->EMAIL_PASIEN,
-            'HP_PASIEN' => $user->HP_PASIEN
-        );
-
+        // $dataUser = array(
+        //     'JENIS_USER' => $data->JENIS_USER
+        // );
         // if ($data) {
         //     if (password_verify($password, $data->PASSWORD)) {
         //         $this->session->set_userdata($session);
@@ -105,9 +100,52 @@ class Auth extends CI_Controller
         //     'FILE_FOTO' => $data->FILE_FOTO
         // );
 
-        if ($data->num_rows() > 0) {
-            $this->session->set_userdata($session);
-            redirect('pasien_login/index');
+        if ($data > 0) {
+
+            $dataUser = $data[0]['JENIS_USER'];
+
+            if ($dataUser == 'PASIEN') {
+                // get data pasien
+                $pasien = $this->auth_pasien->getUser2($username);
+                //session pasien
+                $sessionPasien = array(
+                    'ID_PASIEN' => $pasien->ID_PASIEN,
+                    'NAMA_PASIEN' => $pasien->NAMA_PASIEN,
+                    'EMAIL_PASIEN' => $pasien->EMAIL_PASIEN,
+                    'HP_PASIEN' => $pasien->HP_PASIEN,
+                );
+
+                $this->session->set_userdata($sessionPasien);
+                redirect('pasien_login/index');
+            } elseif ($dataUser == 'DOKTER') {
+                //get data dokter
+                $dokter = $this->doktermain_model->getDokter($username);
+
+                //session dokter
+                $sessionDokter = array(
+                    'ID_DOKTER' => $dokter->ID_DOKTER,
+                    'NAMA_DOKTER' => $dokter->NAMA_DOKTER,
+                    'EMAIL_DOKTER' => $dokter->EMAIL_DOKTER,
+                    'SPESIALISASI' => $dokter->SPESIALISASI,
+                    'HP_DOKTER' => $dokter->HP_DOKTER,
+                );
+
+                $this->session->set_userdata($sessionDokter);
+                redirect('doktermain');
+            } elseif ($dataUser == 'ADMIN') {
+                //get data admin
+                $admin = $this->Doktermain_model->getAdmin($username);
+
+                //session admin
+                $sessionAdmin = array(
+                    'ID_ADMIN' => $admin->ID_ADMIN,
+                    'NAMA_ADMIN' => $admin->NAMA_ADMIN,
+                    'SPESIALISASI' => $admin->SPESIALISASI,
+                    'HP_ADMIN' => $admin->HP_ADMIN,
+                );
+                $this->session->set_userdata($sessionAdmin);
+                redirect('');
+            }
         } else {  // jika username dan password tidak ditemukan atau salah
             $url = base_url();
             echo $this->session->set_flashdata('msg', 'Username Atau Password Salah');
