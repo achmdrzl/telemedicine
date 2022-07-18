@@ -31,6 +31,10 @@ class Welcome extends CI_Controller
 	public function konsul()
 	{
 		$data[] = "";
-		render2('pasien/book/index');
+		if ($this->session->ID_PASIEN) {
+			render2('pasien/book/index');
+		}else{
+			render2('pasien/book/block');
+		}
 	}
 }

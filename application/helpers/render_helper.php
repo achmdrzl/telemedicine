@@ -41,7 +41,7 @@ function render3($link)
 function render4($link, $data)
 {
   $a = get_instance();
-  $a->load->view('pasien/template/header2');
+  $a->load->view('pasien/template/header2', $data);
   $a->load->view($link, $data);
   $a->load->view('pasien/template/footer');
 }

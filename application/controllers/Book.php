@@ -107,7 +107,7 @@ class Book extends CI_Controller
         // $arr['type'] = '2';
         // $result = createMeeting($arr);
         // $url = $result->join_url;
-        
+
         //insert data
         $data = array(
             'ID_PASIEN' => $user['ID_PASIEN'],
