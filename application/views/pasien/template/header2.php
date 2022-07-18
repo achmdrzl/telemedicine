@@ -8,8 +8,11 @@
     <meta name="description" content="Telemedicine RSUD Kabupaten Jombang">
     <link href="<?php echo base_url() ?>assets/pasien/images/favicon/favicon2.png" rel="icon">
     <title>Telemedicine RSUD Kabupaten Jombang</title>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/libraries.css">
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style.css">
@@ -17,13 +20,36 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="<?= base_url('assets/pasien/js/jquery-3.5.1.min.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        .cookiesContent {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+            border-radius: 20px;
+            padding: 30px 30px 70px;
+        }
+
+        .img-edit {
+            width: 40%;
+            height: 40%;
+            object-fit: cover;
+        }
+    </style>
+
 </head>
 
 <body>
     <div class="wrapper">
         <div class="preloader">
             <div class="loading"><span></span><span></span><span></span><span></span></div>
-        </div><!-- /.preloader -->
+        </div>
+        <!-- /.preloader -->
 
         <!-- =========================
         Header
@@ -48,6 +74,7 @@
                                 <div class="d-flex">
                                     <ul class="social-icons list-unstyled mb-0 mr-30 text-white">
                                         Selamat Datang, <?= $this->session->NAMA_PASIEN; ?>
+                                    </ul>
                                 </div>
                             </div>
                         </div><!-- /.col-12 -->
@@ -56,7 +83,7 @@
             </div><!-- /.header-top -->
             <nav class="navbar navbar-expand-lg sticky-navbar">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="<?php echo site_url('pasien_login/index') ?>">
                         <img src="<?php echo base_url() ?>assets/pasien/images/logo/logo2.svg" class="logo-light" alt="logo">
                         <img src="<?php echo base_url() ?>assets/pasien/images/logo/logo2.svg" class="logo-dark" alt="logo">
                     </a>
@@ -115,3 +142,25 @@
                 </div><!-- /.container -->
             </nav><!-- /.navabr -->
         </header><!-- /.Header -->
+        <!-- <div class="cek-status" data-flashdata="<?php echo $this->session->flashdata('message'); ?>" style="z-index:99999;"></div> -->
+        <?php echo $this->session->flashdata('message'); ?>
+        <!-- ========== Start Modal Alert ========== -->
+        <!-- <div class="modal animated fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered w-80">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="cookiesContent" id="cookiesPopup">
+                            <img class="img-edit mb-4" src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="cookies-img" />
+                            <h6 class="member__name mt-2"><a href="#">Harap Lengkapi Data Diri Anda Sebelum Melakukan Konsultasi</a></h6>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- ========== End Modal Alert ========== -->

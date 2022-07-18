@@ -12,10 +12,10 @@
                 <div class="col-8">
                     <div class="contact-panel d-flex flex-wrap">
                         <?php
-                        if ($this->session->flashdata('error') != '') {
-                            echo '<div class="alert alert-danger" role="alert">';
+                        if ($this->session->flashdata('error') != 1) {
+                            echo $this->session->flashdata('success');
+                        }else{
                             echo $this->session->flashdata('error');
-                            echo '</div>';
                         }
                         ?>
                         <form class="form-group" method="post" action="<?php echo base_url(); ?>auth/register">
@@ -54,7 +54,7 @@
                                 </div><!-- /.col-lg-4 -->
                                 <div class="col-12">
                                     <button type="submit" class="btn btn__secondary btn__rounded btn__block btn__xhight mt-10">
-                                        <span>Log In</span> <i class="icon-arrow-right"></i>
+                                        <span>Register</span> <i class="icon-arrow-right"></i>
                                     </button>
                                     <div class="contact-result"></div>
                                 </div><!-- /.col-lg-12 -->

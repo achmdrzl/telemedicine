@@ -7,6 +7,11 @@ class Tentang_kami extends CI_Controller
   {
     render2('pasien/tentang_kami/index');
   }
+  public function index2()
+  {
+    $data = [''];
+    render3('pasien/tentang_kami/index');
+  }
   public function about()
   {
     $data[''] = '';

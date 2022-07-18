@@ -12,9 +12,47 @@ class Book extends CI_Controller
 
     public function index()
     {
-        $data['sesi'] = $this->Book_model->getSesi();
-        render4('pasien/book/index', $data);
+        $username = $this->session->EMAIL_PASIEN;
+
+        $a = $this->auth_pasien->getUser2($username);
+        $a2 = array(
+            'ID_PASIEN' => $a->ID_PASIEN,
+        );
+        $id = $a2['ID_PASIEN'];
+
+        $cek_status = $this->Book_model->cekStatus($id);
+
+        $cek = array(
+            'STATUS_AKUN' => $cek_status->STATUS_AKUN,
+        );
+
+        if ($cek['STATUS_AKUN'] == TRUE) {
+            $data['sesi'] = $this->Book_model->getSesi();
+            render4('pasien/book/index', $data);
+            // C:\xampp\htdocs\telemedicine\assets\pasien\images\logo
+        } else {
+            $this->session->set_flashdata('message', '
+                <div class="modal animated fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered w-80">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="cookiesContent" id="cookiesPopup">
+                                    <img class="img-edit mb-4" src="https://ik.imagekit.io/dxofqajmq/telemedicine/resume_kjKF_l3Bx.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658124642679" alt="cookies-img" />
+                                    <h6 class="member__name mt-2"><a href="#">Harap Lengkapi Data Diri Anda dan Pastikan Akun Anda Sudah Terverifikasi Sebelum Melakukan Konsultasi</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
     }
+
+
 
     public function getDataSesi()
     {
@@ -81,6 +119,9 @@ class Book extends CI_Controller
             'JAM' => $getSesi->JAM
         );
 
+        //trim string
+        $jam = substr($sesi['JAM'], 0, -6);
+
         //get keluhan
         $keluhan = $this->input->post('keluhan');
 
@@ -94,20 +135,11 @@ class Book extends CI_Controller
         // get id_dokter
         $detail_jadwal = $this->Book_model->getIdDetJadwal($id);
 
-        //generate zoom
-        // include('../../config/api.php');
-        // define('API_KEY', 'fNzJYpyUQ0C5z7DDZKd3PA');
-        // define('API_SECRET','cFegouy1N8G9snRuRtQC8BsWKZRvMk1hoo3o');
-        // define('EMAIL_ID', 'cobamining2@gmail.com');
+        // zoom generate
+        $getZoom = $this->Book_model->genZoom($date, $jam);
 
-        // $arr['topic'] = 'Konsultasi RSUD Jombang';
-        // $arr['start_date'] = date($date . ' Sesi' . $sesi . ' Jam' . $sesi['JAM']);
-        // $arr['duration'] = 30;
-        // $arr['password'] = 'jombang';
-        // $arr['type'] = '2';
-        // $result = createMeeting($arr);
-        // $url = $result->join_url;
-        
+        $url = $getZoom->join_url;
+
         //insert data
         $data = array(
             'ID_PASIEN' => $user['ID_PASIEN'],
@@ -115,11 +147,11 @@ class Book extends CI_Controller
             'TGL_KONSUL' => $date,
             'KELUHAN' => $keluhan,
             'BIAYA' => 100000,
-            // 'LINK_ZOOM' => $url
+            'LINK_ZOOM' => $url
         );
 
         $this->db->insert('konsultasi', $data);
 
-        render4('pasien/book/success', $data);
+        render3('pasien/book/success');
     }
 }
