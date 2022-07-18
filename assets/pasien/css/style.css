@@ -2708,13 +2708,13 @@ input[type=radio] {
 }
 
 .preloader .loading span:nth-child(1) {
-  -webkit-animation-delay: -0.45s;
-          animation-delay: -0.45s;
+  -webkit-animation-delay: -0.15s;
+          animation-delay: -0.15s;
 }
 
 .preloader .loading span:nth-child(2) {
-  -webkit-animation-delay: -0.3s;
-          animation-delay: -0.3s;
+  -webkit-animation-delay: -0.1s;
+          animation-delay: -0.1s;
 }
 
 .preloader .loading span:nth-child(3) {

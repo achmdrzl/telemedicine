@@ -133,7 +133,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="provinsi" class="form-label">Provinsi</label>
-                                        <select class="form-select" aria-label="Default select example" name="provinsi" id="provinsi">
+                                        <select class="form-control" aria-label="Default select example" name="provinsi" id="provinsi">
                                             <option></option>
                                             <?php foreach ($provinsi as $row) : ?>
                                                 <option <?= ($row['ID_PROV'] == $db['ID_PROV'] ? 'selected' : '') ?> value="<?= $row['ID_PROV'] ?>"><?= $row['NAMA_PROV']; ?></option>

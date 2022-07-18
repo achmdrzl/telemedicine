@@ -8,6 +8,11 @@ class Book_model extends CI_Model
         return $query = $this->db->get('sesi')->result_array();
     }
 
+    public function cekStatus($id)
+    {
+        return $this->db->where('ID_PASIEN', $id)->get('pasien')->row();
+    }
+
     public function getJadwal()
     {
         return $query = $this->db->get('jadwal')->result_array();
@@ -38,5 +43,21 @@ class Book_model extends CI_Model
     public function getIdDetJadwal($id)
     {
         return $this->db->where('ID_DETAIL_JADWAL', $id)->get('detail_jadwal')->result_array();
+    }
+
+    public function genZoom($date, $jam){
+        //generate zoom
+        require_once __DIR__ . '/../../config/api.php';
+        require_once __DIR__ . '/../../config/config.php';
+
+        $arr['topic'] = 'Konsultasi RSUD Jombang';
+        $arr['start_date'] = date($date . $jam);
+
+        $arr['duration'] = 30;
+        $arr['password'] = 'jombang';
+        $arr['type'] = '2';
+        $arr['timezone'] = 'Asia/Jakarta';
+        $result = createMeeting($arr);
+        return $result;
     }
 }
