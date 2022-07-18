@@ -135,6 +135,7 @@ class Book extends CI_Controller
         // get id_dokter
         $detail_jadwal = $this->Book_model->getIdDetJadwal($id);
 
+
         // zoom generate
         $getZoom = $this->Book_model->genZoom($date, $jam);
 
