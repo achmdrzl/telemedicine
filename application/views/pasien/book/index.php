@@ -22,9 +22,9 @@
                                 </div>
                             </div><!-- /.col-lg-6 -->
                             <div class="col-sm-6 col-md-6 col-lg-6">
-                                <div class="form-group">
+                                <div class="">
                                     <label for="sesi" class="form-label">Pilih Sesi</label>
-                                    <select name="sesi" id="sesi" class="form-select">
+                                    <select name="sesi" id="sesi" class="form-control">
                                         <option value="" selected>Pilih sesi</option>
                                         <?php foreach ($sesi as $row) : ?>
                                             <option value="<?= $row['ID_SESI'] ?>">Sesi <?= $row['ID_SESI'] ?> <?= $row['JAM']; ?></option>

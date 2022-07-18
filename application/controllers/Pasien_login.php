@@ -7,7 +7,6 @@ class Pasien_login extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Pasien_model');
-        $this->load->library('form_validation');
     }
 
     public function getDataSesi()
@@ -26,21 +25,11 @@ class Pasien_login extends CI_Controller
 
     public function index()
     {
-        $data['sesi'] = $this->Pasien_model->getSesi();
-        render4('pasien/index', $data);
-
-        // if ($this->session->has_userdata('logged')) {
-        //     render3('pasien/index');
-        // } else {
-        //     redirect('welcome/index');
-        // }
-        // if ($this->session->has_userdata('logged')) {
-        //     $user = $this->session->userdata('logged');
-        //     render3('pasien/index', array('logged' => $user));
-        // } else {
-        //     redirect('welcome/index');
-        // }
-
+        if ($this->session->has_userdata('NAMA_PASIEN') == TRUE) {
+            render3('pasien/index');
+        } else {
+            redirect('welcome/index');
+        }
     }
 
     public function logout()
