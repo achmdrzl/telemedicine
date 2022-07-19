@@ -2,9 +2,9 @@
             Footer start
         ***********************************-->
 <div class="footer">
-    <div class="copyright">
-        <p>Copyright © Designed &amp; Developed by <a href="http://dexignzone.com/" target="_blank">DexignZone</a> 2020</p>
-    </div>
+  <div class="copyright">
+    <p>Copyright © Designed &amp; Developed by <a href="http://dexignzone.com/" target="_blank">DexignZone</a> 2020</p>
+  </div>
 </div>
 <!--**********************************
             Footer end
@@ -47,68 +47,47 @@
 <script src="<?= base_url('assets/admin/js/dashboard/dashboard-1.js') ?>"></script>
 <script src="<?= base_url('assets/admin/vendor/datatables/js/jquery.dataTables.min.js') ?>"></script>
 <script>
-    $(function() {
-        $('#datetimepicker1').datetimepicker({
-            inline: true,
-        });
+  $(function() {
+    $('#datetimepicker1').datetimepicker({
+      inline: true,
     });
-    (function($) {
-        var table = $('#example5').DataTable({
-            searching: false,
-            paging: true,
-            select: false,
-            //info: false,         
-            lengthChange: false
+  });
+  (function($) {
+    var table = $('#example5').DataTable({
+      searching: false,
+      paging: true,
+      select: false,
+      //info: false,         
+      lengthChange: false
 
-        });
-        $('#example tbody').on('click', 'tr', function() {
-            var data = table.row(this).data();
+    });
+    $('#example tbody').on('click', 'tr', function() {
+      var data = table.row(this).data();
 
-        });
-    })(jQuery);
+    });
+  })(jQuery);
 
-    function kirimpesanselesai(el) {
-        let no = $(el).data("no");
-        let psn = $(el).data("pesan");
-        $.ajax({
-            url: "http://127.0.0.1:4774/kirimpesan",
-            method: "POST",
-            cache: false,
-            dataType: "json",
-            data: {
-                nomor: no,
-                pesan: psn
-            },
-            success: function(x) {
-                let data = JSON.parse(JSON.stringify(x));
-                alert(data.status);
-            },
-            error: function(c) {
-                alert("Pesan Gagal Dikirim");
-            }
-        });
-    }
-    function kirimpesanotp(el) {
-        let no = $(el).data("no");
-        let psn = $(el).data("pesan");
-        $.ajax({
-            url: "http://127.0.0.1:4774/kirimpesan",
-            method: "POST",
-            cache: false,
-            dataType: "json",
-            data: {
-                nomor: no,
-                pesan: psn
-            },
-            success: function(x) {
-                let data = JSON.parse(JSON.stringify(x));
-                alert(data.status);
-            },
-            error: function(c) {
-                alert("Pesan Gagal Dikirim");
-            }
-        });
-    }
+  function kirimpesanselesai(el) {
+    let no = $(el).data("no");
+    let psn = $(el).data("pesan");
+    $.ajax({
+      url: "http://127.0.0.1:4774/kirimpesan",
+      method: "POST",
+      cache: false,
+      dataType: "json",
+      data: {
+        nomor: no,
+        pesan: psn
+      },
+      success: function(x) {
+        let data = JSON.parse(JSON.stringify(x));
+        alert(data.status);
+      },
+      error: function(c) {
+        alert("Pesan Gagal Dikirim");
+      }
+    });
+  }
 </script>
 </body>
 

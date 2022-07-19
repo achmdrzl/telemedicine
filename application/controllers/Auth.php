@@ -28,12 +28,22 @@ class Auth extends CI_Controller
             $name = $this->input->post('name');
             $username = $this->input->post('email');
             $password = $this->input->post('password');
-            $nohp = $this->input->post('nohp');
+            $nohp = $this->auth_pasien->gantiformat($this->input->post('nohp'));
             $this->auth_pasien->register($name, $username, $password, $nohp);
-            $this->session->set_flashdata('success_register', 'Proses Pendaftaran User Berhasil');
-            redirect('welcome/verif');
+            $this->session->set_flashdata('success', '
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Pendaftaran Berhasil!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+            ');
+            redirect('welcome/register');
         } else {
-            $this->session->set_flashdata('error', validation_errors());
+            $this->session->set_flashdata('error', '
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Pendaftaran Gagal!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+            ');
             redirect('welcome/register');
         }
     }
@@ -44,10 +54,9 @@ class Auth extends CI_Controller
         if ($this->form_validation->run() == true) {
             $otp = $this->input->post('otp');
             $this->auth_pasien->verif($otp);
-            $this->session->set_flashdata('success_register', 'Proses Pendaftaran User Berhasil');
             redirect('welcome/login');
         } else {
-            $this->session->set_flashdata('error', validation_errors());
+
             redirect('welcome/verif');
         }
 
@@ -148,14 +157,18 @@ class Auth extends CI_Controller
             }
         } else {  // jika username dan password tidak ditemukan atau salah
             $url = base_url();
-            echo $this->session->set_flashdata('msg', 'Username Atau Password Salah');
+            $this->session->set_flashdata('msg', '
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Username & Password Salah!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+            ');
             redirect('welcome/login');
         }
     }
 
     public function google_login()
     {
-        // include_once APPPATH . "../../vendor/autoload.php";
         require_once __DIR__ . '/../../vendor/autoload.php';
         $client = new Google_Client();
         $client->setApplicationName('Sign In With Google Account');
@@ -163,8 +176,6 @@ class Auth extends CI_Controller
         $client->setClientSecret('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');
         $client->setRedirectUri('http://localhost/telemedicine/auth/google_login');
         $client->addScope(['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile'], '[https://www.googleapis.com/auth/user.phonenumbers.read]');
-        // $client->addScope('email');
-        // $client->addScope('profile');
 
         if ($code = $this->input->get('code')) {
             $token = $client->fetchAccessTokenWithAuthCode($code);
@@ -177,13 +188,13 @@ class Auth extends CI_Controller
             $profile = $data['FILE_FOTO'] = $user_info->picture;
             $nohp = $data['HP_PASIEN'] = $user_info->phoneNumber;
 
-            $user = $this->auth_pasien->getUser($username);
+            // $user = $this->auth_pasien->getUser($username);
             $session = array(
                 'NAMA_PASIEN' => $nama,
                 'EMAIL_PASIEN' => $username,
                 'HP_PASIEN' => $nohp
             );
-            if ($this->auth_pasien->getUser($username)) {
+            if ($this->auth_pasien->getUser($username) == TRUE) {
                 $this->session->set_userdata($session);
             } else {
                 $this->auth_pasien->createUser($nama, $username, $profile, $nohp);
@@ -191,13 +202,6 @@ class Auth extends CI_Controller
             }
 
             redirect('pasien_login/index');
-            // if ($this->auth_pasien->getUser($user_info->email)) {
-            //     $this->session->set_userdata($session);
-            // } else {
-            //     $this->auth_pasien->createUser($nama, $username, $profile, $nohp);
-            //     $this->session->set_userdata($session);
-            // }
-
         } else {
             $url = $client->createAuthUrl();
             header('Location:' . filter_var($url, FILTER_SANITIZE_URL));

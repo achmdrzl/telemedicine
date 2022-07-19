@@ -135,8 +135,16 @@ class Pasien_model extends CI_Model
       "TGL_LAHIR" => $this->input->post('tgl_lahir', true),
       "ALAMAT_PASIEN" => $this->input->post('alamat', true),
       "HP_PASIEN" => $this->input->post('hp', true),
-      "JENIS_KELAMIN" => $this->input->post('jk', true),
-      "ID_DESA" => $this->input->post('kelurahan', true)
+      "JENIS_KELAMIN" => $this->input->post('jk', true)
+      // "ID_DESA" => $this->input->post('kelurahan', true),
+    ];
+    $this->db->where('ID_PASIEN', $id);
+    $this->db->update('pasien', $data);
+  }
+  public function uploadKTP($id, $uploaded_data_ktp)
+  {
+    $data = [
+      "FILE_KTP" => $uploaded_data_ktp['file_name']
     ];
     $this->db->where('ID_PASIEN', $id);
     $this->db->update('pasien', $data);

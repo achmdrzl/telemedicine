@@ -15,17 +15,22 @@
                             <div class="row justify-content-center align-items-center">
                                 <div class="col-sm-12">
                                     <h4 class="contact-panel__title">Profile Pasien</h4>
+                                    <?php if ($this->session->flashdata('ubah_data')) : ?>
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            Profil <strong>berhasil</strong> <?= $this->session->flashdata('ubah_data'); ?>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    <?php endif; ?>
                                     <p class="contact-panel__desc mb-30">Silahkan Melengekapi Data Berikut dengan Data yang Benar, Sebelum Melakukan Konsultasi
                                     </p>
-                                    <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
+                                    <!-- <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
                                         <div class="image">
-                                            <img src="<?= $db['FILE_FOTO']; ?>" alt="profil">
-                                            <span>edit profil</span>
+                                            <img src="<?= base_url() ?>assets/foto_profil/<?= $db['FILE_FOTO']; ?>" alt="profil">
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="product__action">
                                         <a href="<?php echo site_url('profil_pasien/editProfile/' . $db['ID_PASIEN']); ?>" class="btn btn__primary btn__rounded mb-3">
-                                            <i class="icon-cart"></i> <span>Edit Profile</span>
+                                            <span>Edit Profile</span>
                                         </a>
                                     </div>
                                     <div class="mb-3">
@@ -46,7 +51,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="kelahiran" class="form-label">Tempat, Tanggal Lahir</label>
-                                        <input type="text" class="form-control" id="kelahiran" name="kelahiran" value="<?= $db['KELAHIRAN'] ?>, <?= format_indo($db['TGL_LAHIR']) ?>" readonly>
+                                        <input type="text" class="form-control" id="kelahiran" name="kelahiran" <?php if ($db['KELAHIRAN'] !== NULL && $db['TGL_LAHIR'] !== NULL) : ?> value="<?= $db['KELAHIRAN'] ?>, <?= format_indo($db['TGL_LAHIR']) ?>" <?php else : ?> value="" <?php endif; ?> readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="jk" class="form-label">Jenis Kelamin</label>
@@ -62,8 +67,30 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="alamat" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $db['ALAMAT_PASIEN'] ?>, Kelurahan <?= $db['NAMA_DESA'] ?>, Kecamatan <?= $db['NAMA_KEC'] ?>, Kabupaten <?= $db['NAMA_KAB'] ?>, Provinsi <?= $db['NAMA_PROV'] ?>" readonly>
+                                        <input type="text" class="form-control" id="alamat" name="alamat" <?php if ($db['ALAMAT_PASIEN'] !== NULL) : ?> value="<?= $db['ALAMAT_PASIEN'] ?>, <?= $db['JENIS_DESA']; ?> <?= $db['NAMA_DESA'] ?>, Kecamatan <?= $db['NAMA_KEC'] ?>, <?= $db['JENIS_KAB']; ?> <?= $db['NAMA_KAB'] ?>, Provinsi <?= $db['NAMA_PROV'] ?>" <?php else : ?> value="" <?php endif; ?> readonly>
                                     </div>
+                                    <?php if ($db['FILE_KTP'] == NULL && $db['STATUS_AKUN'] == NULL) : ?>
+                                        <h5>
+                                            <span class="badge badge-danger">
+                                                <i class="fa fa-circle" aria-hidden="true"></i>
+                                                Akun Anda belum dapat diverifikasi oleh Admin. Silakan lengkapi data diri Anda.
+                                            </span>
+                                        </h5>
+                                    <?php elseif ($db['FILE_KTP'] != NULL && $db['STATUS_AKUN'] == NULL) : ?>
+                                        <h5>
+                                            <span class="badge badge-warning">
+                                                <i class="fa fa-circle" aria-hidden="true"></i>
+                                                Menunggu verifikasi akun oleh admin.
+                                            </span>
+                                        </h5>
+                                    <?php else : ?>
+                                        <h5>
+                                            <span class="badge badge-success">
+                                                <i class="fa fa-circle" aria-hidden="true"></i>
+                                                Akun Terverifikasi
+                                            </span>
+                                        </h5>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </form>

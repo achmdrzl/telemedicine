@@ -1,3 +1,31 @@
+<style>
+    .select2-container .select2-selection--single {
+        font-size: 14px;
+        height: 60px;
+        width: 100%;
+        padding: 0 20px;
+        border-radius: 55px;
+        background-color: #ffffff;
+        border: 2px solid #e6e8eb;
+        text-align: left;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        content: '';
+        position: absolute;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        right: 12px;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        z-index: 1;
+        border-radius: 50%;
+        background-color: #213360;
+    }
+</style>
+
+
 <!-- ========================
        page title 
     =========================== -->
@@ -11,19 +39,12 @@
             <div class="row justify-content-center align-items-center">
                 <div class="contact-panel">
                     <?php foreach ($pasien as $db) : ?>
-                        <form class="form-group" method="POST" action="">
+                        <form class="form-group" method="POST" action="" enctype="multipart/form-data">
                             <div class="row justify-content-center align-items-center">
                                 <div class="col-sm-12">
                                     <h4 class="contact-panel__title">Profile Pasien</h4>
                                     <p class="contact-panel__desc mb-30">Silahkan Melengekapi Data Berikut dengan Data yang Benar, Sebelum Melakukan Konsultasi
                                     </p>
-                                    <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
-                                        <div class="image">
-                                            <?php if ($db['FILE_FOTO'] !== NULL) : ?>
-                                                <img src="<?= $db['FILE_FOTO']; ?>" alt="FOTO PASIEN" class="rounded mx-auto d-block">
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
                                     <div class="mb-3">
                                         <label for="nama" class="form-label">Nama</label>
                                         <input type="text" class="form-control" id="nama" name="nama" value="<?= $db['NAMA_PASIEN'] ?>" readonly>
@@ -35,9 +56,10 @@
                                     <div class="mb-3">
                                         <label for="hp" class="form-label">No HP Aktif</label>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" value="<?= $db['HP_PASIEN']; ?>">
+                                            <input type="text" class="form-control" value="<?= $db['HP_PASIEN']; ?>" name="hp" id="hp">
                                             <button class="btn btn-success" type="submit" id="button-addon2">Button</button>
                                         </div>
+                                        <a href="<?= site_url() ?>pasien/verifikasi/<?= $db['ID_PASIEN'] ?>" data-no="<?= $db['HP_PASIEN'] ?>" data-pesan="<?= $db['OTP'] ?>" onclick="kirimpesanselesai(this)" class="btn btn-success btn-block">Verifikasi</a>
                                     </div>
                                     <div class="mb-3">
                                         <label for="nik" class="form-label">NIK</label>
@@ -81,7 +103,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="pekerjaan" class="form-label">Pekerjaan</label>
-                                        <select name="pekerjaan" id="pekerjaan" class="form-control">
+                                        <select name="pekerjaan" id="pekerjaan" class="form-control py-auto">
                                             <option></option>
                                             <?php foreach ($pekerjaan as $row) : ?>
                                                 <option <?= ($row['ID_PEKERJAAN'] == $db['ID_PEKERJAAN'] ? 'selected' : '') ?> value="<?= $row['ID_PEKERJAAN'] ?>"><?= $row['NAMA_PEKERJAAN']; ?></option>
@@ -101,7 +123,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="provinsi" class="form-label">Provinsi</label>
-                                        <select class="form-select" aria-label="Default select example" name="provinsi" id="provinsi">
+                                        <select class="form-control" aria-label="Default select example" name="provinsi" id="provinsi">
                                             <option></option>
                                             <?php foreach ($provinsi as $row) : ?>
                                                 <option <?= ($row['ID_PROV'] == $db['ID_PROV'] ? 'selected' : '') ?> value="<?= $row['ID_PROV'] ?>"><?= $row['NAMA_PROV']; ?></option>
@@ -109,11 +131,9 @@
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('prov'); ?></div>
                                     </div>
-
                                     <div class="mb-3">
                                         <label for="kabupaten" class="form-label">Kabupaten</label>
                                         <select name="kabupaten" id="kabupaten" class="form-select">
-                                            <option></option>
                                         </select>
                                         <div id="error" class="form-text text-danger"><?= form_error('kab'); ?></div>
                                     </div>
@@ -137,12 +157,15 @@
                                         <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $db['ALAMAT_PASIEN'] ?>">
                                         <div id="error" class="form-text text-danger"><?= form_error('alamat'); ?></div>
                                     </div>
-                                    <button type="submit" class="btn btn__primary btn__rounded mt-3">
+                                    <button type="submit" class="btn btn__primary btn__rounded mt-3 btn-block">
                                         <span>Edit Profile</span>
                                     </button>
                                 </div>
                             </div>
                         </form>
+                        <?php if ($db['FILE_KTP'] == NULL) : ?>
+                            <a href="<?= site_url('profil_pasien/upload/'); ?>" class="btn btn__primary btn__rounded mt-2 btn-block">Upload KTP</a>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -190,6 +213,8 @@
     function loadkabupaten() {
         $("#provinsi").change(function() {
             var getprovinsi = $("#provinsi").val();
+            var id_kabupaten = '<?= $db['ID_KAB'] ?>';
+            console.log(id_kabupaten);
             $.ajax({
                 type: "POST",
                 dataType: "JSON",
@@ -205,7 +230,6 @@
                         html += '<option value="' + data[i].ID_KAB + '">' + data[i].NAMA_KAB + '</option>';
                     }
                     $("#kabupaten").html(html);
-
                 }
             });
         });

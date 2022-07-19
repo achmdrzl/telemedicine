@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/libraries.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/pasien/css/style2.css">
@@ -65,7 +66,7 @@
       </div><!-- /.header-top -->
       <nav class="navbar navbar-expand-lg sticky-navbar">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="<?= site_url('welcome/index') ?>">
             <img src="<?php echo base_url() ?>assets/pasien/images/logo/logo2.svg" class="logo-light" alt="logo">
             <img src="<?php echo base_url() ?>assets/pasien/images/logo/logo2.svg" class="logo-dark" alt="logo">
           </a>
@@ -87,7 +88,7 @@
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Layanan</a>
                 <ul class="dropdown-menu">
                   <li class="nav__item">
-                    <a href="<?= site_url('book/index') ?>" class="nav__item-link">Konsultasi Online</a>
+                    <a href="<?= site_url('welcome/konsul') ?>" class="nav__item-link">Konsultasi Online</a>
                   </li><!-- /.nav-item -->
                   <li class="nav__item">
                     <a href="<?= site_url('') ?>" class="nav__item-link">Pembayaran Konsultasi</a>

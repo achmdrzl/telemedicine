@@ -11,7 +11,7 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-sm-12 col-md-8 col-lg-6">
                     <div class="contact-panel d-flex flex-wrap">
-
+                        <?php echo $this->session->flashdata('msg'); ?>
                         <form class="form-group" method="post" action="<?php echo site_url(); ?>auth/login">
                             <div class="row">
                                 <div class="col-sm-12">

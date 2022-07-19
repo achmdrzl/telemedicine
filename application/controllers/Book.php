@@ -7,12 +7,52 @@ class Book extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Book_model');
+        $this->load->model('Auth_pasien');
     }
 
-    public function index(){
-        $data['sesi'] = $this->Book_model->getSesi();
-        render4('pasien/book/index', $data);
+    public function index()
+    {
+        $username = $this->session->EMAIL_PASIEN;
+
+        $a = $this->auth_pasien->getUser2($username);
+        $a2 = array(
+            'ID_PASIEN' => $a->ID_PASIEN,
+        );
+        $id = $a2['ID_PASIEN'];
+
+        $cek_status = $this->Book_model->cekStatus($id);
+
+        $cek = array(
+            'STATUS_AKUN' => $cek_status->STATUS_AKUN,
+        );
+
+        if ($cek['STATUS_AKUN'] == TRUE) {
+            $data['sesi'] = $this->Book_model->getSesi();
+            render4('pasien/book/index', $data);
+            // C:\xampp\htdocs\telemedicine\assets\pasien\images\logo
+        } else {
+            $this->session->set_flashdata('message', '
+                <div class="modal animated fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered w-80">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="cookiesContent" id="cookiesPopup">
+                                    <img class="img-edit mb-4" src="https://ik.imagekit.io/dxofqajmq/telemedicine/resume_kjKF_l3Bx.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658124642679" alt="cookies-img" />
+                                    <h6 class="member__name mt-2"><a href="#">Harap Lengkapi Data Diri Anda dan Pastikan Akun Anda Sudah Terverifikasi Sebelum Melakukan Konsultasi</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
     }
+
+
 
     public function getDataSesi()
     {
@@ -49,12 +89,12 @@ class Book extends CI_Controller
             'HARI' => $getJadwal->HARI,
             'KUOTA' => $getJadwal->KUOTA
         );
-        
+
         $session = array(
             'TGL_KONSUL' => $date,
             'SESI' => $sesi,
         );
-        
+
         $this->session->set_userdata($session);
         $id = $jadwal['ID_JADWAL'];
         $data['data'] = $this->Book_model->getDetailJadwal($id, $sesi);
@@ -67,10 +107,52 @@ class Book extends CI_Controller
         render4('pasien/book/keluhan', $data);
     }
 
-    public function getKel()
+    public function getKel($id)
     {
+        //get data
+        $date = $this->session->TGL_KONSUL;
+        $sesi = $this->session->SESI;
+
+        //get data sesi
+        $getSesi = $this->Book_model->getJam($sesi);
+        $sesi = array(
+            'JAM' => $getSesi->JAM
+        );
+
+        //trim string
+        $jam = substr($sesi['JAM'], 0, -6);
+
+        //get keluhan
         $keluhan = $this->input->post('keluhan');
-        $data['detail'] = $this->Book_model->getIdDetJadwal($keluhan);
-        render4('pasien/book/keluhan', $data);
+
+        // get id_pasien
+        $user = $this->session->EMAIL_PASIEN;
+        $id_user = $this->auth_pasien->getUser($user);
+        $user = array(
+            'ID_PASIEN' => $id_user->ID_PASIEN
+        );
+
+        // get id_dokter
+        $detail_jadwal = $this->Book_model->getIdDetJadwal($id);
+
+
+        // zoom generate
+        $getZoom = $this->Book_model->genZoom($date, $jam);
+
+        $url = $getZoom->join_url;
+
+        //insert data
+        $data = array(
+            'ID_PASIEN' => $user['ID_PASIEN'],
+            'ID_DOKTER' => $detail_jadwal[0]['ID_DOKTER'],
+            'TGL_KONSUL' => $date,
+            'KELUHAN' => $keluhan,
+            'BIAYA' => 100000,
+            'LINK_ZOOM' => $url
+        );
+
+        $this->db->insert('konsultasi', $data);
+
+        render3('pasien/book/success');
     }
 }

@@ -58,7 +58,7 @@
                       <h5>
                         <span class="badge badge-warning">
                           <i class="fa fa-circle text-primary mr-1"></i>
-                          Menunggu Konfirmasi
+                          Menunggu verifikasi
                         </span>
                       </h5>
                     <?php
@@ -67,7 +67,7 @@
                       <h5>
                         <span class="badge badge-success">
                           <i class="fa fa-circle text-primary mr-1"></i>
-                          Terkonfirmasi
+                          Terverifikasi
                         </span>
                       </h5>
                     <?php endif; ?>

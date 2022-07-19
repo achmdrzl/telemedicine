@@ -37,11 +37,41 @@ class Profil_pasien extends CI_Controller
       $data['gol'] = $this->Pasien_model->getGol();
       $data['provinsi'] = $this->Pasien_model->getProv();
       $data['kota'] = $this->Pasien_model->getKab();
+      $this->session->set_flashdata('ubah_profil', 'diubah');
       render4('pasien/profile/edit_profile', $data);
     } else {
       $this->Pasien_model->updateProfile($id);
-      redirect('pasien_login/profile/' . $id);
+      redirect('profil_pasien/profile/' . $id);
     }
+  }
+  public function upload()
+  {
+    $data[''] = '';
+    render4('pasien/profile/upload', $data);
+  }
+  public function uploadKTP()
+  {
+    $ktp = $_FILES['ktp'];
+    if ($ktp == '') {
+    } else {
+      $file_name = $this->session->ID_PASIEN;
+      $config['upload_path']          = './assets/foto_ktp';
+      $config['allowed_types']        = 'jpg|jpeg|png';
+      $config['file_name']            = $file_name;
+      $config['overwrite']            = true;
+      // $config['max_size']             = 1024; // 1MB
+      // $config['max_width']            = 1080;
+      // $config['max_height']           = 1080;
+      $this->load->library('upload', $config);
+      if (!$this->upload->do_upload('ktp')) {
+        echo ('gagal');
+        $data['error'] = $this->upload->display_errors();
+      } else {
+        $uploaded_data_ktp = $this->upload->data();
+      }
+    }
+    $this->Pasien_model->uploadKTP($this->session->ID_PASIEN, $uploaded_data_ktp);
+    redirect('profil_pasien/profile/' . $this->session->ID_PASIEN);
   }
 
   public function getDataKabupaten()
