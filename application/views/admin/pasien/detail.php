@@ -83,7 +83,7 @@
 												<a href="<?= site_url() ?>pasien/verifikasi/<?= $detail['ID_PASIEN'] ?>" data-no="<?= $detail['HP_PASIEN'] ?>" data-pesan="<?= $pesan ?>" onclick="kirimpesanselesai(this)" class="btn btn-success btn-block">Verifikasi</a>
 											</div>
 											<div class="col-md-6">
-												<a href="<?= site_url() ?>pasien/tolak/<?= $detail['ID_PASIEN'] ?>" data-no="<?= $detail['HP_PASIEN'] ?>" data-pesan="<?= $pesan_tolak ?>" onclick="kirimpesanselesai(this)" class="btn btn-danger btn-block">Tolak</a>
+												<a href="<?= site_url() ?>pasien/tolak/<?= $detail['ID_PASIEN'] ?>" data-no="<?= $detail['HP_PASIEN'] ?>" data-pesan="<?= $pesan_tolak ?>" onclick="kirimpesantolak(this)" class="btn btn-danger btn-block">Tolak</a>
 											</div>
 										</div>
 									<?php

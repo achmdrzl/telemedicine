@@ -7,10 +7,12 @@ class Konsultasi_model extends CI_Model
   }
   public function getAllKonsul()
   {
+    $current_date = date("Y-m-d");
     $this->db->select('konsultasi.*,pasien.NAMA_PASIEN,dokter.NAMA_DOKTER');
     $this->db->from('konsultasi');
     $this->db->join('pasien', 'pasien.ID_PASIEN=konsultasi.ID_PASIEN');
     $this->db->join('dokter', 'dokter.ID_DOKTER=konsultasi.ID_DOKTER');
+    $this->db->where('TGL_KONSUL',$current_date);
     return $query = $this->db->get()->result_array();
   }
 }

@@ -23,8 +23,6 @@
 										<th>Link Zoom</th>
 										<th>Status Bayar</th>
 										<th>Status Konsultasi</th>
-										<th>Aksi</th>
-										<th></th>
 									</tr>
 								</thead>
 								<tbody class="text-center">
@@ -32,7 +30,7 @@
 										<tr>
 											<td><span class="text-nowrap"><?= $konsul['ID_KONSUL']; ?></span></td>
 											<td><?= $konsul['NAMA_PASIEN']; ?></td>
-											<td><?= $konsul['TGL_KONSUL']; ?></td>
+											<td><?= format_indo($konsul['TGL_KONSUL']) ?></td>
 											<td><?= $konsul['NAMA_DOKTER']; ?></td>
 											<td><?= $konsul['LINK_ZOOM']; ?></td>
 											<td>
@@ -52,28 +50,23 @@
 													</h5>
 												<?php endif; ?>
 											</td>
-											<!-- <td>
-												<h5>
-													<span class="badge badge-success">
-														<i class="fa fa-circle text-primary mr-1"></i>
-														Sudah Dilayani
-													</span>
-												</h5>
+											<td>
+												<?php if($konsul['STATUS_KONSUL']==0): ?>
 												<h5>
 													<span class="badge badge-danger">
 														<i class="fa fa-circle text-primary mr-1"></i>
 														Belum Dilayani
 													</span>
 												</h5>
+												<?php elseif($konsul['STATUS_KONSUL']==1): ?>
+												<h5>
+													<span class="badge badge-warning">
+														<i class="fa fa-circle text-primary mr-1"></i>
+														Sedang Dilayani
+													</span>
+												</h5>
+												<?php endif; ?>
 											</td>
-											<td>
-												<a href="#" class="btn btn-warning">
-													Ubah Jadwal
-												</a>
-												<a href="#" class="btn btn-secondary">
-													Ubah Jadwal
-												</a>
-											</td> -->
 										</tr>
 									<?php endforeach; ?>
 								</tbody>

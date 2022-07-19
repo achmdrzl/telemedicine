@@ -3,7 +3,7 @@
         ***********************************-->
 <div class="footer">
     <div class="copyright">
-        <p>Copyright © Designed &amp; Developed by <a href="http://dexignzone.com/" target="_blank">DexignZone</a> 2020</p>
+        <p>Copyright © RSUD Kabupaten Jombang</p>
     </div>
 </div>
 <!--**********************************
@@ -70,6 +70,27 @@
     function kirimpesanselesai(el) {
         let no = $(el).data("no");
         let psn = $(el).data("pesan");
+        $.ajax({
+            url: "http://127.0.0.1:4774/kirimpesan",
+            method: "POST",
+            cache: false,
+            dataType: "json",
+            data: {
+                nomor: no,
+                pesan: psn
+            },
+            success: function(x) {
+                let data = JSON.parse(JSON.stringify(x));
+                alert(data.status);
+            },
+            error: function(c) {
+                alert("Pesan Gagal Dikirim");
+            }
+        });
+    }
+    function kirimpesantolak(el) {
+        let no = $(el).data("no");
+        let psn = $(el).data("pesan_tolak");
         $.ajax({
             url: "http://127.0.0.1:4774/kirimpesan",
             method: "POST",
