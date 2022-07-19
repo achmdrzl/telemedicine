@@ -50,6 +50,14 @@ class Pasien_model extends CI_Model
     $this->db->where('ID_PASIEN', $id);
     $this->db->update('pasien', $data);
   }
+  public function tolakAkun($id)
+  {
+    $data = [
+      "FILE_KTP" => ""
+    ];
+    $this->db->where('ID_PASIEN', $id);
+    $this->db->update('pasien', $data);
+  }
   public function getSesi()
   {
     return $query = $this->db->get('sesi')->result_array();

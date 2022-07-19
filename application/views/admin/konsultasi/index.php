@@ -38,16 +38,16 @@
 											<td>
 												<?php if ($konsul['STATUS_BAYAR_BOOKING'] == NULL) : ?>
 													<h5>
-														<span class="badge badge-success">
+														<span class="badge badge-danger">
 															<i class="fa fa-circle text-primary mr-1"></i>
-															Lunas
+															Belum Dibayar
 														</span>
 													</h5>
 												<?php elseif ($konsul['STATUS_BAYAR_BOOKING'] == 1) : ?>
 													<h5>
-														<span class="badge badge-danger">
+														<span class="badge badge-success">
 															<i class="fa fa-circle text-primary mr-1"></i>
-															Belum Dibayar
+															Lunas
 														</span>
 													</h5>
 												<?php endif; ?>

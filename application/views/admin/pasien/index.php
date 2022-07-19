@@ -53,17 +53,24 @@
                   </td>
                   <td>
                     <?php
-                    if ($row['STATUS_AKUN'] == NULL || $row['STATUS_AKUN'] == 0) :
+                    if ($row['FILE_KTP'] == NULL || $row['FILE_KTP'] == '') :
+                    ?>
+                      <h5>
+                        <span class="badge badge-danger">
+                          <i class="fa fa-circle text-primary mr-1"></i>
+                          Belum Upload KTP
+                        </span>
+                      </h5>
+                    <?php
+                    elseif ($row['STATUS_AKUN'] == NULL) :
                     ?>
                       <h5>
                         <span class="badge badge-warning">
                           <i class="fa fa-circle text-primary mr-1"></i>
-                          Menunggu verifikasi
+                          Menunggu Verifikasi
                         </span>
                       </h5>
-                    <?php
-                    elseif ($row['STATUS_AKUN'] == 1) :
-                    ?>
+                    <?php else : ?>
                       <h5>
                         <span class="badge badge-success">
                           <i class="fa fa-circle text-primary mr-1"></i>
@@ -71,12 +78,6 @@
                         </span>
                       </h5>
                     <?php endif; ?>
-                    <!-- <h5>
-                      <span class="badge badge-danger">
-                        <i class="fa fa-circle text-primary mr-1"></i>
-                        Ditolak
-                      </span>
-                    </h5> -->
                   </td>
                   <td>
                     <a href="pasien/detail/<?= $row['ID_PASIEN']; ?>" class="btn btn-primary"> Detail</a>
