@@ -64,6 +64,8 @@
             <div class="header-content">
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
+                        Selamat Datang, <?= $this->session->NAMA_ADMIN; ?>
+                        <a href="<?= site_url(); ?>pasien_login/logout" class="btn btn-danger ml-auto">Logout</a>
                     </div>
                 </nav>
             </div>

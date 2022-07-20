@@ -130,7 +130,7 @@
                                     <span>Profile <?php echo $this->session->NAMA_PASIEN; ?></span></a>
                                 <ul class="dropdown-menu">
                                     <li class="nav__item">
-                                        <a href="<?php echo site_url('profil_pasien/profile/' . $this->session->NAMA_PASIEN); ?>" class="nav__item-link">Informasi Akun</a>
+                                        <a href="<?php echo site_url('profil_pasien'); ?>" class="nav__item-link">Informasi Akun</a>
                                     </li><!-- /.nav-item -->
                                     <li class="nav__item">
                                         <a href="<?php echo site_url('pasien_login/logout') ?>" class="nav__item-link">Log Out</a>

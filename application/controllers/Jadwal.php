@@ -25,4 +25,11 @@ class Jadwal extends CI_Controller
     $this->session->set_flashdata('ubah_kuota', 'diubah');
     redirect('jadwal');
   }
+  public function jadwal_dokter()
+  {
+    $data['jadwal'] = $this->Jadwal_model->getAllJadwal();
+    $data['sesi'] = $this->Sesi_model->getAllSesi();
+    $data['detail'] = $this->detailJadwal_model->getJadwalByIdDokter();
+    render5('doktermain/jadwal/index', $data);
+  }
 }

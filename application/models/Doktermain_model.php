@@ -19,16 +19,19 @@ class Doktermain_model extends CI_Model
       'PASSWORD' => $password,
       'JENIS_USER' => 'DOKTER'
     );
-
+    $this->db->insert('user', $data_user);
+    
+    //SELECT * FROM user WHERE username=$username
+    //data_idUser = hasil query atas 
     $data_user2 = array(
       'EMAIL_DOKTER' => $username,
       'NAMA_DOKTER' => $name,
+      // "ID_USER"=> $data_idUser
       'SPESIALISASI' => $spesialis,
       'HP_DOKTER' => $nohp,
       'PROFIL_DOKTER' => 'profil.jpg'
     );
 
-    $this->db->insert('user', $data_user);
     $this->db->insert('dokter', $data_user2);
   }
 
