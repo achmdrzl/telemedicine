@@ -52,10 +52,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['admin'] = 'home';
 $route['dokter'] = 'dokter';
-$route['doktermain'] = 'doktermain';
 $route['pasien'] = 'pasien';
 $route['jadwal'] = 'jadwal';
 $route['konsultasi'] = 'konsultasi';
 $route['ongkir'] = 'ongkir';
+
+// dokter
+$route['doktermain'] = 'doktermain';
+$route['home_dokter'] = 'home_dokter';
+$route['profile_dokter'] = 'profil_dokter';
+$route['jadwal_dokter'] = 'jadwal_dokter';
+$route['resep_dokter'] = 'resep_dokter';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

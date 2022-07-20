@@ -18,7 +18,7 @@
                             echo '</div>';
                         }
                         ?>
-                        <form class="form-group" method="post" action="<?php echo base_url(); ?>doktermain/process_register">
+                        <form class="form-group" method="post" action="<?php echo site_url(); ?>doktermain/register_dokter">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h4 class="contact-panel__title">Register</h4>
@@ -28,7 +28,7 @@
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <i class="icon-user form-group-icon"></i>
-                                        <input type="text" class="form-control" placeholder="Nama Lengkap" id="name " name="name" value="<?= set_value('name') ?>" required>
+                                        <input type="text" class="form-control" placeholder="Nama Lengkap" id="name " name="name" required>
                                     </div>
                                 </div><!-- /.col-lg-6 -->
                                 <div class="col-sm-12 col-md-12 col-lg-12">
@@ -46,26 +46,15 @@
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <i class="fa fa-phone form-group-icon"></i>
-                                        <input type="number" class="form-control" placeholder="No. Handphone" id="nohp" name="nohp" required>
+                                        <input type="number" class="form-control" placeholder="No. Handphone (Isikan dengan 62)" id="nohp" name="nohp" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <i class="fa fa-phone form-group-icon"></i>
-                                        <input type="number" class="form-control" placeholder="Spesialis" id="spesialis" name="spesialis" required>
+                                        <input type="text" class="form-control" placeholder="Spesialis" id="spesialis" name="spesialis" required>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-12 col-lg-12">
-                                    <div class="form-group">
-                                        <!-- <label for="sesi" class="form-label">Pilih Sesi</label> -->
-                                        <select name="sesi" id="sesi" class="form-select">
-                                            <option value="" selected>Pilih Jadwal</option>
-                                            <?php foreach ($sesi as $row) : ?>
-                                                <option value="<?= $row['ID_SESI'] ?>">Sesi <?= $row['ID_SESI'] ?> <?= $row['JAM']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div><!-- /.col-lg-6 -->
                                 <div class="col-12">
                                     <button type="submit" class="btn btn__secondary btn__rounded btn__block btn__xhight mt-10">
                                         <span>Register</span> <i class="icon-arrow-right"></i>

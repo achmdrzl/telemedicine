@@ -76,7 +76,20 @@
         </footer><!-- /.Footer -->
         <button id="scrollTopBtn"><i class="fas fa-long-arrow-alt-up"></i></button>
         </div><!-- /.wrapper -->
+        <script>
+          var expanded = false;
 
+          function showCheckboxes() {
+            var checkboxes = document.getElementById("checkboxes");
+            if (!expanded) {
+              checkboxes.style.display = "block";
+              expanded = true;
+            } else {
+              checkboxes.style.display = "none";
+              expanded = false;
+            }
+          }
+        </script>
         <script src="<?= base_url('assets/pasien/js/plugins.js') ?>"></script>
         <script src="<?= base_url('assets/pasien/js/main.js') ?>"></script>
 
