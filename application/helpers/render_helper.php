@@ -46,12 +46,14 @@ function render4($link, $data)
   $a->load->view('pasien/template/footer');
 }
 
-function dokterauth($link, $data)
+// dokter sudah login
+function render5($link, $data)
 {
   $a = get_instance();
-  $a->load->view('doktermain/template/header', $data);
+  $a->load->view('admin/template/header');
+  $a->load->view('doktermain/template/dokter/sidebar');
   $a->load->view($link, $data);
-  $a->load->view('pasien/template/footer');
+  $a->load->view('admin/template/footer');
 }
 
 function dokter($link, $data)

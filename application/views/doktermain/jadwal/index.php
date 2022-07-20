@@ -12,7 +12,7 @@
     </div>
 
     <div class="table-responsive card-table">
-      <table id="example5" class="display dataTablesCard table-responsive-xl">
+      <table id="example5" class="table display dataTablesCard table-responsive-xl">
         <thead class="text-center">
           <tr>
             <th>Hari</th>

@@ -45,7 +45,8 @@
         ***********************************-->
         <div class="nav-header">
             <a href="<?= site_url() ?>admin" class="brand-logo">
-                <img class="logo-abbr" src="<?= base_url('assets/admin/images/logo/logo2.svg') ?>" alt="">
+                <img class="logo-abbr" src="<?= base_url('assets/admin/images/logo/rsud jombang.png') ?>" style="width:80px;">
+                <img class="brand-title" src="<?= base_url('assets/admin/images/logo/nama.png') ?>" style="width:100%;">
             </a>
             <div class="nav-control">
                 <div class="hamburger">
