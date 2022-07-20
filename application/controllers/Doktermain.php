@@ -6,12 +6,16 @@ class Doktermain extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Doktermain_model');
+        $this->load->model('Dokter_model');
+        $this->load->model('Pasien_model');
+        $this->load->model('Konsultasi_model');
     }
     public function index()
     {
-        $data['title'] = "Dokter";
-        render2('doktermain/index', $data);
+        $data['jml_dokter'] = $this->Dokter_model->jumlahDokter();
+        $data['jml_pasien'] = $this->Pasien_model->jumlahPasien();
+        $data['jml_konsul'] = $this->Konsultasi_model->jumlahKonsul();
+        render5('doktermain/index', $data);
     }
 
     public function register()

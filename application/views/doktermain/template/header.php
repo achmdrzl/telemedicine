@@ -98,7 +98,8 @@
       <nav class="navbar navbar-expand-lg sticky-navbar">
         <!-- <div class="container-fluid"> -->
         <a class="navbar-brand" href="index.html">
-          <img src="<?php echo base_url() ?>assets/pasien/images/logo/logo2.svg" class="logo-dark" alt="logo">
+          <<img class="logo-abbr" src="<?= base_url('assets/admin/images/logo/rsud jombang.png') ?>" style="width:80px;">
+            <img class="brand-title" src="<?= base_url('assets/admin/images/logo/nama.png') ?>" style="width:100%;">
         </a>
         <button class="navbar-toggler" type="button">
           <span class="menu-lines"><span></span></span>
