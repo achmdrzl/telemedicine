@@ -26,6 +26,7 @@ class Doktermain_model extends CI_Model
       'ID_USER' => $data_iduser,
       'EMAIL_DOKTER' => $username,
       'NAMA_DOKTER' => $name,
+      // "ID_USER"=> $data_idUser
       'SPESIALISASI' => $spesialis,
       'HP_DOKTER' => $nohp,
       'PROFIL_DOKTER' => 'profil.jpg'

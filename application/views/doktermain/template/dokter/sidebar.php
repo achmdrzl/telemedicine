@@ -16,7 +16,7 @@
             <a href="<?= site_url() ?>profil_dokter">Profil</a>
           </li>
           <li>
-            <a href="<?= site_url() ?>jadwal_dokter">Jadwal</a>
+            <a href="<?= site_url() ?>jadwal/jadwal_dokter">Jadwal</a>
           </li>
           <li>
             <a href="<?= site_url() ?>resep_dokter">Resep Obat</a>

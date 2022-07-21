@@ -42,7 +42,7 @@
 											?>
 												<td>
 													<div class="mb-3">
-														<input type="number" class="form-control-plaintext text-center" id="<?= $j['HARI'] ?>" name="<?= $j['HARI'] ?>" value="<?= $j['KUOTA'] ?>">
+														<input type="number" class="form-control-plaintext text-center" min="0" id="<?= $j['HARI'] ?>" name="<?= $j['HARI'] ?>" value="<?= $j['KUOTA'] ?>">
 													</div>
 												</td>
 											<?php endforeach; ?>

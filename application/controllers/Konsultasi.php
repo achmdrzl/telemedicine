@@ -10,12 +10,21 @@ class Konsultasi extends CI_Controller
   }
   public function index()
   {
-    $data['konsultasi'] = $this->Konsultasi_model->getAllKonsul();
-    render('admin/konsultasi/index', $data);
+    if ($this->session->ID_ADMIN) {
+      # code...
+      $data['konsultasi'] = $this->Konsultasi_model->getAllKonsul();
+      render('admin/konsultasi/index', $data);
+    } else {
+      render2('block');
+    }
   }
   public function detail()
   {
-    $data['konsultasi'] = $this->Konsultasi_model->getAllKonsulByID();
-    render('admin/konsultasi/index', $data);
+    if ($this->session->ID_ADMIN) {
+      $data['konsultasi'] = $this->Konsultasi_model->getAllKonsulByID();
+      render('admin/konsultasi/index', $data);
+    } else {
+      render2('block');
+    }
   }
 }

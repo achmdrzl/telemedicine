@@ -10,8 +10,12 @@ class Ongkir extends CI_Controller
   }
   public function index()
   {
-    $data['master_pengiriman'] = $this->Ongkir_model->ongkirWilayah();
-    render('admin/ongkir/index', $data);
+    if ($this->session->ID_ADMIN) {
+      $data['master_pengiriman'] = $this->Ongkir_model->ongkirWilayah();
+      render('admin/ongkir/index', $data);
+    } else {
+      render2('block');
+    }
   }
   public function ubahOngkir()
   {

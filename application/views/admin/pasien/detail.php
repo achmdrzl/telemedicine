@@ -16,7 +16,8 @@
 						?>
 							<form action="" method="POST">
 								<?php
-								$pesan = "Akun Anda berhasil terverifikasi. Anda dapat melakukan konsultasi via telemedicine"
+								$pesan = "Akun Anda berhasil terverifikasi. Anda dapat melakukan konsultasi via telemedicine";
+								$pesan_tolak = "Akun Anda belum dapat terverifiksi karena foto KTP yang Anda unggah bermasalah. Silakan unggah ulang foto KTP Anda";
 								?>
 								<div class="mb-3">
 									<label for="id" class="form-label">ID Pasien</label>
@@ -82,7 +83,7 @@
 												<a href="<?= site_url() ?>pasien/verifikasi/<?= $detail['ID_PASIEN'] ?>" data-no="<?= $detail['HP_PASIEN'] ?>" data-pesan="<?= $pesan ?>" onclick="kirimpesanselesai(this)" class="btn btn-success btn-block">Verifikasi</a>
 											</div>
 											<div class="col-md-6">
-												<button class="btn btn-danger btn-block">Tolak</button>
+												<a href="<?= site_url() ?>pasien/tolak/<?= $detail['ID_PASIEN'] ?>" data-no="<?= $detail['HP_PASIEN'] ?>" data-pesan="<?= $pesan_tolak ?>" onclick="kirimpesantolak(this)" class="btn btn-danger btn-block">Tolak</a>
 											</div>
 										</div>
 									<?php

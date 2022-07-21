@@ -11,7 +11,11 @@ class Dokter extends CI_Controller
 
   public function index()
   {
-    $data['dokter'] = $this->Dokter_model->getAllDokter();
-    render('admin/dokter/index', $data);
+    if ($this->session->ID_ADMIN) {
+      $data['dokter'] = $this->Dokter_model->getAllDokter();
+      render('admin/dokter/index', $data);
+    } else {
+      render2('block');
+    }
   }
 }
