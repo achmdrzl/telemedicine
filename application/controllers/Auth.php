@@ -86,31 +86,7 @@ class Auth extends CI_Controller
 
         $data = $this->auth_pasien->login($username, $password);
 
-        // $dataUser = array(
-        //     'JENIS_USER' => $data->JENIS_USER
-        // );
-        // if ($data) {
-        //     if (password_verify($password, $data->PASSWORD)) {
-        //         $this->session->set_userdata($session);
-        //         redirect('pasien_login/index');
-        //     } else {
-        //         $this->session->set_flashdata('error', 'Username Tidak Di Temukan');
-        //         redirect('welcome/login');
-        //     }
-        // } else {
-        //     $this->session->set_flashdata('error', 'Username Tidak Ditemukan');
-        //     redirect('welcome/login');
-        // }
-
-        // $session = array(
-        //     'ID_PASIEN' => $data->ID_PASIEN,
-        //     'NAMA_PASIEN' => $data->NAMA_PASIEN,
-        //     'EMAIL_PASIEN' => $data->EMAIL_PASIEN,
-        //     'HP_PASIEN' => $data->HP_PASIEN,
-        //     'FILE_FOTO' => $data->FILE_FOTO
-        // );
-
-        if ($data > 0) {
+        if ($data == true) {
 
             $dataUser = $data[0]['JENIS_USER'];
             $dataUser2 = $data[0]['ID_USER'];
