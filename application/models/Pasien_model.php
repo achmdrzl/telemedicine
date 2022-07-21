@@ -46,7 +46,16 @@ class Pasien_model extends CI_Model
   public function updateStatus($id)
   {
     $data = [
-      "STATUS_AKUN" => 1
+      "STATUS_AKUN" => 1,
+      "ID_ADMIN" => $this->session->ID_ADMIN
+    ];
+    $this->db->where('ID_PASIEN', $id);
+    $this->db->update('pasien', $data);
+  }
+  public function tolakAkun($id)
+  {
+    $data = [
+      "FILE_KTP" => ""
     ];
     $this->db->where('ID_PASIEN', $id);
     $this->db->update('pasien', $data);

@@ -33,8 +33,8 @@ class Welcome extends CI_Controller
 		$data[] = "";
 		if ($this->session->ID_PASIEN) {
 			render2('pasien/book/index');
-		}else{
-			render2('pasien/book/block');
+		} else {
+			render2('block');
 		}
 	}
 }

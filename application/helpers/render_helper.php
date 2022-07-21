@@ -50,7 +50,7 @@ function render4($link, $data)
 function render5($link, $data)
 {
   $a = get_instance();
-  $a->load->view('admin/template/header');
+  $a->load->view('doktermain/template/dokter/header');
   $a->load->view('doktermain/template/dokter/sidebar');
   $a->load->view($link, $data);
   $a->load->view('admin/template/footer');
