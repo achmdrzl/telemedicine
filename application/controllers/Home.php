@@ -12,9 +12,13 @@ class Home extends CI_Controller
     }
     public function index()
     {
-        $data['jml_dokter'] = $this->Dokter_model->jumlahDokter();
-        $data['jml_pasien'] = $this->Pasien_model->jumlahPasien();
-        $data['jml_konsul'] = $this->Konsultasi_model->jumlahKonsul();
-        render('admin/index', $data);
+        if ($this->session->ID_PASIEN) {
+            $data['jml_dokter'] = $this->Dokter_model->jumlahDokter();
+            $data['jml_pasien'] = $this->Pasien_model->jumlahPasien();
+            $data['jml_konsul'] = $this->Konsultasi_model->jumlahKonsul();
+            render('admin/index', $data);
+        } else {
+            render2('block');
+        }
     }
 }

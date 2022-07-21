@@ -10,8 +10,12 @@ class Pengiriman extends CI_Controller
   }
   public function index()
   {
-    $data['pengiriman'] = $this->Pengiriman_model->getAllPengiriman();
-    render('admin/pengiriman/index', $data);
+    if ($this->session->ID_ADMIN) {
+      $data['pengiriman'] = $this->Pengiriman_model->getAllPengiriman();
+      render('admin/pengiriman/index', $data);
+    } else {
+      render2('block');
+    }
   }
   public function ubahOngkir()
   {

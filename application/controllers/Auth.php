@@ -11,6 +11,7 @@ class Auth extends CI_Controller
         parent::__construct();
         $this->load->model('auth_pasien');
         $this->load->model('doktermain_model');
+        $this->load->model('Admin_model');
     }
 
     public function getSesi()
@@ -112,6 +113,7 @@ class Auth extends CI_Controller
         if ($data > 0) {
 
             $dataUser = $data[0]['JENIS_USER'];
+            $dataUser2 = $data[0]['ID_USER'];
 
             if ($dataUser == 'PASIEN') {
                 // get data pasien
@@ -143,17 +145,15 @@ class Auth extends CI_Controller
                 redirect('doktermain');
             } elseif ($dataUser == 'ADMIN') {
                 //get data admin
-                $admin = $this->Doktermain_model->getAdmin($username);
+                $admin = $this->Admin_model->getAdmin($dataUser2);
 
                 //session admin
                 $sessionAdmin = array(
                     'ID_ADMIN' => $admin->ID_ADMIN,
                     'NAMA_ADMIN' => $admin->NAMA_ADMIN,
-                    'SPESIALISASI' => $admin->SPESIALISASI,
-                    'HP_ADMIN' => $admin->HP_ADMIN,
                 );
                 $this->session->set_userdata($sessionAdmin);
-                redirect('');
+                redirect('admin');
             }
         } else {  // jika username dan password tidak ditemukan atau salah
             $url = base_url();
