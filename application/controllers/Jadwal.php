@@ -13,11 +13,15 @@ class Jadwal extends CI_Controller
   }
   public function index()
   {
-    $data['dokters'] = $this->Dokter_model->getAllDokter();
-    $data['jadwal'] = $this->Jadwal_model->getAllJadwal();
-    $data['sesi'] = $this->Sesi_model->getAllSesi();
-    $data['detail'] = $this->detailJadwal_model->getAllDetailJadwal();
-    render('admin/jadwal/index', $data);
+    if ($this->session->ID_PASIEN) {
+      $data['jadwal'] = $this->Jadwal_model->getAllJadwal();
+      $data['sesi'] = $this->Sesi_model->getAllSesi();
+      $data['dokters'] = $this->Dokter_model->getAllDokter();
+      $data['detail'] = $this->detailJadwal_model->getAllDetailJadwal();
+      render('admin/jadwal/index', $data);
+    } else {
+      render2('block');
+    }
   }
   public function ubahKuota()
   {
@@ -27,9 +31,13 @@ class Jadwal extends CI_Controller
   }
   public function jadwal_dokter()
   {
-    $data['jadwal'] = $this->Jadwal_model->getAllJadwal();
-    $data['sesi'] = $this->Sesi_model->getAllSesi();
-    $data['detail'] = $this->detailJadwal_model->getJadwalByIdDokter();
-    render5('doktermain/jadwal/index', $data);
+    if ($this->session->ID_DOKTER) {
+      $data['jadwal'] = $this->Jadwal_model->getAllJadwal();
+      $data['sesi'] = $this->Sesi_model->getAllSesi();
+      $data['detail'] = $this->detailJadwal_model->getJadwalByIdDokter('1');
+      render5('doktermain/jadwal/index', $data);
+    } else {
+      render2('block');
+    }
   }
 }

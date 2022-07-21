@@ -31,7 +31,6 @@ class Pasien extends CI_Controller
   public function tolak($id)
   {
     $this->Pasien_model->tolakAkun($id);
-    // $this->session->set_flashdata('verifikasi', 'diverifikasi');
     redirect('pasien');
   }
 }

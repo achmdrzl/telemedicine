@@ -34,7 +34,7 @@ class Welcome extends CI_Controller
 		if ($this->session->ID_PASIEN) {
 			render2('pasien/book/index');
 		} else {
-			render2('pasien/book/block');
+			render2('block');
 		}
 	}
 }
