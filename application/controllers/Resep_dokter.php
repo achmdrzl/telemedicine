@@ -16,6 +16,7 @@ class Resep_dokter extends CI_Controller
       $data['obat'] = $this->Obat_model->getAllObat();
       render5('doktermain/resepObat/pasien', $data);
     } else {
+      render2('block');
     }
   }
 }

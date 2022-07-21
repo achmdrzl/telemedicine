@@ -10,7 +10,12 @@ class Profil_dokter extends CI_Controller
   }
   public function index()
   {
-    $data['detail'] = $this->Dokter_model->getDokterById($this->session->ID_DOKTER);
-    dokter('doktermain/profil/index', $data);
+    if ($this->session->ID_DOKTER) {
+
+      $data['detail'] = $this->Dokter_model->getDokterById($this->session->ID_DOKTER);
+      dokter('doktermain/profil/index', $data);
+    } else {
+      render2('block');
+    }
   }
 }
