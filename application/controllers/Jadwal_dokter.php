@@ -13,8 +13,11 @@ class Jadwal_dokter extends CI_Controller
   }
   public function index()
   {
-    $data[] = '';
-    render5('doktermain/jadwal/index', $data);
+    if ($this->session->ID_DOKTER) {
+      $data[] = '';
+      render5('doktermain/jadwal/index', $data);
+    } else {
+      render2('block');
+    }
   }
-  
 }

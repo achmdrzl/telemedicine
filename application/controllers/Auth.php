@@ -130,8 +130,7 @@ class Auth extends CI_Controller
                 redirect('pasien_login/index');
             } elseif ($dataUser == 'DOKTER') {
                 //get data dokter
-                $dokter = $this->doktermain_model->getDokter($username);
-
+                $dokter = $this->doktermain_model->getDokter($dataUser2);
                 //session dokter
                 $sessionDokter = array(
                     'ID_DOKTER' => $dokter->ID_DOKTER,
