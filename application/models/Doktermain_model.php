@@ -19,8 +19,11 @@ class Doktermain_model extends CI_Model
       'PASSWORD' => $password,
       'JENIS_USER' => 'DOKTER'
     );
-
+    $this->db->insert('user', $data_user);
+    $query = $this->db->where('USERNAME', $username)->get('user')->result_array();
+    $data_iduser = $query[0]['ID_USER'];
     $data_user2 = array(
+      'ID_USER' => $data_iduser,
       'EMAIL_DOKTER' => $username,
       'NAMA_DOKTER' => $name,
       'SPESIALISASI' => $spesialis,
@@ -28,7 +31,6 @@ class Doktermain_model extends CI_Model
       'PROFIL_DOKTER' => 'profil.jpg'
     );
 
-    $this->db->insert('user', $data_user);
     $this->db->insert('dokter', $data_user2);
   }
 

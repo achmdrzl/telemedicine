@@ -6,6 +6,7 @@ class Doktermain extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('Doktermain_model');
         $this->load->model('Dokter_model');
         $this->load->model('Pasien_model');
         $this->load->model('Konsultasi_model');
