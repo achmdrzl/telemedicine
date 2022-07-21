@@ -68,12 +68,17 @@ class Auth_pasien extends CI_Model
     public function verif($otp)
     {
         $update_status = array(
-            'STATUS_AKUN' => 1
+            'STATUS_NOMOR' => 1
         );
         $this->db->where('OTP', $otp);
         $this->db->update('pasien', $update_status);
     }
-
+    public function selectOtp($email)
+    {
+        $this->db->select('OTP');
+        $this->db->where('EMAIL_PASIEN', $email);
+        return $this->db->get('pasien')->result_array();
+    }
     public function login($username, $password)
     {
         $query = $this->db->query("SELECT * FROM user WHERE USERNAME='$username' AND PASSWORD ='$password' LIMIT 1")->result_array();

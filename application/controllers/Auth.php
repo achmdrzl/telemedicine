@@ -9,7 +9,7 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('auth_pasien');
+        $this->load->model('Auth_pasien');
         $this->load->model('doktermain_model');
         $this->load->model('Admin_model');
     }
@@ -33,11 +33,12 @@ class Auth extends CI_Controller
             $this->auth_pasien->register($name, $username, $password, $nohp);
             $this->session->set_flashdata('success', '
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Pendaftaran Berhasil!</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong>Pendaftaran Berhasil!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>      
             ');
-            redirect('welcome/register');
+            $this->session->set_flashdata('username', $username);
+            redirect('auth/verif');
         } else {
             $this->session->set_flashdata('error', '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -51,32 +52,22 @@ class Auth extends CI_Controller
 
     public function verif()
     {
-        $this->form_validation->set_rules('otp', 'otp', 'trim|required|min_length[4]|max_length[4]');
-        if ($this->form_validation->run() == true) {
+        $this->form_validation->set_rules('otp', 'otp', 'required|min_length[4]|max_length[4]');
+        if ($this->form_validation->run() == TRUE) {
             $otp = $this->input->post('otp');
-            $this->auth_pasien->verif($otp);
-            redirect('welcome/login');
+            $email = $this->session->flashdata('username');
+            $data = $this->Auth_pasien->selectOtp($email);
+            var_dump($data['OTP']);
+            die;
+            if ($otp == $data['OTP']) {
+                $this->auth_pasien->verif($otp);
+                redirect('welcome/login');
+            } else {
+                redirect('auth/verif');
+            }
         } else {
-
-            redirect('welcome/verif');
+            render2('pasien/auth/verif');
         }
-
-        // $this->db->select("*");
-        // $this->db->from("pasien");
-        // $this->db->where('OTP', $otp);
-        // $query = $this->db->get();
-        // return $query->result_array();
-
-        // if ($query == 1) 
-        // {
-        //     redirect('welcome/login');
-        // } else {
-        //     redirect('welcome/verif');
-        // }
-
-        // $pasien = $this->auth_pasien->getAll(); // memanggil method getAll
-        // $data['pasien'] = $pasien; // menampung di variable $data
-
     }
 
     public function login()

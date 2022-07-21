@@ -18,7 +18,10 @@
                             echo '</div>';
                         }
                         ?>
-                        <form class="form-group" method="post" action="<?php echo base_url(); ?>auth/verif">
+                        <form class="form-group" method="post" action="<?php echo site_url(); ?>auth/verif">
+                            <?php
+                            // $pesan = "Akun Anda berhasil terverifikasi. Anda dapat melakukan konsultasi via telemedicine";
+                            ?>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h4 class="contact-panel__title">Verifikasi OTP</h4>
@@ -28,7 +31,7 @@
                                 <div class="col-sm-8 col-md-8 col-lg-8">
                                     <div class="form-group">
                                         <i class="fa fa-phone form-group-icon"></i>
-                                        <input type="number" class="form-control" placeholder="Kode OTP" id="contact-email" name="otp" required>
+                                        <input type="number" class="form-control" placeholder="Kode OTP" id="otp" name="otp" required>
                                     </div>
                                 </div><!-- /.col-lg-6 -->
                                 <div class="col-4">
