@@ -57,10 +57,8 @@
                                         <div class="mb-3">
                                             <label for="hp" class="form-label">No HP Aktif</label>
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" value="<?= $db['HP_PASIEN']; ?>" name="hp" id="hp">
-                                                <button class="btn btn-success" type="submit" id="button-addon2">Button</button>
+                                                <input type="text" class="form-control" value="<?= $db['HP_PASIEN']; ?>" name="hp" id="hp" readonly>
                                             </div>
-                                            <a href="<?= site_url() ?>pasien/verifikasi/<?= $db['ID_PASIEN'] ?>" data-no="<?= $db['HP_PASIEN'] ?>" data-pesan="<?= $db['OTP'] ?>" onclick="kirimpesanselesai(this)" class="btn btn-success btn-block">Verifikasi</a>
                                         </div>
                                         <div class="mb-3">
                                             <label for="nik" class="form-label">NIK</label>
@@ -170,7 +168,12 @@
                                         Silakan lengkapi identitas Anda dengan mengunggah foto KTP
                                     </span>
                                 </h5>
-                                <a href="<?= site_url('profil_pasien/upload/'); ?>" class="btn btn__primary btn__rounded mt-2 btn-block">Upload KTP</a>
+                                <a href="<?= site_url('profil_pasien/upload'); ?>" class="btn btn__primary btn__rounded mt-2 btn-block">Upload KTP</a>
+                            <?php elseif ($this->session->flashdata('upload')) : ?>
+                                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                                    KTP <strong>berhasil</strong> <?= $this->session->flashdata('upload'); ?>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                             <?php endif; ?>
                             <?php if ($db['STATUS_NOMOR'] == NULL) : ?>
                                 <h5 class="mt-3">

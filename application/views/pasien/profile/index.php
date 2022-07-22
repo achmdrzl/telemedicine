@@ -59,7 +59,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="hp" class="form-label">No HP</label>
-                                            <input type="text" class="form-control" id="hp" name="hp" value="<?= $db['HP_PASIEN'] ?>" readonly>
+                                            <input type="text" class="form-control" id="hp" name="hp" value="+<?= $db['HP_PASIEN'] ?>" readonly>
                                         </div>
                                         <div class="mb-3">
                                             <label for="nik" class="form-label">NIK</label>

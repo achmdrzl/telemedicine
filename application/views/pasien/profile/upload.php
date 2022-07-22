@@ -9,7 +9,7 @@
     <div class="container">
       <div class="row justify-content-center align-items-center">
         <div class="contact-panel">
-          <form class="form-group" method="POST" action="<?= site_url('profil_pasien/uploadKTP'); ?>" enctype="multipart/form-data">
+          <form class="form-group" method="POST" action="<?= site_url(); ?>profil_pasien/uploadKTP  " enctype="multipart/form-data">
             <div class="row justify-content-center align-items-center">
               <div class="col-sm-12">
                 <h4 class="contact-panel__title">Form Unggah Foto KTP</h4>
@@ -20,7 +20,7 @@
                   <input type="file" class="form-control" id="ktp" name="ktp">
                 </div>
                 <button type="submit" class="btn btn__primary btn__rounded mt-3">
-                  <span>Edit Profile</span>
+                  <span>Upload KTP</span>
                 </button>
               </div>
             </div>

@@ -48,6 +48,7 @@ class Auth extends CI_Controller
     {
         $this->form_validation->set_rules('otp', 'otp', 'required|min_length[4]|max_length[4]');
         $data = $this->Auth_pasien->selectOtp($this->session->EMAIL_PASIEN);
+        
         if ($this->form_validation->run() == FALSE) {
             render4('pasien/auth/verif', $data[0]);
         } else {
