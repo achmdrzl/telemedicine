@@ -74,11 +74,11 @@ class Auth_pasien extends CI_Model
         $this->db->update('pasien', $update_status);
     }
 
-    public function login($username, $password)
+    public function login($username)
     {
-        $query = $this->db->query("SELECT * FROM user WHERE USERNAME='$username' AND PASSWORD ='$password' LIMIT 1")->result_array();
+        $query = $this->db->query("SELECT * FROM user WHERE USERNAME='$username' ")->result_array();
         return $query;
-        
+
         // return $this->db->where('EMAIL_PASIEN', $username)->get('pasien')->row();
         // return $this->db->where('USERNAME', $username)->get('user')->row();
         // $this->db->select('ur.USERNAME, ur.PASSWORD, ps.NAMA_PASIEN, ps.EMAIL_PASIEN, ps.ID_PASIEN');

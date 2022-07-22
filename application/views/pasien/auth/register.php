@@ -67,11 +67,11 @@
                             <div class="row">
                                 <div class="col-md-6 align-content-end">
                                     <p class="text">Already have an account?</p>
-                                    <a href="<?php echo site_url('auth/google_login') ?>" class="forgot-password-link">Login here</a>
+                                    <a href="<?php echo site_url('welcome/login') ?>" class="forgot-password-link">Login here</a>
                                 </div>
                                 <div class="col-md-6">
                                     <p class="flex" style="font-size: 1.75m;">or Register With</p>
-                                    <a href=""><img src="<?php echo base_url() ?>assets/pasien/images/logo/google.svg" alt=""></a>
+                                    <a href="<?php echo site_url('auth/google_login') ?>"><img src="<?php echo base_url() ?>assets/pasien/images/logo/google.svg" alt=""></a>
                                 </div>
                             </div>
                         </div>
