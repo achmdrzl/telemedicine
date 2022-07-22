@@ -165,7 +165,25 @@
                                 </div>
                             </form>
                             <?php if ($db['FILE_KTP'] == NULL) : ?>
+                                <h5>
+                                    <span class="badge badge-primary">
+                                        Silakan lengkapi identitas Anda dengan mengunggah foto KTP
+                                    </span>
+                                </h5>
                                 <a href="<?= site_url('profil_pasien/upload/'); ?>" class="btn btn__primary btn__rounded mt-2 btn-block">Upload KTP</a>
+                            <?php endif; ?>
+                            <?php if ($db['STATUS_NOMOR'] == NULL) : ?>
+                                <h5 class="mt-3">
+                                    <span class="badge badge-primary">
+                                        Silakan verifikasi nomor telpon Anda
+                                    </span>
+                                </h5>
+                                <a href="<?= site_url('auth/verif'); ?>" class="btn btn__primary btn__rounded mt-2 btn-block">Verifikasi Nomor Telpon</a>
+                            <?php elseif ($this->session->flashdata('success')) : ?>
+                                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                                    Nomor telpon <strong>berhasil</strong> <?= $this->session->flashdata('success'); ?>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>

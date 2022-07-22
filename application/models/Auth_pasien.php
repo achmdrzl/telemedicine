@@ -65,17 +65,17 @@ class Auth_pasien extends CI_Model
         return $nomorhp;
     }
 
-    public function verif($otp)
+    public function verif()
     {
         $update_status = array(
             'STATUS_NOMOR' => 1
         );
-        $this->db->where('OTP', $otp);
+        $this->db->where('ID_PASIEN', $this->session->ID_PASIEN);
         $this->db->update('pasien', $update_status);
     }
     public function selectOtp($email)
     {
-        $this->db->select('OTP');
+        $this->db->select('OTP, HP_PASIEN');
         $this->db->where('EMAIL_PASIEN', $email);
         return $this->db->get('pasien')->result_array();
     }

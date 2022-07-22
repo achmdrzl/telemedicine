@@ -31,14 +31,8 @@ class Auth extends CI_Controller
             $password = $this->input->post('password');
             $nohp = $this->auth_pasien->gantiformat($this->input->post('nohp'));
             $this->auth_pasien->register($name, $username, $password, $nohp);
-            $this->session->set_flashdata('success', '
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Pendaftaran Berhasil!</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>      
-            ');
-            $this->session->set_flashdata('username', $username);
-            redirect('auth/verif');
+            $this->session->set_flashdata('success', 'berhasil');
+            redirect('welcome/login');
         } else {
             $this->session->set_flashdata('error', '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -53,20 +47,18 @@ class Auth extends CI_Controller
     public function verif()
     {
         $this->form_validation->set_rules('otp', 'otp', 'required|min_length[4]|max_length[4]');
-        if ($this->form_validation->run() == TRUE) {
+        $data = $this->Auth_pasien->selectOtp($this->session->EMAIL_PASIEN);
+        if ($this->form_validation->run() == FALSE) {
+            render4('pasien/auth/verif', $data[0]);
+        } else {
             $otp = $this->input->post('otp');
-            $email = $this->session->flashdata('username');
-            $data = $this->Auth_pasien->selectOtp($email);
-            var_dump($data['OTP']);
-            die;
-            if ($otp == $data['OTP']) {
-                $this->auth_pasien->verif($otp);
-                redirect('welcome/login');
+            if ($otp == $data[0]['OTP']) {
+                $this->auth_pasien->verif();
+                $this->session->set_flashdata('success', 'terverifikasi');
+                redirect('profil_pasien/editProfile');
             } else {
                 redirect('auth/verif');
             }
-        } else {
-            render2('pasien/auth/verif');
         }
     }
 

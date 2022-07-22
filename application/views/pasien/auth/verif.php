@@ -18,9 +18,9 @@
                             echo '</div>';
                         }
                         ?>
-                        <form class="form-group" method="post" action="<?php echo site_url(); ?>auth/verif">
+                        <form method="post" action="">
                             <?php
-                            // $pesan = "Akun Anda berhasil terverifikasi. Anda dapat melakukan konsultasi via telemedicine";
+                            $pesan = 'Hati-hati penipuan, berikut nomor OTP Anda untuk verifikasi pada platform Telemedicine RSUD Kabupaten Jombang : ' . $OTP;
                             ?>
                             <div class="row">
                                 <div class="col-sm-12">
@@ -31,11 +31,11 @@
                                 <div class="col-sm-8 col-md-8 col-lg-8">
                                     <div class="form-group">
                                         <i class="fa fa-phone form-group-icon"></i>
-                                        <input type="number" class="form-control" placeholder="Kode OTP" id="otp" name="otp" required>
+                                        <input type="text" class="form-control" placeholder="Kode OTP" id="otp" name="otp" required>
                                     </div>
                                 </div><!-- /.col-lg-6 -->
                                 <div class="col-4">
-                                    <button type="button" class="btn btn__secondary btn__rounded btn__block btn__xhight">
+                                    <button type="button" class="btn btn__secondary btn__rounded btn__block btn__xhight" data-no="<?= $HP_PASIEN ?>" data-pesan="<?= $pesan ?>" onclick="kirimpesanotp(this)">
                                         <span>Kirim Kode</span> <i class="icon-arrow-right"></i>
                                     </button>
                                     <div class="contact-result"></div>
@@ -55,3 +55,26 @@
     </section><!-- /.contact layout 2 -->
 
 </section><!-- /.page-title -->
+<script>
+    function kirimpesanotp(el) {
+        let no = $(el).data("no");
+        let psn = $(el).data("pesan");
+        $.ajax({
+            url: "http://127.0.0.1:4774/kirimpesan",
+            method: "POST",
+            cache: false,
+            dataType: "json",
+            data: {
+                nomor: no,
+                pesan: psn
+            },
+            success: function(x) {
+                let data = JSON.parse(JSON.stringify(x));
+                alert(data.status);
+            },
+            error: function(c) {
+                alert("Pesan Gagal Dikirim");
+            }
+        });
+    }
+</script>

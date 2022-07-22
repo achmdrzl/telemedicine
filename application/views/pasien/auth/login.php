@@ -15,6 +15,14 @@
                         <form class="form-group" method="post" action="<?php echo site_url(); ?>auth/login">
                             <div class="row">
                                 <div class="col-sm-12">
+                                    <!-- alert -->
+                                    <?php if ($this->session->flashdata('success')) : ?>
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            Registrasi akun pasien <strong><?= $this->session->flashdata('success'); ?></strong>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                        </div>
+                                    <?php endif; ?>
+                                    <!-- end alert -->
                                     <h4 class="contact-panel__title">Login</h4>
                                     <p class="contact-panel__desc mb-30">Silahkan Mengisikan Form Berikut dengan Data yang Benar
                                     </p>
