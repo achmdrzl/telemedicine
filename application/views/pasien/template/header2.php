@@ -71,11 +71,6 @@
                                         <i class="icon-clock"></i><a href="">Senin-Jumat : 07.00-15.00 WIB</a>
                                     </li>
                                 </ul><!-- /.contact__list -->
-                                <div class="d-flex">
-                                    <ul class="social-icons list-unstyled mb-0 mr-30 text-white">
-                                        Selamat Datang, <?= $this->session->NAMA_PASIEN; ?>
-                                    </ul>
-                                </div>
                             </div>
                         </div><!-- /.col-12 -->
                     </div><!-- /.row -->

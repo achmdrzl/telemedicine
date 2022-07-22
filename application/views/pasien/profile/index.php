@@ -24,13 +24,28 @@
                                         <?php endif; ?>
                                         <p class="contact-panel__desc mb-30">Silahkan Melengekapi Data Berikut dengan Data yang Benar, Sebelum Melakukan Konsultasi
                                         </p>
-                                        <!-- <div class="col-sm-6 col-md-6 col-lg-4 mx-auto">
-                                        <div class="image">
-                                            <img src="<?= base_url() ?>assets/foto_profil/<?= $db['FILE_FOTO']; ?>" alt="profil">
-                                        </div>
-                                    </div> -->
+                                        <?php if ($db['FILE_KTP'] == NULL && $db['STATUS_AKUN'] == NULL) : ?>
+                                            <h5>
+                                                <span class="badge badge-danger">
+                                                    Akun Anda belum dapat diverifikasi oleh Admin.<br>Silahkan lengkapi data diri Anda.
+                                                </span>
+                                            </h5>
+                                        <?php elseif ($db['FILE_KTP'] != NULL && $db['STATUS_AKUN'] == NULL) : ?>
+                                            <h5>
+                                                <span class="badge badge-warning">
+                                                    Menunggu verifikasi akun oleh admin.
+                                                </span>
+                                            </h5>
+                                        <?php else : ?>
+                                            <h5>
+                                                <span class="badge badge-success">
+
+                                                    Akun Terverifikasi
+                                                </span>
+                                            </h5>
+                                        <?php endif; ?>
                                         <div class="product__action">
-                                            <a href="<?php echo site_url('profil_pasien/editProfile/' . $db['ID_PASIEN']); ?>" class="btn btn__primary btn__rounded mb-3">
+                                            <a href="<?php echo site_url('profil_pasien/editProfile') ?>" class="btn btn__primary btn__rounded mb-3">
                                                 <span>Edit Profile</span>
                                             </a>
                                         </div>
@@ -44,7 +59,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="hp" class="form-label">No HP</label>
-                                            <input type="text" class="form-control" id="hp" name="hp" value="<?= $db['HP_PASIEN'] ?>" readonly>
+                                            <input type="text" class="form-control" id="hp" name="hp" value="+<?= $db['HP_PASIEN'] ?>" readonly>
                                         </div>
                                         <div class="mb-3">
                                             <label for="nik" class="form-label">NIK</label>
@@ -70,28 +85,7 @@
                                             <label for="alamat" class="form-label">Alamat</label>
                                             <input type="text" class="form-control" id="alamat" name="alamat" <?php if ($db['ALAMAT_PASIEN'] !== NULL) : ?> value="<?= $db['ALAMAT_PASIEN'] ?>, <?= $db['JENIS_DESA']; ?> <?= $db['NAMA_DESA'] ?>, Kecamatan <?= $db['NAMA_KEC'] ?>, <?= $db['JENIS_KAB']; ?> <?= $db['NAMA_KAB'] ?>, Provinsi <?= $db['NAMA_PROV'] ?>" <?php else : ?> value="" <?php endif; ?> readonly>
                                         </div>
-                                        <?php if ($db['FILE_KTP'] == NULL && $db['STATUS_AKUN'] == NULL) : ?>
-                                            <h5>
-                                                <span class="badge badge-danger">
-                                                    <i class="fa fa-circle" aria-hidden="true"></i>
-                                                    <br>Akun Anda belum dapat diverifikasi oleh Admin.<br>Silahkan lengkapi data diri Anda.
-                                                </span>
-                                            </h5>
-                                        <?php elseif ($db['FILE_KTP'] != NULL && $db['STATUS_AKUN'] == NULL) : ?>
-                                            <h5>
-                                                <span class="badge badge-warning">
-                                                    <i class="fa fa-circle" aria-hidden="true"></i>
-                                                    Menunggu verifikasi akun oleh admin.
-                                                </span>
-                                            </h5>
-                                        <?php else : ?>
-                                            <h5>
-                                                <span class="badge badge-success">
-                                                    <i class="fa fa-circle" aria-hidden="true"></i>
-                                                    Akun Terverifikasi
-                                                </span>
-                                            </h5>
-                                        <?php endif; ?>
+
                                     </div>
                                 </div>
                             </form>

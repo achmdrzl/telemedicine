@@ -71,7 +71,8 @@ class Profil_pasien extends CI_Controller
       }
     }
     $this->Pasien_model->uploadKTP($this->session->ID_PASIEN, $uploaded_data_ktp);
-    redirect('profil_pasien/profile/' . $this->session->ID_PASIEN);
+    $this->session->set_flashdata('upload', 'diunggah');
+    redirect('profil_pasien/editProfile');
   }
 
   public function getDataKabupaten()

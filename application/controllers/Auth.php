@@ -9,7 +9,7 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('auth_pasien');
+        $this->load->model('Auth_pasien');
         $this->load->model('doktermain_model');
         $this->load->model('Admin_model');
     }
@@ -31,13 +31,8 @@ class Auth extends CI_Controller
             $password = $this->input->post('password');
             $nohp = $this->auth_pasien->gantiformat($this->input->post('nohp'));
             $this->auth_pasien->register($name, $username, $password, $nohp);
-            $this->session->set_flashdata('success', '
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Pendaftaran Berhasil!</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>      
-            ');
-            redirect('welcome/register');
+            $this->session->set_flashdata('success', 'berhasil');
+            redirect('welcome/login');
         } else {
             $this->session->set_flashdata('error', '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -51,32 +46,21 @@ class Auth extends CI_Controller
 
     public function verif()
     {
-        $this->form_validation->set_rules('otp', 'otp', 'trim|required|min_length[4]|max_length[4]');
-        if ($this->form_validation->run() == true) {
-            $otp = $this->input->post('otp');
-            $this->auth_pasien->verif($otp);
-            redirect('welcome/login');
+        $this->form_validation->set_rules('otp', 'otp', 'required|min_length[4]|max_length[4]');
+        $data = $this->Auth_pasien->selectOtp($this->session->EMAIL_PASIEN);
+        
+        if ($this->form_validation->run() == FALSE) {
+            render4('pasien/auth/verif', $data[0]);
         } else {
-
-            redirect('welcome/verif');
+            $otp = $this->input->post('otp');
+            if ($otp == $data[0]['OTP']) {
+                $this->auth_pasien->verif();
+                $this->session->set_flashdata('success', 'terverifikasi');
+                redirect('profil_pasien/editProfile');
+            } else {
+                redirect('auth/verif');
+            }
         }
-
-        // $this->db->select("*");
-        // $this->db->from("pasien");
-        // $this->db->where('OTP', $otp);
-        // $query = $this->db->get();
-        // return $query->result_array();
-
-        // if ($query == 1) 
-        // {
-        //     redirect('welcome/login');
-        // } else {
-        //     redirect('welcome/verif');
-        // }
-
-        // $pasien = $this->auth_pasien->getAll(); // memanggil method getAll
-        // $data['pasien'] = $pasien; // menampung di variable $data
-
     }
 
     public function login()
@@ -86,32 +70,7 @@ class Auth extends CI_Controller
 
         $data = $this->auth_pasien->login($username, $password);
 
-        // $dataUser = array(
-        //     'JENIS_USER' => $data->JENIS_USER
-        // );
-        // if ($data) {
-        //     if (password_verify($password, $data->PASSWORD)) {
-        //         $this->session->set_userdata($session);
-        //         redirect('pasien_login/index');
-        //     } else {
-        //         $this->session->set_flashdata('error', 'Username Tidak Di Temukan');
-        //         redirect('welcome/login');
-        //     }
-        // } else {
-        //     $this->session->set_flashdata('error', 'Username Tidak Ditemukan');
-        //     redirect('welcome/login');
-        // }
-
-        // $session = array(
-        //     'ID_PASIEN' => $data->ID_PASIEN,
-        //     'NAMA_PASIEN' => $data->NAMA_PASIEN,
-        //     'EMAIL_PASIEN' => $data->EMAIL_PASIEN,
-        //     'HP_PASIEN' => $data->HP_PASIEN,
-        //     'FILE_FOTO' => $data->FILE_FOTO
-        // );
-
-        if ($data == 1) {
-
+        if ($data == true) {
             $dataUser = $data[0]['JENIS_USER'];
 
             if ($dataUser == 'PASIEN') {

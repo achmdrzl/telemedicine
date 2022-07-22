@@ -13,7 +13,7 @@ class Jadwal extends CI_Controller
   }
   public function index()
   {
-    if ($this->session->ID_PASIEN) {
+    if ($this->session->ID_ADMIN) {
       $data['jadwal'] = $this->Jadwal_model->getAllJadwal();
       $data['sesi'] = $this->Sesi_model->getAllSesi();
       $data['dokters'] = $this->Dokter_model->getAllDokter();
