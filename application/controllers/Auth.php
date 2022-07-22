@@ -71,9 +71,7 @@ class Auth extends CI_Controller
         $data = $this->auth_pasien->login($username, $password);
 
         if ($data == true) {
-
             $dataUser = $data[0]['JENIS_USER'];
-            $dataUser2 = $data[0]['ID_USER'];
 
             if ($dataUser == 'PASIEN') {
                 // get data pasien
@@ -88,10 +86,10 @@ class Auth extends CI_Controller
 
                 $this->session->set_userdata($sessionPasien);
                 redirect('pasien_login/index');
+
             } elseif ($dataUser == 'DOKTER') {
                 //get data dokter
                 $dokter = $this->doktermain_model->getDokter($username);
-
                 //session dokter
                 $sessionDokter = array(
                     'ID_DOKTER' => $dokter->ID_DOKTER,
@@ -105,7 +103,7 @@ class Auth extends CI_Controller
                 redirect('doktermain');
             } elseif ($dataUser == 'ADMIN') {
                 //get data admin
-                $admin = $this->Admin_model->getAdmin($dataUser2);
+                $admin = $this->Admin_model->getAdmin($username);
 
                 //session admin
                 $sessionAdmin = array(
@@ -116,10 +114,10 @@ class Auth extends CI_Controller
                 redirect('admin');
             }
         } else {  // jika username dan password tidak ditemukan atau salah
-            $url = base_url();
+            
             $this->session->set_flashdata('msg', '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Username & Password Salah!</strong>
+                <strong>Username dan Password Salah!</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>      
             ');

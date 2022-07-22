@@ -13,10 +13,14 @@ class Doktermain extends CI_Controller
     }
     public function index()
     {
-        $data['jml_dokter'] = $this->Dokter_model->jumlahDokter();
-        $data['jml_pasien'] = $this->Pasien_model->jumlahPasien();
-        $data['jml_konsul'] = $this->Konsultasi_model->jumlahKonsul();
-        render5('doktermain/index', $data);
+        if ($this->session->ID_DOKTER) {
+            $data['jml_dokter'] = $this->Dokter_model->jumlahDokter();
+            $data['jml_pasien'] = $this->Pasien_model->jumlahPasien();
+            $data['jml_konsul'] = $this->Konsultasi_model->jumlahKonsul();
+            render5('doktermain/index', $data);
+        } else {
+            render2('block');
+        }
     }
 
     public function register()

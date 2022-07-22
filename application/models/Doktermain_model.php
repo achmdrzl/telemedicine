@@ -20,10 +20,10 @@ class Doktermain_model extends CI_Model
       'JENIS_USER' => 'DOKTER'
     );
     $this->db->insert('user', $data_user);
-    
-    //SELECT * FROM user WHERE username=$username
-    //data_idUser = hasil query atas 
+    $query = $this->db->where('USERNAME', $username)->get('user')->result_array();
+    $data_iduser = $query[0]['ID_USER'];
     $data_user2 = array(
+      'ID_USER' => $data_iduser,
       'EMAIL_DOKTER' => $username,
       'NAMA_DOKTER' => $name,
       // "ID_USER"=> $data_idUser
