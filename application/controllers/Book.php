@@ -124,21 +124,19 @@ class Book extends CI_Controller
             );
             $id_det_jad = $get['ID_DETAIL_JADWAL'];
 
-            if($id_det_jad != NULL){
+            if ($id_det_jad != NULL) {
                 $data['data'] = $this->Book_model->getDetailJadwal($id, $sesi);
                 render4('pasien/book/data_dokter', $data);
-                
-            }else{
+            } else {
                 $this->session->set_flashdata('nothing', '
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Tidak Ada Jadwal Dokter Pada Hari Ini!</strong>
+                    <strong>Tidak Ada Jadwal Dokter Pada Tanggal yang di Pilih!</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>      
                 ');
 
                 redirect('book/index');
             }
-
         }
     }
 

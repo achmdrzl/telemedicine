@@ -85,64 +85,100 @@ class Auth extends CI_Controller
 
     public function login()
     {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-
-        $data = $this->auth_pasien->login($username, $password);
-
-
-        if ($data == TRUE) {
-
-            $dataUser = $data[0]['JENIS_USER'];
-
-            if ($dataUser == 'PASIEN') {
-                // get data pasien
-                $pasien = $this->auth_pasien->getUser2($username);
-                //session pasien
-                $sessionPasien = array(
-                    'ID_PASIEN' => $pasien->ID_PASIEN,
-                    'NAMA_PASIEN' => $pasien->NAMA_PASIEN,
-                    'EMAIL_PASIEN' => $pasien->EMAIL_PASIEN,
-                    'HP_PASIEN' => $pasien->HP_PASIEN,
-                );
-
-                $this->session->set_userdata($sessionPasien);
-                redirect('pasien_login/index');
-            } elseif ($dataUser == 'DOKTER') {
-                //get data dokter
-                $dokter = $this->doktermain_model->getDokter($username);
-                //session dokter
-                $sessionDokter = array(
-                    'ID_DOKTER' => $dokter->ID_DOKTER,
-                    'NAMA_DOKTER' => $dokter->NAMA_DOKTER,
-                    'EMAIL_DOKTER' => $dokter->EMAIL_DOKTER,
-                    'SPESIALISASI' => $dokter->SPESIALISASI,
-                    'HP_DOKTER' => $dokter->HP_DOKTER,
-                );
-
-                $this->session->set_userdata($sessionDokter);
-                redirect('doktermain');
-            } elseif ($dataUser == 'ADMIN') {
-                //get data admin
-                $admin = $this->Admin_model->getAdmin($username);
-
-                //session admin
-                $sessionAdmin = array(
-                    'ID_ADMIN' => $admin->ID_ADMIN,
-                    'NAMA_ADMIN' => $admin->NAMA_ADMIN,
-                );
-                $this->session->set_userdata($sessionAdmin);
-                redirect('admin');
-            }
-        } else {  // jika username dan password tidak ditemukan atau salah
-
-            $this->session->set_flashdata('msg', '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Username dan Password Salah!</strong>
+        $this->form_validation->set_rules('username', 'Username', 'required|max_length[25]');
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[50]');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('error', '
+            <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                <strong>Login Gagal!</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>      
             ');
             redirect('welcome/login');
+        } else {
+
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            $cek_data = $this->auth_pasien->login($username);
+
+            if (!empty($cek_data) && $cek_data[0]['JENIS_USER'] == "PASIEN") {
+                if ($cek_data[0]['PASSWORD'] == $password) {
+                    // get data pasien
+                    $pasien = $this->auth_pasien->getUser2($username);
+                    //session pasien
+                    $sessionPasien = array(
+                        'ID_PASIEN' => $pasien->ID_PASIEN,
+                        'NAMA_PASIEN' => $pasien->NAMA_PASIEN,
+                        'EMAIL_PASIEN' => $pasien->EMAIL_PASIEN,
+                        'HP_PASIEN' => $pasien->HP_PASIEN,
+                    );
+
+                    $this->session->set_userdata($sessionPasien);
+                    redirect('pasien_login/index');
+                } else {
+                    $this->session->set_flashdata('error', '
+                    <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                        <strong>Password Salah!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>      
+                    ');
+                    redirect('welcome/login');
+                }
+            } elseif (!empty($cek_data) && $cek_data[0]['JENIS_USER'] == "DOKTER") {
+                if ($cek_data[0]['PASSWORD'] == $password) {
+                    //get data dokter
+                    $dokter = $this->doktermain_model->getDokter($username);
+                    //session dokter
+                    $sessionDokter = array(
+                        'ID_DOKTER' => $dokter->ID_DOKTER,
+                        'NAMA_DOKTER' => $dokter->NAMA_DOKTER,
+                        'EMAIL_DOKTER' => $dokter->EMAIL_DOKTER,
+                        'SPESIALISASI' => $dokter->SPESIALISASI,
+                        'HP_DOKTER' => $dokter->HP_DOKTER,
+                    );
+
+                    $this->session->set_userdata($sessionDokter);
+                    redirect('doktermain');
+                } else {
+                    $this->session->set_flashdata('error', '
+                    <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                        <strong>Password Salah!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>      
+                    ');
+                    redirect('welcome/login');
+                }
+            } elseif (!empty($cek_data) && $cek_data[0]['JENIS_USER'] == "ADMIN") {
+                if ($cek_data[0]['PASSWORD'] == $password) {
+                    //get data admin
+                    $admin = $this->Admin_model->getAdmin($cek_data[0]['ID_USER']);
+
+                    //session admin
+                    $sessionAdmin = array(
+                        'ID_ADMIN' => $admin->ID_ADMIN,
+                        'NAMA_ADMIN' => $admin->NAMA_ADMIN,
+                    );
+                    $this->session->set_userdata($sessionAdmin);
+                    redirect('admin');
+                } else {
+                    $this->session->set_flashdata('error', '
+                    <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                        <strong>Password Salah!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>      
+                    ');
+                    redirect('welcome/login');
+                }
+            } else {
+
+                $this->session->set_flashdata('error', '
+                    <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                        <strong>Username Tidak Terdaftar!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>      
+                    ');
+                redirect('welcome/login');
+            }
         }
     }
 
@@ -184,6 +220,24 @@ class Auth extends CI_Controller
         } else {
             $url = $client->createAuthUrl();
             header('Location:' . filter_var($url, FILTER_SANITIZE_URL));
+        }
+    }
+
+    public function forgotPass()
+    {
+        $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('msg', '
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Email tidak di Temukan!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+            ');
+            redirect('welcome/forgotPass');
+        } else {
+            $email = $this->input->post('email');
+            $this->auth_pasien->forgotPass($email);
+            redirect('welcome/login');
         }
     }
 }

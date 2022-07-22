@@ -73,24 +73,17 @@ class Auth_pasien extends CI_Model
         $this->db->where('ID_PASIEN', $this->session->ID_PASIEN);
         $this->db->update('pasien', $update_status);
     }
+    
     public function selectOtp($email)
     {
         $this->db->select('OTP, HP_PASIEN');
         $this->db->where('EMAIL_PASIEN', $email);
         return $this->db->get('pasien')->result_array();
     }
-    public function login($username, $password)
+    public function login($username)
     {
-        $query = $this->db->query("SELECT * FROM user WHERE USERNAME='$username' AND PASSWORD ='$password' LIMIT 1")->result_array();
+        $query = $this->db->query("SELECT * FROM user WHERE USERNAME='$username' ")->result_array();
         return $query;
-
-        // return $this->db->where('EMAIL_PASIEN', $username)->get('pasien')->row();
-        // return $this->db->where('USERNAME', $username)->get('user')->row();
-        // $this->db->select('ur.USERNAME, ur.PASSWORD, ps.NAMA_PASIEN, ps.EMAIL_PASIEN, ps.ID_PASIEN');
-        // $this->db->from('pasien as ps');
-        // $this->db->join('user as ur', 'ps.EMAIL_PASIEN=ur.USERNAME', 'JOIN');
-        // $this->db->where('ps.EMAIL_PASIEN', $username);
-        // return $this->db->get()->row();
     }
 
     public function getUser($username)
