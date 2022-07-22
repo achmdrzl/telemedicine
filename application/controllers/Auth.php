@@ -12,6 +12,7 @@ class Auth extends CI_Controller
         $this->load->model('auth_pasien');
         $this->load->model('doktermain_model');
         $this->load->model('Admin_model');
+        $this->load->library('form_validation');
     }
 
     public function getSesi()
@@ -21,31 +22,45 @@ class Auth extends CI_Controller
 
     public function register()
     {
-        $this->form_validation->set_rules('name', 'name', 'trim|required|min_length[1]|max_length[50]|is_unique[pasien.NAMA_PASIEN]');
-        $this->form_validation->set_rules('email', 'email', 'trim|required|min_length[1]|max_length[50]');
-        $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[1]|max_length[25]');
-        $this->form_validation->set_rules('nohp', 'nohp', 'trim|required|min_length[1]|max_length[25]');
-        if ($this->form_validation->run() == true) {
-            $name = $this->input->post('name');
-            $username = $this->input->post('email');
-            $password = $this->input->post('password');
-            $nohp = $this->auth_pasien->gantiformat($this->input->post('nohp'));
-            $this->auth_pasien->register($name, $username, $password, $nohp);
-            $this->session->set_flashdata('success', '
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Pendaftaran Berhasil!</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>      
-            ');
-            redirect('welcome/register');
-        } else {
+        $this->form_validation->set_rules('name', 'Nama', 'required|max_length[25]');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[50]');
+        $this->form_validation->set_rules('nohp', 'No. Handphone', 'required|max_length[12]|numeric');
+
+        if ($this->form_validation->run() == FALSE) {
+
             $this->session->set_flashdata('error', '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
                 <strong>Pendaftaran Gagal!</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>      
             ');
             redirect('welcome/register');
+        } else {
+            $name = $this->input->post('name');
+            $username = $this->input->post('email');
+            $password = $this->input->post('password');
+            $nohp = $this->auth_pasien->gantiformat($this->input->post('nohp'));
+            $cek_data = $this->auth_pasien->getUser($username);
+
+            if (!empty($cek_data)) {
+                $this->session->set_flashdata('error', '
+                <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                <strong>Email Sudah Terdaftar!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>      
+                ');
+                redirect('welcome/register');
+            } else {
+                $this->auth_pasien->register($name, $username, $password, $nohp);
+                $this->session->set_flashdata('success', '
+                <div class="alert alert-success alert-dismissible fade show w-100" role="alert">
+                <strong>Pendaftaran Berhasil!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>      
+                ');
+                redirect('welcome/register');
+            }
         }
     }
 
@@ -57,26 +72,8 @@ class Auth extends CI_Controller
             $this->auth_pasien->verif($otp);
             redirect('welcome/login');
         } else {
-
             redirect('welcome/verif');
         }
-
-        // $this->db->select("*");
-        // $this->db->from("pasien");
-        // $this->db->where('OTP', $otp);
-        // $query = $this->db->get();
-        // return $query->result_array();
-
-        // if ($query == 1) 
-        // {
-        //     redirect('welcome/login');
-        // } else {
-        //     redirect('welcome/verif');
-        // }
-
-        // $pasien = $this->auth_pasien->getAll(); // memanggil method getAll
-        // $data['pasien'] = $pasien; // menampung di variable $data
-
     }
 
     public function login()
@@ -86,31 +83,7 @@ class Auth extends CI_Controller
 
         $data = $this->auth_pasien->login($username, $password);
 
-        // $dataUser = array(
-        //     'JENIS_USER' => $data->JENIS_USER
-        // );
-        // if ($data) {
-        //     if (password_verify($password, $data->PASSWORD)) {
-        //         $this->session->set_userdata($session);
-        //         redirect('pasien_login/index');
-        //     } else {
-        //         $this->session->set_flashdata('error', 'Username Tidak Di Temukan');
-        //         redirect('welcome/login');
-        //     }
-        // } else {
-        //     $this->session->set_flashdata('error', 'Username Tidak Ditemukan');
-        //     redirect('welcome/login');
-        // }
-
-        // $session = array(
-        //     'ID_PASIEN' => $data->ID_PASIEN,
-        //     'NAMA_PASIEN' => $data->NAMA_PASIEN,
-        //     'EMAIL_PASIEN' => $data->EMAIL_PASIEN,
-        //     'HP_PASIEN' => $data->HP_PASIEN,
-        //     'FILE_FOTO' => $data->FILE_FOTO
-        // );
-
-        if ($data == 1) {
+        if ($data == TRUE) {
 
             $dataUser = $data[0]['JENIS_USER'];
 
@@ -127,7 +100,6 @@ class Auth extends CI_Controller
 
                 $this->session->set_userdata($sessionPasien);
                 redirect('pasien_login/index');
-
             } elseif ($dataUser == 'DOKTER') {
                 //get data dokter
                 $dokter = $this->doktermain_model->getDokter($username);
@@ -155,7 +127,7 @@ class Auth extends CI_Controller
                 redirect('admin');
             }
         } else {  // jika username dan password tidak ditemukan atau salah
-            
+
             $this->session->set_flashdata('msg', '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Username dan Password Salah!</strong>

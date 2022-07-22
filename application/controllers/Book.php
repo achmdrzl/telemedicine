@@ -81,24 +81,65 @@ class Book extends CI_Controller
         //echo hari
         $day = $daftar_hari[$namahari];
 
-        //get id jadwal
-        $getJadwal = $this->Book_model->getIdJadwal($day);
+        if ($day == 'Minggu') {
+            $this->session->set_flashdata('nothing', '
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Tidak Ada Jadwal Pada Hari Libur!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+            ');
 
-        $jadwal = array(
-            'ID_JADWAL' => $getJadwal->ID_JADWAL,
-            'HARI' => $getJadwal->HARI,
-            'KUOTA' => $getJadwal->KUOTA
-        );
+            redirect('book/index');
+        } elseif ($day == 'Sabtu') {
+            $this->session->set_flashdata('nothing', '
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Tidak Ada Jadwal Pada Hari Libur!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+            ');
 
-        $session = array(
-            'TGL_KONSUL' => $date,
-            'SESI' => $sesi,
-        );
+            redirect('book/index');
+        } else {
+            //get id jadwal
+            $getJadwal = $this->Book_model->getIdJadwal($day);
 
-        $this->session->set_userdata($session);
-        $id = $jadwal['ID_JADWAL'];
-        $data['data'] = $this->Book_model->getDetailJadwal($id, $sesi);
-        render4('pasien/book/data_dokter', $data, $date);
+            $jadwal = array(
+                'ID_JADWAL' => $getJadwal->ID_JADWAL,
+                'HARI' => $getJadwal->HARI,
+                'KUOTA' => $getJadwal->KUOTA
+            );
+
+            $session = array(
+                'TGL_KONSUL' => $date,
+                'SESI' => $sesi,
+            );
+
+            $this->session->set_userdata($session);
+
+            $id = $jadwal['ID_JADWAL'];
+
+            $getDetJad = $this->Book_model->getDetailJadwal2($id, $sesi);
+            $get = array(
+                'ID_DETAIL_JADWAL' => $getDetJad->ID_DETAIL_JADWAL,
+            );
+            $id_det_jad = $get['ID_DETAIL_JADWAL'];
+
+            if($id_det_jad != NULL){
+                $data['data'] = $this->Book_model->getDetailJadwal($id, $sesi);
+                render4('pasien/book/data_dokter', $data);
+                
+            }else{
+                $this->session->set_flashdata('nothing', '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Tidak Ada Jadwal Dokter Pada Hari Ini!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>      
+                ');
+
+                redirect('book/index');
+            }
+
+        }
     }
 
     public function inputKel($id)

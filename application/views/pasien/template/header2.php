@@ -144,6 +144,7 @@
         </header><!-- /.Header -->
         <!-- <div class="cek-status" data-flashdata="<?php echo $this->session->flashdata('message'); ?>" style="z-index:99999;"></div> -->
         <?php echo $this->session->flashdata('message'); ?>
+
         <!-- ========== Start Modal Alert ========== -->
         <!-- <div class="modal animated fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered w-80">

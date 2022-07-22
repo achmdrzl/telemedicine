@@ -13,6 +13,7 @@
                     <div class="contact-panel">
                         <?php foreach ($pasien as $db) : ?>
                             <form class="form-group" method="post" action="<?php echo base_url(); ?>auth/login">
+                                <?php echo $this->session->flashdata('ubah'); ?>
                                 <div class="row justify-content-center align-items-center">
                                     <div class="col-sm-12">
                                         <h4 class="contact-panel__title">Profile Pasien</h4>
