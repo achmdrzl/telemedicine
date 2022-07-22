@@ -24,7 +24,7 @@ class Welcome extends CI_Controller
 
 	public function verif()
 	{
-		$data[] = "";
+		
 		render2('pasien/auth/verif');
 	}
 

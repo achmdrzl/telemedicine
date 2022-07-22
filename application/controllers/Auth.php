@@ -9,7 +9,7 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('auth_pasien');
+        $this->load->model('Auth_pasien');
         $this->load->model('doktermain_model');
         $this->load->model('Admin_model');
         $this->load->library('form_validation');
@@ -66,13 +66,20 @@ class Auth extends CI_Controller
 
     public function verif()
     {
-        $this->form_validation->set_rules('otp', 'otp', 'trim|required|min_length[4]|max_length[4]');
-        if ($this->form_validation->run() == true) {
-            $otp = $this->input->post('otp');
-            $this->auth_pasien->verif($otp);
-            redirect('welcome/login');
+        $this->form_validation->set_rules('otp', 'otp', 'required|min_length[4]|max_length[4]');
+        $data = $this->Auth_pasien->selectOtp($this->session->EMAIL_PASIEN);
+        
+        if ($this->form_validation->run() == FALSE) {
+            render4('pasien/auth/verif', $data[0]);
         } else {
-            redirect('welcome/verif');
+            $otp = $this->input->post('otp');
+            if ($otp == $data[0]['OTP']) {
+                $this->auth_pasien->verif();
+                $this->session->set_flashdata('success', 'terverifikasi');
+                redirect('profil_pasien/editProfile');
+            } else {
+                redirect('auth/verif');
+            }
         }
     }
 

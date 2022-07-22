@@ -10,8 +10,12 @@ class Pasien extends CI_Controller
   }
   public function index()
   {
-    $data['pasien'] = $this->Pasien_model->getAllPasien();
-    render('admin/pasien/index', $data);
+    if ($this->session->ID_ADMIN) {
+      $data['pasien'] = $this->Pasien_model->getAllPasien();
+      render('admin/pasien/index', $data);
+    } else {
+      render2('block');
+    }
   }
   public function detail($id)
   {
