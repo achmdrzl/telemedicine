@@ -73,7 +73,7 @@ class Auth_pasien extends CI_Model
         $this->db->where('ID_PASIEN', $this->session->ID_PASIEN);
         $this->db->update('pasien', $update_status);
     }
-    
+
     public function selectOtp($email)
     {
         $this->db->select('OTP, HP_PASIEN');
@@ -119,5 +119,13 @@ class Auth_pasien extends CI_Model
 
         $this->db->insert('pasien', $data);
         $this->db->insert('user', $data2);
+    }
+
+    public function forgotPass($email){
+        return $this->db->where('USERNAME', $email)->get('user')->row();
+    }
+
+    public function verifForgotPass($email){
+        return $this->db->where('USERNAME', $email)->get('user')->row();
     }
 }

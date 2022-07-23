@@ -68,7 +68,7 @@ class Auth extends CI_Controller
     {
         $this->form_validation->set_rules('otp', 'otp', 'required|min_length[4]|max_length[4]');
         $data = $this->Auth_pasien->selectOtp($this->session->EMAIL_PASIEN);
-        
+
         if ($this->form_validation->run() == FALSE) {
             render4('pasien/auth/verif', $data[0]);
         } else {
@@ -225,18 +225,83 @@ class Auth extends CI_Controller
 
     public function forgotPass()
     {
-        $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('email', 'email', 'required|valid_email');
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('msg', '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Email tidak di Temukan!</strong>
+                <strong>Periksa Kembali Email Anda!</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>      
             ');
             redirect('welcome/forgotPass');
         } else {
             $email = $this->input->post('email');
-            $this->auth_pasien->forgotPass($email);
+            $cek_data = $this->auth_pasien->forgotPass($email);
+            if (!empty($cek_data)) {
+                redirect('welcome/verifForgotPass');
+            } else {
+                $this->session->set_flashdata('error', '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Email tidak di Temukan!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>      
+                ');
+                redirect('welcome/ForgotPass');
+            }
+        }
+    }
+
+    public function verifyPass()
+    {
+        $this->form_validation->set_rules('otp', 'Kode OTP', 'required|max_length[4]');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('error', '
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Periksa Kembali Kode OTP Anda!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+            ');
+            redirect('welcome/verifForgotPass');
+        } else {
+            $otp = $this->input->post('otp');
+            $cek_data = $this->auth_pasien->verifForgotPass($otp);
+
+            if (!empty($cek_data)) {
+                redirect('welcome/newPass');
+
+            } else {
+                $this->session->set_flashdata('error', '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Kode OTP Salah!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>      
+                ');
+                redirect('welcome/verifForgotPass');
+            }
+        }
+    }
+
+    public function updatePass(){
+        $this->form_validation->set_rules('password', 'Password', 'required|max_length[25]|min_length[8]');
+        $this->form_validation->set_rules('cpassword', 'Confirm Password', 'required|max_length[25]|min_length[8]|matches[password]');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('error', '
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Periksa Kembali Isian ANda!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+            ');
+            redirect('welcome/newPass');
+        } else {
+            $otp = $this->input->post('pass');
+            $this->auth_pasien->updatePass($otp);
+
+            $this->session->set_flashdata('ubah', '
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Data Berhasil di Ubah!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>      
+                ');
             redirect('welcome/login');
         }
     }
