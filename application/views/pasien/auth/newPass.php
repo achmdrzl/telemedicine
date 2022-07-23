@@ -18,23 +18,33 @@
                             echo $this->session->flashdata('error');
                         }
                         ?>
-                        <form class="form-group" method="post" action="<?php echo site_url(); ?>auth/forgotPass">
+                        <form method="post" action="<?php echo site_url('auth/verifyPass') ?>">
+                            <?php
+                            $pesan = 'Hati-hati penipuan, berikut nomor OTP Anda untuk verifikasi pada platform Telemedicine RSUD Kabupaten Jombang : <strong>' . $OTP . '</strong>';
+                            ?>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <h4 class="contact-panel__title">Reset Password</h4>
-                                    <p class="contact-panel__desc mb-30">Masukkan Alamat Email Anda yang Sudah Terdaftar
+                                    <h4 class="contact-panel__title">Reset Kata Sandi</h4>
+                                    <p class="contact-panel__desc mb-30">Silahkan Masukkan Kata Sandi Baru Anda
                                     </p>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group">
-                                        <i class="fa fa-envelope form-group-icon"></i>
-                                        <input type="number" class="form-control" placeholder="Masukkan Email" id="contact-email" name="email" required>
-                                        <div id="error" class="form-text text-danger"><?php echo form_error('email'); ?></div>
+                                        <i class="fa fa-phone form-group-icon"></i>
+                                        <input type="text" class="form-control" placeholder="Password" id="otp" name="password" required>
+                                        <div id="error" class="form-text text-danger"><?php echo form_error('password'); ?></div>
+                                    </div>
+                                </div><!-- /.col-lg-6 -->
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="form-group">
+                                        <i class="fa fa-phone form-group-icon"></i>
+                                        <input type="text" class="form-control" placeholder="Confirm Password" id="otp" name="cpassword" required>
+                                        <div id="error" class="form-text text-danger"><?php echo form_error('cpassword'); ?></div>
                                     </div>
                                 </div><!-- /.col-lg-6 -->
                                 <div class="col-12">
                                     <button type="submit" class="btn btn__secondary btn__rounded btn__block btn__xhight mt-10">
-                                        <span>Lupa Password</span> <i class="icon-arrow-right"></i>
+                                        <span>Verifikasi</span> <i class="icon-arrow-right"></i>
                                     </button>
                                     <div class="contact-result"></div>
                                 </div><!-- /.col-lg-12 -->
