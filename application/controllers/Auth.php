@@ -279,9 +279,7 @@ class Auth extends CI_Controller
             }
         }
     }
-
-    public function updatePass()
-    {
+    public function updatePass(){
         $this->form_validation->set_rules('password', 'Password', 'required|max_length[25]|min_length[8]');
         $this->form_validation->set_rules('cpassword', 'Confirm Password', 'required|max_length[25]|min_length[8]|matches[password]');
         if ($this->form_validation->run() == FALSE) {

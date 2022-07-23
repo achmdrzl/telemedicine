@@ -12,13 +12,13 @@
                 <div class="col-8">
                     <div class="contact-panel d-flex flex-wrap">
                         <?php
-                        if ($this->session->flashdata('error') != '') {
-                            echo '<div class="alert alert-danger" role="alert">';
+                        if (empty($this->session->flashdata('error'))) {
+                            echo $this->session->flashdata('success');
+                        } else {
                             echo $this->session->flashdata('error');
-                            echo '</div>';
                         }
                         ?>
-                        <form method="post" action="">
+                        <form method="post" action="<?php echo site_url('auth/verifyPass') ?>">
                             <?php
                             $pesan = 'Hati-hati penipuan, berikut nomor OTP Anda untuk verifikasi pada platform Telemedicine RSUD Kabupaten Jombang : <strong>' . $OTP . '</strong>';
                             ?>
@@ -32,6 +32,7 @@
                                     <div class="form-group">
                                         <i class="fa fa-phone form-group-icon"></i>
                                         <input type="text" class="form-control" placeholder="Kode OTP" id="otp" name="otp" required>
+                                        <div id="error" class="form-text text-danger"><?php echo form_error('otp'); ?></div>
                                     </div>
                                 </div><!-- /.col-lg-6 -->
                                 <div class="col-4">

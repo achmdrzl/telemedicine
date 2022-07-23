@@ -58,4 +58,12 @@ class Welcome extends CI_Controller
 	public function forgotPass(){
 		render2('pasien/auth/forgotPass');
 	}
+
+	public function verifForgotPass(){
+		render2('pasien/auth/verifForgotPass');
+	}
+
+	public function newPass(){
+		render2('pasien/auth/newPass');
+	}
 }
