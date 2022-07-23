@@ -114,7 +114,7 @@ class Auth extends CI_Controller
         //     'FILE_FOTO' => $data->FILE_FOTO
         // );
 
-        if ($data==true) {
+        if ($data > 0) {
 
             $dataUser = $data[0]['JENIS_USER'];
             $dataUser2 = $data[0]['ID_USER'];

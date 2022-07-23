@@ -18,37 +18,114 @@
                         <th>ID Pasien</th>
                         <th>Nama</th>
                         <th>Email</th>
-                        <th>Keluhan</th>
-                        <th>HP</th>
+                        <th>Telepon</th>
+                        <th>Status Resep</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="text-center">
                     <?php
-                    foreach ($konsultasi as $k) :
-                    ?>  
-                    <form action="" method="POST">
-						<?php
-						$pesan = 'Silahkan klik link berikut untuk link zoom konsultasinya ' . $k['LINK_ZOOM'];
-						?>
+                    foreach ($pasien as $p) :
+                    ?>
                         <tr>
-                            <td><?= $k['ID_PASIEN'] ?></td>
-                            <td><?= $k['NAMA_PASIEN'] ?></td>
-                            <td><?= $k['EMAIL_PASIEN'] ?></td>
-                            <td><?= $k['KELUHAN'] ?></td>
-                            <td><?= $k['HP_PASIEN'] ?></td>
+                            <td><?= $p['ID_PASIEN'] ?></td>
+                            <td><?= $p['NAMA_PASIEN'] ?></td>
+                            <td><?= $p['EMAIL_PASIEN'] ?></td>
+                            <td><?= $p['HP_PASIEN'] ?></td>
                             <td>
-                                <a href="<?= site_url('resep_dokter/formHasilKonsul/' . $k['ID_KONSUL']); ?>" class="btn btn-warning btn-sm btn-block" id="btn-edit-user">Hasil Konsul</a>
-								<a data-id_konsul="<?= $k['ID_KONSUL'] ?>" data-no="<?= $k['HP_PASIEN'] ?>" data-pesan="<?= $pesan ?>" onclick="kirimpesanzoom(this)" class="btn btn-success btn-block">Kirim Notifikasi Zoom</a>
-                                <a href="<?= $k['LINK_ZOOM']; ?>" class="btn btn-primary btn-sm btn-block" id="btn-edit-user">Link Zoom</a>
-                                
+                                <a href="<?= site_url('resepdokter/resep/' . $p['ID_PASIEN']); ?>" class="btn btn-warning btn-sm" id="btn-edit-user" data-toggle="modal" data-target="#tambahresep" data-id_user="{{$u->id_user}}" data-name="{{$u->name}}" data-email="{{$u->email}}" data-password="{{$u->password}}" data-roles="{{$u->roles}}"></a>
                             </td>
                             <td></td>
                         </tr>
-                    </form>
                     <?php endforeach; ?>
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal tambah resep  -->
+<div class="modal fade" id="tambahresep" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title font-weight-bold " id="exampleModalLongTitle"><i class="fas fa-user text-purple"></i> Form Edit User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid px-4">
+                    <form action="{{route('update.id')}}" method="POST" enctype="multipart/form-data" class="mr-8">
+                        <input type="hidden" class="form-control" name="id_user" id="edit-id_user"><br>
+                        <div class="form-group row">
+                            <label for="nama" class="form-label">Id Pasien</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="nama" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="form-label">Nama Pasien</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="email" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="email" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="form-label">No Hp</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="email" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="form-label">Nik</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="email" value="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="form-label">Obat</label>
+                            <div class="col-sm-10">
+                                <select name="obat" id="obat" class="select">
+                                    <option>Pilih Obat</option>
+                                    <?php foreach ($obat as $p) : ?>
+                                        <option value="<?= $p['ID_OBAT'] ?>"><?= ($p['NAMA_OBAT']) ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="form-label">Resep diberikan</label>
+                            <div class="col-sm-10">
+                                <p id="date"></p>
+                                <script>
+                                    n = new Date();
+                                    y = n.getFullYear();
+                                    m = n.getMonth() + 1;
+                                    d = n.getDate();
+                                    document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+                                </script>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="form-label">Nama Dokter</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="email" value="">
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-purple">Simpan</button>
+                            <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

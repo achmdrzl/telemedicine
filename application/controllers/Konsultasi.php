@@ -18,9 +18,6 @@ class Konsultasi extends CI_Controller
       render2('block');
     }
   }
-  public function getKonsultasi(){
-
-  }
   public function detail()
   {
     if ($this->session->ID_ADMIN) {
