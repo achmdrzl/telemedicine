@@ -100,6 +100,7 @@ class Auth extends CI_Controller
             $username = $this->input->post('username');
             $password = $this->input->post('password');
             $cek_data = $this->auth_pasien->login($username);
+            $id = $cek_data[0]['ID_USER'];
 
             if (!empty($cek_data) && $cek_data[0]['JENIS_USER'] == "PASIEN") {
                 if ($cek_data[0]['PASSWORD'] == $password) {
@@ -150,8 +151,9 @@ class Auth extends CI_Controller
                 }
             } elseif (!empty($cek_data) && $cek_data[0]['JENIS_USER'] == "ADMIN") {
                 if ($cek_data[0]['PASSWORD'] == $password) {
+
                     //get data admin
-                    $admin = $this->Admin_model->getAdmin($cek_data[0]['ID_USER']);
+                    $admin = $this->Admin_model->getAdmin($id);
 
                     //session admin
                     $sessionAdmin = array(
