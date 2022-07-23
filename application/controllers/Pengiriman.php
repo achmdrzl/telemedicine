@@ -6,6 +6,7 @@ class Pengiriman extends CI_Controller
   public function __construct()
   {
     parent::__construct();
+    $this->load->model('Ongkir_model');
     $this->load->model('Pengiriman_model');
   }
   public function index()

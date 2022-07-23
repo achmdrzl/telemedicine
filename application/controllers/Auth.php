@@ -68,7 +68,7 @@ class Auth extends CI_Controller
     {
         $this->form_validation->set_rules('otp', 'otp', 'required|min_length[4]|max_length[4]');
         $data = $this->Auth_pasien->selectOtp($this->session->EMAIL_PASIEN);
-        
+
         if ($this->form_validation->run() == FALSE) {
             render4('pasien/auth/verif', $data[0]);
         } else {
@@ -85,84 +85,12 @@ class Auth extends CI_Controller
 
     public function login()
     {
-        $username = $this->input->post('username');
-        $password = $this->input->post('password');
-
-        $data = $this->auth_pasien->login($username, $password);
-
-        // $dataUser = array(
-        //     'JENIS_USER' => $data->JENIS_USER
-        // );
-        // if ($data) {
-        //     if (password_verify($password, $data->PASSWORD)) {
-        //         $this->session->set_userdata($session);
-        //         redirect('pasien_login/index');
-        //     } else {
-        //         $this->session->set_flashdata('error', 'Username Tidak Di Temukan');
-        //         redirect('welcome/login');
-        //     }
-        // } else {
-        //     $this->session->set_flashdata('error', 'Username Tidak Ditemukan');
-        //     redirect('welcome/login');
-        // }
-
-        // $session = array(
-        //     'ID_PASIEN' => $data->ID_PASIEN,
-        //     'NAMA_PASIEN' => $data->NAMA_PASIEN,
-        //     'EMAIL_PASIEN' => $data->EMAIL_PASIEN,
-        //     'HP_PASIEN' => $data->HP_PASIEN,
-        //     'FILE_FOTO' => $data->FILE_FOTO
-        // );
-
-        if ($data > 0) {
-
-            $dataUser = $data[0]['JENIS_USER'];
-            $dataUser2 = $data[0]['ID_USER'];
-
-            if ($dataUser == 'PASIEN') {
-                // get data pasien
-                $pasien = $this->auth_pasien->getUser2($username);
-                //session pasien
-                $sessionPasien = array(
-                    'ID_PASIEN' => $pasien->ID_PASIEN,
-                    'NAMA_PASIEN' => $pasien->NAMA_PASIEN,
-                    'EMAIL_PASIEN' => $pasien->EMAIL_PASIEN,
-                    'HP_PASIEN' => $pasien->HP_PASIEN,
-                );
-
-                $this->session->set_userdata($sessionPasien);
-                redirect('pasien_login/index');
-            } elseif ($dataUser == 'DOKTER') {
-                //get data dokter
-                $dokter = $this->doktermain_model->getDokter($dataUser2);
-                //session dokter
-                $sessionDokter = array(
-                    'ID_DOKTER' => $dokter->ID_DOKTER,
-                    'NAMA_DOKTER' => $dokter->NAMA_DOKTER,
-                    'EMAIL_DOKTER' => $dokter->EMAIL_DOKTER,
-                    'SPESIALISASI' => $dokter->SPESIALISASI,
-                    'HP_DOKTER' => $dokter->HP_DOKTER,
-                );
-
-                $this->session->set_userdata($sessionDokter);
-                redirect('doktermain');
-            } elseif ($dataUser == 'ADMIN') {
-                //get data admin
-                $admin = $this->Admin_model->getAdmin($dataUser2);
-
-                //session admin
-                $sessionAdmin = array(
-                    'ID_ADMIN' => $admin->ID_ADMIN,
-                    'NAMA_ADMIN' => $admin->NAMA_ADMIN,
-                );
-                $this->session->set_userdata($sessionAdmin);
-                redirect('admin');
-            }
-        } else {  // jika username dan password tidak ditemukan atau salah
-            $url = base_url();
-            $this->session->set_flashdata('msg', '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Username & Password Salah!</strong>
+        $this->form_validation->set_rules('username', 'Username', 'required|max_length[25]');
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[50]');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('error', '
+            <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                <strong>Login Gagal!</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>      
             ');
@@ -297,18 +225,83 @@ class Auth extends CI_Controller
 
     public function forgotPass()
     {
-        $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('email', 'email', 'required|valid_email');
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('msg', '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Email tidak di Temukan!</strong>
+                <strong>Periksa Kembali Email Anda!</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>      
             ');
             redirect('welcome/forgotPass');
         } else {
             $email = $this->input->post('email');
-            $this->auth_pasien->forgotPass($email);
+            $cek_data = $this->auth_pasien->forgotPass($email);
+            if (!empty($cek_data)) {
+                redirect('welcome/verifForgotPass');
+            } else {
+                $this->session->set_flashdata('error', '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Email tidak di Temukan!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>      
+                ');
+                redirect('welcome/ForgotPass');
+            }
+        }
+    }
+
+    public function verifyPass()
+    {
+        $this->form_validation->set_rules('otp', 'Kode OTP', 'required|max_length[4]');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('error', '
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Periksa Kembali Kode OTP Anda!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+            ');
+            redirect('welcome/verifForgotPass');
+        } else {
+            $otp = $this->input->post('otp');
+            $cek_data = $this->auth_pasien->verifForgotPass($otp);
+
+            if (!empty($cek_data)) {
+                redirect('welcome/newPass');
+            } else {
+                $this->session->set_flashdata('error', '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Kode OTP Salah!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>      
+                ');
+                redirect('welcome/verifForgotPass');
+            }
+        }
+    }
+
+    public function updatePass()
+    {
+        $this->form_validation->set_rules('password', 'Password', 'required|max_length[25]|min_length[8]');
+        $this->form_validation->set_rules('cpassword', 'Confirm Password', 'required|max_length[25]|min_length[8]|matches[password]');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('error', '
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Periksa Kembali Isian ANda!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+            ');
+            redirect('welcome/newPass');
+        } else {
+            $otp = $this->input->post('pass');
+            $this->auth_pasien->updatePass($otp);
+
+            $this->session->set_flashdata('ubah', '
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Data Berhasil di Ubah!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>      
+                ');
             redirect('welcome/login');
         }
     }

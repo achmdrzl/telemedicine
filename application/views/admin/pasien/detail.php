@@ -33,7 +33,7 @@
 								</div>
 								<div class="mb-3">
 									<label for="tgl_lahir" class="form-label">Tempat, Tanggal Lahir Pasien</label>
-									<input type="text" class="form-control" id="tgl_lahir" name="tgl_lahir" value="<?= $detail['KELAHIRAN'] ?>, <?= $detail['TGL_LAHIR'] ?>" readonly>
+									<input type="text" class="form-control" id="tgl_lahir" name="tgl_lahir" value="<?= $detail['KELAHIRAN'] ?>, <?= format_indo($detail['TGL_LAHIR']) ?>" readonly>
 								</div>
 								<div class="mb-3">
 									<label for="jk" class="form-label">Jenis Kelamin</label>
