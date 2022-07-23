@@ -35,7 +35,7 @@
                                             </a>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="nama" class="form-label">Nama</label>
+                                            <label for="nama" class="form-label">Name</label>
                                             <input type="text" class="form-control" id="nama" name="nama" value="<?= $db['NAMA_PASIEN'] ?>" readonly>
                                         </div>
                                         <div class="mb-3">
