@@ -40,9 +40,9 @@ class Doktermain_model extends CI_Model
     return $this->db->where('EMAIL_DOKTER', $email)->get('dokter')->row();
   }
 
-  public function getDokter($email)
+  public function getDokter($id)
   {
-    return $this->db->where('EMAIL_DOKTER', $email)->get('dokter')->row();
+    return $this->db->where('ID_USER', $id)->get('dokter')->row();
   }
   public function getDokterByID($id)
   {

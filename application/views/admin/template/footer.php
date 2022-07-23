@@ -78,7 +78,7 @@
             }
         });
     }
-
+    
     function kirimpesantolak(el) {
         let no = $(el).data("no");
         let psn = $(el).data("pesan_tolak");
@@ -121,6 +121,28 @@
             }
         });
     }
+    
+    function kirimpesanzoom(el) {
+              let no = $(el).data("no");
+              let psn = $(el).data("pesan");
+              $.ajax({
+                  url: "http://127.0.0.1:4774/kirimpesan",
+                  method: "POST",
+                  cache: false,
+                  dataType: "json",
+                  data: {
+                      nomor: no,
+                      pesan: psn
+                  },
+                  success: function(x) {
+                      let data = JSON.parse(JSON.stringify(x));
+                      alert(data.status);
+                  },
+                  error: function(c) {
+                      alert("Pesan Gagal Dikirim");
+                  }
+              });
+            }
 </script>
 </body>
 
