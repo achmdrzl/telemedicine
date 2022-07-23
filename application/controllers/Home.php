@@ -12,7 +12,7 @@ class Home extends CI_Controller
     }
     public function index()
     {
-        if ($this->session->ID_PASIEN) {
+        if ($this->session->ID_ADMIN) {
             $data['jml_dokter'] = $this->Dokter_model->jumlahDokter();
             $data['jml_pasien'] = $this->Pasien_model->jumlahPasien();
             $data['jml_konsul'] = $this->Konsultasi_model->jumlahKonsul();

@@ -12,13 +12,15 @@
                 <div class="col-8">
                     <div class="contact-panel d-flex flex-wrap">
                         <?php
-                        if ($this->session->flashdata('error') != 1) {
+                        if (empty($this->session->flashdata('error'))) {
                             echo $this->session->flashdata('success');
-                        }else{
+                        } else {
                             echo $this->session->flashdata('error');
                         }
+
+
                         ?>
-                        <form class="form-group" method="post" action="<?php echo base_url(); ?>auth/register">
+                        <form class="form-group" method="post" action="<?php echo site_url(); ?>auth/register">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <h4 class="contact-panel__title">Register</h4>
@@ -29,27 +31,28 @@
                                     <div class="form-group">
                                         <i class="icon-user form-group-icon"></i>
                                         <input type="text" class="form-control" placeholder="Nama" id="contact-name" name="name" required>
+                                        <div id="error" class="form-text text-danger"><?php echo form_error('name'); ?></div>
                                     </div>
                                 </div><!-- /.col-lg-6 -->
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <i class="fa fa-envelope form-group-icon"></i>
                                         <input type="email" class="form-control" placeholder="Email" id="contact-email" name="email" required>
+                                        <div id="error" class="form-text text-danger"><?php echo form_error('email'); ?></div>
                                     </div>
                                 </div><!-- /.col-lg-6 -->
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <i class="fa fa-lock form-group-icon"></i>
                                         <input type="password" class="form-control" placeholder="Password" id="contact-password" name="password" required>
+                                        <div id="error" class="form-text text-danger"><?php echo form_error('password'); ?></div>
                                     </div>
                                 </div><!-- /.col-lg-6 -->
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     <div class="form-group">
                                         <i class="fa fa-phone form-group-icon"></i>
                                         <input type="number" class="form-control" placeholder="No. Handphone" id="contact-password" name="nohp" required>
-                                        <!-- <div class="d-flex flex align-content-end">
-                                            <a href="#!" class="text-reset text-end">Forgot password?</a>
-                                        </div> -->
+                                        <div id="error" class="form-text text-danger"><?php echo form_error('nohp'); ?></div>
                                     </div>
                                 </div><!-- /.col-lg-4 -->
                                 <div class="col-12">
@@ -68,7 +71,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <p class="flex" style="font-size: 1.75m;">or Register With</p>
-                                    <a href=""><img src="<?php echo base_url() ?>assets/pasien/images/logo/google.svg" alt=""></a>
+                                    <a href="<?php echo site_url('auth/google_login') ?>"><img src="<?php echo base_url() ?>assets/pasien/images/logo/google.svg" alt=""></a>
                                 </div>
                             </div>
                         </div>

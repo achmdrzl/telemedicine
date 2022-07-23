@@ -100,7 +100,6 @@
             }
         });
     }
-
     function kirimpesanotp(el) {
         let no = $(el).data("no");
         let psn = $(el).data("pesan");

@@ -29,6 +29,17 @@ class Book_model extends CI_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+    public function getDetailJadwal2($id_jadwal, $sesi)
+    {
+        $this->db->select('dj.ID_DETAIL_JADWAL, dr.ID_DOKTER, dr.NAMA_DOKTER, dr.SPESIALISASI, dr.PROFIL_DOKTER');
+        $this->db->from('dokter as dr');
+        $this->db->join('detail_jadwal as dj', 'dr.ID_DOKTER=dj.ID_DOKTER', 'JOIN');
+        $this->db->where('ID_JADWAL', $id_jadwal);
+        $this->db->where('ID_SESI', $sesi);
+        $this->db->group_by('dr.ID_DOKTER');
+        $query = $this->db->get();
+        return $query->row();
+    }
 
     public function getIdJadwal($day)
     {
@@ -45,7 +56,8 @@ class Book_model extends CI_Model
         return $this->db->where('ID_DETAIL_JADWAL', $id)->get('detail_jadwal')->result_array();
     }
 
-    public function genZoom($date, $jam){
+    public function genZoom($date, $jam)
+    {
         //generate zoom
         require_once __DIR__ . '/../../config/api.php';
         require_once __DIR__ . '/../../config/config.php';

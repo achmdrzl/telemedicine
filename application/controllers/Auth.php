@@ -9,9 +9,10 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('auth_pasien');
+        $this->load->model('Auth_pasien');
         $this->load->model('doktermain_model');
         $this->load->model('Admin_model');
+        $this->load->library('form_validation');
     }
 
     public function getSesi()
@@ -21,62 +22,65 @@ class Auth extends CI_Controller
 
     public function register()
     {
-        $this->form_validation->set_rules('name', 'name', 'trim|required|min_length[1]|max_length[50]|is_unique[pasien.NAMA_PASIEN]');
-        $this->form_validation->set_rules('email', 'email', 'trim|required|min_length[1]|max_length[50]');
-        $this->form_validation->set_rules('password', 'password', 'trim|required|min_length[1]|max_length[25]');
-        $this->form_validation->set_rules('nohp', 'nohp', 'trim|required|min_length[1]|max_length[25]');
-        if ($this->form_validation->run() == true) {
-            $name = $this->input->post('name');
-            $username = $this->input->post('email');
-            $password = $this->input->post('password');
-            $nohp = $this->auth_pasien->gantiformat($this->input->post('nohp'));
-            $this->auth_pasien->register($name, $username, $password, $nohp);
-            $this->session->set_flashdata('success', '
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Pendaftaran Berhasil!</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>      
-            ');
-            redirect('welcome/register');
-        } else {
+        $this->form_validation->set_rules('name', 'Nama', 'required|max_length[25]');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[50]');
+        $this->form_validation->set_rules('nohp', 'No. Handphone', 'required|max_length[12]|numeric');
+
+        if ($this->form_validation->run() == FALSE) {
+
             $this->session->set_flashdata('error', '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
                 <strong>Pendaftaran Gagal!</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>      
             ');
             redirect('welcome/register');
+        } else {
+            $name = $this->input->post('name');
+            $username = $this->input->post('email');
+            $password = $this->input->post('password');
+            $nohp = $this->auth_pasien->gantiformat($this->input->post('nohp'));
+            $cek_data = $this->auth_pasien->getUser($username);
+
+            if (!empty($cek_data)) {
+                $this->session->set_flashdata('error', '
+                <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                <strong>Email Sudah Terdaftar!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>      
+                ');
+                redirect('welcome/register');
+            } else {
+                $this->auth_pasien->register($name, $username, $password, $nohp);
+                $this->session->set_flashdata('success', '
+                <div class="alert alert-success alert-dismissible fade show w-100" role="alert">
+                <strong>Pendaftaran Berhasil!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>      
+                ');
+                redirect('welcome/register');
+            }
         }
     }
 
     public function verif()
     {
-        $this->form_validation->set_rules('otp', 'otp', 'trim|required|min_length[4]|max_length[4]');
-        if ($this->form_validation->run() == true) {
-            $otp = $this->input->post('otp');
-            $this->auth_pasien->verif($otp);
-            redirect('welcome/login');
+        $this->form_validation->set_rules('otp', 'otp', 'required|min_length[4]|max_length[4]');
+        $data = $this->Auth_pasien->selectOtp($this->session->EMAIL_PASIEN);
+        
+        if ($this->form_validation->run() == FALSE) {
+            render4('pasien/auth/verif', $data[0]);
         } else {
-
-            redirect('welcome/verif');
+            $otp = $this->input->post('otp');
+            if ($otp == $data[0]['OTP']) {
+                $this->auth_pasien->verif();
+                $this->session->set_flashdata('success', 'terverifikasi');
+                redirect('profil_pasien/editProfile');
+            } else {
+                redirect('auth/verif');
+            }
         }
-
-        // $this->db->select("*");
-        // $this->db->from("pasien");
-        // $this->db->where('OTP', $otp);
-        // $query = $this->db->get();
-        // return $query->result_array();
-
-        // if ($query == 1) 
-        // {
-        //     redirect('welcome/login');
-        // } else {
-        //     redirect('welcome/verif');
-        // }
-
-        // $pasien = $this->auth_pasien->getAll(); // memanggil method getAll
-        // $data['pasien'] = $pasien; // menampung di variable $data
-
     }
 
     public function login()
@@ -163,6 +167,90 @@ class Auth extends CI_Controller
             </div>      
             ');
             redirect('welcome/login');
+        } else {
+
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            $cek_data = $this->auth_pasien->login($username);
+
+            if (!empty($cek_data) && $cek_data[0]['JENIS_USER'] == "PASIEN") {
+                if ($cek_data[0]['PASSWORD'] == $password) {
+                    // get data pasien
+                    $pasien = $this->auth_pasien->getUser2($username);
+                    //session pasien
+                    $sessionPasien = array(
+                        'ID_PASIEN' => $pasien->ID_PASIEN,
+                        'NAMA_PASIEN' => $pasien->NAMA_PASIEN,
+                        'EMAIL_PASIEN' => $pasien->EMAIL_PASIEN,
+                        'HP_PASIEN' => $pasien->HP_PASIEN,
+                    );
+
+                    $this->session->set_userdata($sessionPasien);
+                    redirect('pasien_login/index');
+                } else {
+                    $this->session->set_flashdata('error', '
+                    <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                        <strong>Password Salah!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>      
+                    ');
+                    redirect('welcome/login');
+                }
+            } elseif (!empty($cek_data) && $cek_data[0]['JENIS_USER'] == "DOKTER") {
+                if ($cek_data[0]['PASSWORD'] == $password) {
+                    //get data dokter
+                    $dokter = $this->doktermain_model->getDokter($username);
+                    //session dokter
+                    $sessionDokter = array(
+                        'ID_DOKTER' => $dokter->ID_DOKTER,
+                        'NAMA_DOKTER' => $dokter->NAMA_DOKTER,
+                        'EMAIL_DOKTER' => $dokter->EMAIL_DOKTER,
+                        'SPESIALISASI' => $dokter->SPESIALISASI,
+                        'HP_DOKTER' => $dokter->HP_DOKTER,
+                    );
+
+                    $this->session->set_userdata($sessionDokter);
+                    redirect('doktermain');
+                } else {
+                    $this->session->set_flashdata('error', '
+                    <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                        <strong>Password Salah!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>      
+                    ');
+                    redirect('welcome/login');
+                }
+            } elseif (!empty($cek_data) && $cek_data[0]['JENIS_USER'] == "ADMIN") {
+                if ($cek_data[0]['PASSWORD'] == $password) {
+                    //get data admin
+                    $admin = $this->Admin_model->getAdmin($cek_data[0]['ID_USER']);
+
+                    //session admin
+                    $sessionAdmin = array(
+                        'ID_ADMIN' => $admin->ID_ADMIN,
+                        'NAMA_ADMIN' => $admin->NAMA_ADMIN,
+                    );
+                    $this->session->set_userdata($sessionAdmin);
+                    redirect('admin');
+                } else {
+                    $this->session->set_flashdata('error', '
+                    <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                        <strong>Password Salah!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>      
+                    ');
+                    redirect('welcome/login');
+                }
+            } else {
+
+                $this->session->set_flashdata('error', '
+                    <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                        <strong>Username Tidak Terdaftar!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>      
+                    ');
+                redirect('welcome/login');
+            }
         }
     }
 
@@ -204,6 +292,24 @@ class Auth extends CI_Controller
         } else {
             $url = $client->createAuthUrl();
             header('Location:' . filter_var($url, FILTER_SANITIZE_URL));
+        }
+    }
+
+    public function forgotPass()
+    {
+        $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('msg', '
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Email tidak di Temukan!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+            ');
+            redirect('welcome/forgotPass');
+        } else {
+            $email = $this->input->post('email');
+            $this->auth_pasien->forgotPass($email);
+            redirect('welcome/login');
         }
     }
 }

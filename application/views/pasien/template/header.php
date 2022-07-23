@@ -20,6 +20,25 @@
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="<?= base_url('assets/pasien/js/jquery-3.5.1.min.js') ?>"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <style>
+    .cookiesContent {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #fff;
+      color: #000;
+      text-align: center;
+      border-radius: 20px;
+      padding: 30px 30px 70px;
+    }
+
+    .img-edit {
+      width: 40%;
+      height: 40%;
+      object-fit: cover;
+    }
+  </style>
 </head>
 
 <body>
@@ -48,17 +67,6 @@
                     <i class="icon-clock"></i><a href="#">Senin-Jumat : 07.00-15.00 WIB</a>
                   </li>
                 </ul><!-- /.contact__list -->
-                <div class="d-flex">
-                  <ul class="social-icons list-unstyled mb-0 mr-30">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                  </ul><!-- /.social-icons -->
-                  <form class="header-topbar__search">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <button class="header-topbar__search-btn"><i class="fa fa-search"></i></button>
-                  </form>
-                </div>
               </div>
             </div><!-- /.col-12 -->
           </div><!-- /.row -->
@@ -115,3 +123,5 @@
         </div><!-- /.container -->
       </nav><!-- /.navabr -->
     </header><!-- /.Header -->
+
+    <?php echo $this->session->flashdata('message'); ?>

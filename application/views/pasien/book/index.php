@@ -7,6 +7,7 @@
                     <form class="form-group" method="post" action="<?= site_url('book/getJadwal') ?>">
                         <div class="row">
                             <div class="col-sm-12">
+                                <?php echo $this->session->flashdata('nothing'); ?>
                                 <h4 class="contact-panel__title">Daftar Konsultasi Online</h4>
                                 <p class="contact-panel__desc mb-30">Silahkan memilih tanggal dan sesi yang diinginkan.
                                 </p>

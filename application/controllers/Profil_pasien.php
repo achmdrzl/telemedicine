@@ -37,10 +37,15 @@ class Profil_pasien extends CI_Controller
       $data['gol'] = $this->Pasien_model->getGol();
       $data['provinsi'] = $this->Pasien_model->getProv();
       $data['kota'] = $this->Pasien_model->getKab();
-      $this->session->set_flashdata('ubah_profil', 'diubah');
       render4('pasien/profile/edit_profile', $data);
     } else {
       $this->Pasien_model->updateProfile($id);
+      $this->session->set_flashdata('ubah', '
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Data Berhasil di Ubah!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>      
+            ');
       redirect('profil_pasien');
     }
   }
@@ -71,7 +76,8 @@ class Profil_pasien extends CI_Controller
       }
     }
     $this->Pasien_model->uploadKTP($this->session->ID_PASIEN, $uploaded_data_ktp);
-    redirect('profil_pasien/profile/' . $this->session->ID_PASIEN);
+    $this->session->set_flashdata('upload', 'diunggah');
+    redirect('profil_pasien/editProfile');
   }
 
   public function getDataKabupaten()
